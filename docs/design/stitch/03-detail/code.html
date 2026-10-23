@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 넷플릭스 상세</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#ffffff",
+            "tertiary": "#a7002f",
+            "primary-fixed-dim": "#b0c6ff",
+            "tertiary-fixed": "#ffdada",
+            "error-container": "#ffdad6",
+            "surface-card": "#FFFFFF",
+            "surface": "#f8f9fb",
+            "surface-container-highest": "#e0e3e5",
+            "on-secondary-container": "#5a6573",
+            "urgent-surface": "#FFF1F2",
+            "on-background": "#191c1e",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "on-tertiary-container": "#ffe6e6",
+            "secondary-fixed": "#d8e3f4",
+            "on-primary-container": "#e6ebff",
+            "inverse-on-surface": "#eff1f3",
+            "on-tertiary-fixed-variant": "#920028",
+            "secondary-fixed-dim": "#bcc7d7",
+            "tertiary-container": "#d30b3f",
+            "surface-container": "#eceef0",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3d4855",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#424654",
+            "outline": "#737785",
+            "surface-tint": "#0058cb",
+            "on-tertiary-fixed": "#40000c",
+            "on-error-container": "#93000a",
+            "badge-neutral-text": "#4E5968",
+            "secondary-container": "#d8e3f4",
+            "surface-container-low": "#f2f4f6",
+            "text-secondary": "#6B7684",
+            "background": "#f8f9fb",
+            "primary": "#004cb2",
+            "inverse-surface": "#2d3133",
+            "border-subtle": "#E5E8EB",
+            "surface-variant": "#e0e3e5",
+            "primary-container": "#1b64da",
+            "surface-canvas": "#F2F4F6",
+            "outline-variant": "#c2c6d6",
+            "surface-container-lowest": "#ffffff",
+            "surface-canvas-subtle": "#F7F8FA",
+            "urgent-warning": "#E11D48",
+            "on-primary-fixed": "#001945",
+            "on-primary-fixed-variant": "#00429b",
+            "primary-fixed": "#d9e2ff",
+            "surface-dim": "#d8dadc",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#121c28",
+            "urgent-text": "#BE123C",
+            "badge-neutral-bg": "#EAECEF",
+            "text-tertiary": "#8B95A1",
+            "secondary": "#545f6d",
+            "surface-container-high": "#e6e8ea",
+            "inverse-primary": "#b0c6ff",
+            "surface-bright": "#f8f9fb",
+            "on-surface": "#191c1e",
+            "on-error": "#ffffff",
+            "text-primary": "#191F28"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-currency": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-currency-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface-canvas min-h-screen text-text-primary antialiased font-body-md selection:bg-primary selection:text-on-primary">
+<!-- Main Viewport Container: max-w-[560px] to match Material 3 handheld/tablet compact spec -->
+<div class="max-w-[560px] mx-auto min-h-screen flex flex-col bg-surface-canvas pb-12">
+<!-- TopAppBar (Task-Focused Detail View: with Back Arrow and Edit Action) -->
+<header class="sticky top-0 z-40 bg-surface-card/90 backdrop-blur-md transition-all duration-150">
+<div class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto">
+<button aria-label="뒤로 가기" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-text-primary tracking-tight">
+          구독 상세
+        </h1>
+<button aria-label="수정" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[22px]">edit</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-lg flex flex-col gap-space-xl">
+<!-- Subscription Header & Amount Hero Bento Card -->
+<section class="bg-surface-card rounded-2xl p-space-xl border border-border-subtle flex flex-col items-center text-center">
+<!-- Logo Avatar Badge -->
+<div class="relative mb-space-md">
+<div class="w-16 h-16 rounded-full bg-[#E50914] text-white flex items-center justify-center font-bold text-2xl shadow-sm tracking-tight select-none">
+            넷
+          </div>
+<!-- Subtle verified/category micro badge -->
+<div class="absolute -bottom-1 -right-1 bg-surface-card p-0.5 rounded-full">
+<span class="flex items-center justify-center w-5 h-5 bg-tertiary-container text-white rounded-full">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</span>
+</div>
+</div>
+<!-- Title & Category Pill -->
+<div class="flex items-center gap-space-sm mb-1">
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-bold tracking-tight">넷플릭스</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-low text-text-secondary font-label-sm text-label-sm font-medium border border-border-subtle">
+            영상
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mb-space-lg">스탠다드 멤버십</p>
+<!-- Big Amount Display -->
+<div class="w-full pt-space-lg border-t border-border-subtle/80 flex flex-col items-center">
+<div class="flex items-baseline gap-1 text-text-primary">
+<span class="font-display-currency text-display-currency tracking-tight">₩17,000</span>
+</div>
+<div class="mt-1 flex items-center gap-1.5 font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-[16px]">event_repeat</span>
+<span>매월 15일 결제</span>
+</div>
+</div>
+</section>
+<!-- Financial Conversion & Alert Summary Bento Card -->
+<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
+<h3 class="font-label-md text-label-md text-text-tertiary font-semibold uppercase tracking-wider mb-space-md px-1">
+          비용 및 알림 요약
+        </h3>
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<!-- Monthly converted -->
+<div class="bg-surface-container-low/70 rounded-xl p-3.5 flex flex-col justify-between">
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mb-1">
+<span class="material-symbols-outlined text-[15px] text-text-tertiary">calendar_view_month</span>
+<span>월 환산</span>
+</div>
+<span class="font-title-lg text-title-lg text-text-primary font-bold">₩17,000</span>
+</div>
+<!-- Annual converted -->
+<div class="bg-surface-container-low/70 rounded-xl p-3.5 flex flex-col justify-between">
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mb-1">
+<span class="material-symbols-outlined text-[15px] text-text-tertiary">calendar_today</span>
+<span>연 환산</span>
+</div>
+<span class="font-title-lg text-title-lg text-text-primary font-bold">₩204,000</span>
+</div>
+</div>
+<!-- Notification Row -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-canvas-subtle border border-border-subtle/60">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-primary border border-border-subtle">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-tertiary">결제 알림</span>
+<span class="font-title-md text-title-md text-text-primary font-medium">1일 전 오전 9:00</span>
+</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+            활성
+          </span>
+</div>
+</section>
+<!-- Upcoming Payment Schedule Card -->
+<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
+<div class="flex items-center justify-between mb-space-md px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">event_upcoming</span>
+<h3 class="font-title-md text-title-md text-text-primary font-bold">다가오는 결제일</h3>
+</div>
+<span class="font-label-sm text-label-sm text-text-tertiary">예정 스케줄</span>
+</div>
+<div class="space-y-space-xs">
+<!-- Item 1: D-Day (Urgent) -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-urgent-surface border border-urgent-warning/20">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-urgent-warning animate-pulse"></div>
+<div>
+<p class="font-title-md text-title-md text-text-primary font-bold">11월 15일 (토)</p>
+<p class="font-body-sm text-body-sm text-text-secondary">다음 결제 주기</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-urgent-warning text-white font-label-sm text-label-sm font-bold shadow-xs">
+              D-Day
+            </span>
+</div>
+<!-- Item 2: Next Month -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card hover:bg-surface-container-low transition-colors duration-150 border border-transparent">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div>
+<p class="font-title-md text-title-md text-text-primary font-semibold">12월 15일 (월)</p>
+<p class="font-body-sm text-body-sm text-text-tertiary">정기 결제</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-badge-neutral-bg text-badge-neutral-text font-label-sm text-label-sm font-medium">
+              D-30
+            </span>
+</div>
+<!-- Item 3: After 2 Months -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card hover:bg-surface-container-low transition-colors duration-150 border border-transparent">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div>
+<p class="font-title-md text-title-md text-text-primary font-semibold">1월 15일 (목)</p>
+<p class="font-body-sm text-body-sm text-text-tertiary">정기 결제</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-badge-neutral-bg text-badge-neutral-text font-label-sm text-label-sm font-medium">
+              D-61
+            </span>
+</div>
+</div>
+</section>
+<!-- Memo Card -->
+<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
+<div class="flex items-center justify-between mb-space-sm px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">sticky_note_2</span>
+<h3 class="font-title-md text-title-md text-text-primary font-bold">메모</h3>
+</div>
+<button aria-label="메모 편집" class="text-text-tertiary hover:text-text-primary transition-colors text-body-sm" type="button">
+            편집
+          </button>
+</div>
+<div class="bg-surface-container-low/60 rounded-xl p-4 border border-border-subtle/50 text-text-primary font-body-md text-body-md leading-relaxed">
+          스탠다드 요금제 4K 지원
+        </div>
+</section>
+<!-- Bottom Actions Area -->
+<div class="pt-space-md flex flex-col gap-space-sm">
+<!-- Outlined Secondary Button: "해지 처리" -->
+<button class="w-full h-12 rounded-xl bg-surface-card border border-border-subtle font-title-md text-title-md text-badge-neutral-text font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-low active:scale-[0.99] transition-all duration-150 ease-out shadow-xs" type="button">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+<span>해지 처리</span>
+</button>
+<!-- Destructive Text Button: "삭제" -->
+<button class="w-full h-11 rounded-xl bg-transparent font-title-md text-title-md text-urgent-warning font-semibold flex items-center justify-center gap-1.5 hover:bg-urgent-surface active:scale-[0.99] transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[18px] text-urgent-warning">delete</span>
+<span>삭제</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

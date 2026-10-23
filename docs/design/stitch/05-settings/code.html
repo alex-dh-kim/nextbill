@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 설정</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#ffffff",
+            "tertiary": "#a7002f",
+            "primary-fixed-dim": "#b0c6ff",
+            "tertiary-fixed": "#ffdada",
+            "error-container": "#ffdad6",
+            "surface-card": "#FFFFFF",
+            "surface": "#f8f9fb",
+            "surface-container-highest": "#e0e3e5",
+            "on-secondary-container": "#5a6573",
+            "urgent-surface": "#FFF1F2",
+            "on-background": "#191c1e",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "on-tertiary-container": "#ffe6e6",
+            "secondary-fixed": "#d8e3f4",
+            "on-primary-container": "#e6ebff",
+            "inverse-on-surface": "#eff1f3",
+            "on-tertiary-fixed-variant": "#920028",
+            "secondary-fixed-dim": "#bcc7d7",
+            "tertiary-container": "#d30b3f",
+            "surface-container": "#eceef0",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3d4855",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#424654",
+            "outline": "#737785",
+            "surface-tint": "#0058cb",
+            "on-tertiary-fixed": "#40000c",
+            "on-error-container": "#93000a",
+            "badge-neutral-text": "#4E5968",
+            "secondary-container": "#d8e3f4",
+            "surface-container-low": "#f2f4f6",
+            "text-secondary": "#6B7684",
+            "background": "#f8f9fb",
+            "primary": "#004cb2",
+            "inverse-surface": "#2d3133",
+            "border-subtle": "#E5E8EB",
+            "surface-variant": "#e0e3e5",
+            "primary-container": "#1b64da",
+            "surface-canvas": "#F2F4F6",
+            "outline-variant": "#c2c6d6",
+            "surface-container-lowest": "#ffffff",
+            "surface-canvas-subtle": "#F7F8FA",
+            "urgent-warning": "#E11D48",
+            "on-primary-fixed": "#001945",
+            "on-primary-fixed-variant": "#00429b",
+            "primary-fixed": "#d9e2ff",
+            "surface-dim": "#d8dadc",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#121c28",
+            "urgent-text": "#BE123C",
+            "badge-neutral-bg": "#EAECEF",
+            "text-tertiary": "#8B95A1",
+            "secondary": "#545f6d",
+            "surface-container-high": "#e6e8ea",
+            "inverse-primary": "#b0c6ff",
+            "surface-bright": "#f8f9fb",
+            "on-surface": "#191c1e",
+            "on-error": "#ffffff",
+            "text-primary": "#191F28"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-currency": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-currency-mobile": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas text-text-primary antialiased min-h-screen selection:bg-secondary-container">
+<!-- Mobile & Desktop Responsive Viewport Container -->
+<div class="min-h-screen flex flex-col justify-between max-w-[560px] mx-auto bg-surface-canvas relative shadow-[0_0_50px_rgba(0,0,0,0.03)] pb-24">
+<!-- TopAppBar (Derived from Shared Components JSON + Task requirements) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md">
+<div class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto">
+<button aria-label="뒤로가기" class="p-2 -ml-2 rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out flex items-center justify-center" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight select-none">
+          설정
+        </h1>
+<div class="w-10 h-10 flex items-center justify-center">
+<!-- Placeholder to maintain strict symmetrical center header balance -->
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin space-y-space-xl pt-space-sm">
+<!-- Section: 알림 -->
+<section class="space-y-space-sm">
+<div class="px-space-xs">
+<h2 class="text-label-md font-label-md text-text-secondary tracking-wider">
+            알림
+          </h2>
+</div>
+<div class="bg-surface-card rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-border-subtle/70 divide-y divide-border-subtle/50">
+<!-- 기본 알림 시점 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="event_upcoming">event_upcoming</span>
+<span class="text-body-lg font-body-lg text-text-primary">기본 알림 시점</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="text-body-md font-body-md font-medium text-text-secondary">1일 전</span>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- 기본 알림 시각 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="schedule">schedule</span>
+<span class="text-body-lg font-body-lg text-text-primary">기본 알림 시각</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="text-body-md font-body-md font-medium text-text-secondary">오전 9:00</span>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- 알림 권한 상태 -->
+<div class="flex items-center justify-between px-space-lg py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="notifications">notifications</span>
+<span class="text-body-lg font-body-lg text-text-primary">알림 권한 상태</span>
+</div>
+<div class="flex items-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-secondary-container text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                허용됨
+              </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: 화면 -->
+<section class="space-y-space-sm">
+<div class="px-space-xs">
+<h2 class="text-label-md font-label-md text-text-secondary tracking-wider">
+            화면
+          </h2>
+</div>
+<div class="bg-surface-card rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-border-subtle/70 divide-y divide-border-subtle/50">
+<!-- 테마 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="dark_mode">dark_mode</span>
+<span class="text-body-lg font-body-lg text-text-primary">테마</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="text-body-md font-body-md text-text-secondary">시스템 설정</span>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- 동적 색상 사용 (Material You Dynamic Color) -->
+<div class="flex items-center justify-between px-space-lg py-3.5">
+<div class="flex items-center gap-3 pr-2">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="palette">palette</span>
+<div>
+<span class="text-body-lg font-body-lg text-text-primary block">동적 색상 사용</span>
+<span class="text-body-sm font-body-sm text-text-secondary">기기 배경화면 색상에 맞춰 앱 테마 적용</span>
+</div>
+</div>
+<!-- Material 3 M3 Switch ON -->
+<label class="relative inline-flex items-center cursor-pointer select-none ml-2 shrink-0">
+<input checked="" class="sr-only peer" id="dynamicColorToggle" type="checkbox"/>
+<div class="w-13 h-7 w-[52px] h-[32px] bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:bg-primary-container transition-colors duration-200"></div>
+<div class="absolute left-[4px] top-[4px] bg-white w-6 h-6 rounded-full transition-transform duration-200 flex items-center justify-center peer-checked:translate-x-[20px] shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container leading-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section: 기본값 -->
+<section class="space-y-space-sm">
+<div class="px-space-xs">
+<h2 class="text-label-md font-label-md text-text-secondary tracking-wider">
+            기본값
+          </h2>
+</div>
+<div class="bg-surface-card rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-border-subtle/70">
+<!-- 기본 통화 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="payments">payments</span>
+<span class="text-body-lg font-body-lg text-text-primary">기본 통화</span>
+</div>
+<div class="flex items-center gap-1.5 text-text-secondary">
+<span class="text-body-md font-body-md font-medium text-text-primary">KRW (₩)</span>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: 데이터 -->
+<section class="space-y-space-sm">
+<div class="px-space-xs">
+<h2 class="text-label-md font-label-md text-text-secondary tracking-wider">
+            데이터
+          </h2>
+</div>
+<div class="bg-surface-card rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-border-subtle/70 divide-y divide-border-subtle/50">
+<!-- 백업 파일 내보내기 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="upload_file">upload_file</span>
+<span class="text-body-lg font-body-lg text-text-primary">백업 파일 내보내기</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- 백업 파일 가져오기 -->
+<div class="flex items-center justify-between px-space-lg py-3.5 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="file_download">file_download</span>
+<div>
+<span class="text-body-lg font-body-lg text-text-primary block">백업 파일 가져오기</span>
+<span class="text-body-sm font-body-sm text-text-secondary">현재 데이터가 모두 바뀌어요</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- 해지한 구독 보기 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="history_toggle_off">history_toggle_off</span>
+<span class="text-body-lg font-body-lg text-text-primary">해지한 구독 보기</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Section: 정보 -->
+<section class="space-y-space-sm">
+<div class="px-space-xs">
+<h2 class="text-label-md font-label-md text-text-secondary tracking-wider">
+            정보
+          </h2>
+</div>
+<div class="bg-surface-card rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-border-subtle/70 divide-y divide-border-subtle/50">
+<!-- 오픈소스 라이선스 -->
+<div class="flex items-center justify-between px-space-lg py-4 hover:bg-surface-container-low active:bg-surface-container transition-colors duration-150 cursor-pointer" role="button" tabindex="0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="policy">policy</span>
+<span class="text-body-lg font-body-lg text-text-primary">오픈소스 라이선스</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- 앱 버전 -->
+<div class="flex items-center justify-between px-space-lg py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="info">info</span>
+<span class="text-body-lg font-body-lg text-text-primary">앱 버전</span>
+</div>
+<span class="text-body-md font-body-md font-medium text-text-tertiary">1.0.0</span>
+</div>
+</div>
+</section>
+<!-- Bottom helper notice -->
+<div class="py-space-md text-center">
+<p class="inline-flex items-center gap-1.5 text-body-sm font-body-sm text-text-tertiary">
+<span class="material-symbols-outlined text-[16px] text-text-tertiary" data-icon="lock">lock</span>
+          모든 데이터는 이 기기에만 저장돼요
+        </p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Rendered as Settings tab active destination) -->
+<nav aria-label="메인 탐색" class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto pb-safe bg-surface-card shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+<!-- 홈 Tab -->
+<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">홈</span>
+</a>
+<!-- 캘린더 Tab -->
+<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-sm font-label-sm">캘린더</span>
+</a>
+<!-- 설정 Tab (Active State matching '설정') -->
+<a class="flex flex-col items-center justify-center gap-1 text-primary-container font-semibold active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-sm font-label-sm">설정</span>
+</a>
+</nav>
+</div>
+</body></html>

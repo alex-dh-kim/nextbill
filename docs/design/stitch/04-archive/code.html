@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 해지한 구독</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#e6ebff",
+            "surface-canvas-subtle": "#F7F8FA",
+            "urgent-text": "#BE123C",
+            "surface-container-highest": "#e0e3e5",
+            "on-primary-fixed": "#001945",
+            "on-tertiary-fixed": "#40000c",
+            "primary-fixed-dim": "#b0c6ff",
+            "urgent-warning": "#E11D48",
+            "surface-dim": "#d8dadc",
+            "text-secondary": "#6B7684",
+            "on-primary-fixed-variant": "#00429b",
+            "inverse-surface": "#2d3133",
+            "border-subtle": "#E5E8EB",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9fb",
+            "surface-card": "#FFFFFF",
+            "surface-container-low": "#f2f4f6",
+            "error-container": "#ffdad6",
+            "surface-tint": "#0058cb",
+            "tertiary-fixed": "#ffdada",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eceef0",
+            "background": "#f8f9fb",
+            "secondary-fixed-dim": "#bcc7d7",
+            "tertiary": "#a7002f",
+            "on-secondary-container": "#5a6573",
+            "surface-container-high": "#e6e8ea",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "surface": "#f8f9fb",
+            "outline-variant": "#c2c6d6",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#ffe6e6",
+            "text-primary": "#191F28",
+            "on-tertiary-fixed-variant": "#920028",
+            "on-secondary-fixed-variant": "#3d4855",
+            "inverse-primary": "#b0c6ff",
+            "on-background": "#191c1e",
+            "surface-variant": "#e0e3e5",
+            "primary-fixed": "#d9e2ff",
+            "surface-canvas": "#F2F4F6",
+            "inverse-on-surface": "#eff1f3",
+            "tertiary-container": "#d30b3f",
+            "primary-container": "#1b64da",
+            "on-secondary-fixed": "#121c28",
+            "secondary-container": "#d8e3f4",
+            "outline": "#737785",
+            "error": "#ba1a1a",
+            "badge-neutral-bg": "#EAECEF",
+            "text-tertiary": "#8B95A1",
+            "on-surface": "#191c1e",
+            "secondary": "#545f6d",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#d8e3f4",
+            "on-surface-variant": "#424654",
+            "badge-neutral-text": "#4E5968",
+            "primary": "#004cb2",
+            "on-tertiary": "#ffffff",
+            "urgent-surface": "#FFF1F2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-currency-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-currency": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .action-shadow {
+      box-shadow: 0 12px 32px rgba(25, 31, 40, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas min-h-screen text-text-primary antialiased flex flex-col items-center">
+<!-- Mobile Viewport Container -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface-canvas-subtle flex flex-col relative shadow-sm pb-24">
+<!-- Top App Bar (Shared Anchor Execution) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md">
+<div class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto">
+<!-- Leading: Back Arrow -->
+<button aria-label="뒤로가기" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Screen Title -->
+<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight">해지한 구독</h1>
+<!-- Trailing: Optional Action -->
+<button aria-label="필터" class="w-10 h-10 flex items-center justify-center rounded-full text-text-secondary hover:bg-surface-container hover:text-text-primary active:scale-95 transition-all duration-150 ease-out" type="button">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md flex flex-col gap-space-lg">
+<!-- Information Notice Banner -->
+<section class="bg-surface-card rounded-2xl p-space-lg flex items-center gap-space-md border border-border-subtle/80">
+<div class="w-8 h-8 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary leading-snug">
+          해지한 구독은 합계와 알림에서 제외돼요
+        </p>
+</section>
+<!-- Counter & Overview Header -->
+<section class="flex items-center justify-between px-space-xs mt-space-xs">
+<div class="flex items-center gap-2">
+<span class="text-title-md font-title-md text-text-primary">보관된 서비스 목록</span>
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm">
+            총 3건
+          </span>
+</div>
+<span class="text-body-sm font-body-sm text-text-tertiary">정렬: 최근 해지순</span>
+</section>
+<!-- Cancelled Subscriptions List -->
+<section class="bg-surface-card rounded-2xl border border-border-subtle overflow-visible divide-y divide-border-subtle relative">
+<!-- Item 1: Watcha (Normal Row) -->
+<div class="p-space-lg flex items-center justify-between hover:bg-surface-bright transition-colors rounded-t-2xl">
+<div class="flex items-center gap-space-md">
+<!-- Desaturated Avatar Badge -->
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary font-headline-md text-title-lg select-none border border-border-subtle">
+              왓
+            </div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-text-primary leading-tight">왓챠</span>
+<span class="text-body-sm font-body-sm text-text-tertiary mt-0.5">매월 12,900원 · 3월 2일 해지</span>
+</div>
+</div>
+<button aria-label="메뉴 더보기" class="w-9 h-9 rounded-full flex items-center justify-center text-text-tertiary hover:bg-surface-container hover:text-text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Item 2: Millie (Focused / Active Context Popover State) -->
+<div class="relative p-space-lg flex items-center justify-between bg-surface-bright/80 z-20">
+<div class="flex items-center gap-space-md">
+<!-- Desaturated Avatar Badge -->
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary font-headline-md text-title-lg select-none border border-border-subtle">
+              밀
+            </div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-text-primary leading-tight">밀리의 서재</span>
+<span class="text-body-sm font-body-sm text-text-tertiary mt-0.5">매월 9,900원 · 2월 14일 해지</span>
+</div>
+</div>
+<!-- Active Row Trigger Button -->
+<div class="relative">
+<button aria-expanded="true" aria-label="메뉴 닫기" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<!-- Interactive Popover Menu -->
+<div class="absolute right-0 top-11 w-44 bg-surface-card rounded-2xl action-shadow border border-border-subtle py-1.5 z-30 animate-in fade-in zoom-in-95 duration-150">
+<button class="w-full px-space-md py-2.5 flex items-center gap-space-sm text-left hover:bg-surface-container-low active:bg-surface-container transition-colors text-text-primary" type="button">
+<span class="material-symbols-outlined text-[19px] text-primary-container">replay</span>
+<span class="text-body-md font-label-lg font-semibold text-text-primary">다시 사용</span>
+</button>
+<div class="h-px bg-border-subtle my-1"></div>
+<button class="w-full px-space-md py-2.5 flex items-center gap-space-sm text-left hover:bg-urgent-surface active:bg-error-container/40 transition-colors text-urgent-warning" type="button">
+<span class="material-symbols-outlined text-[19px] text-urgent-warning">delete</span>
+<span class="text-body-md font-label-lg font-semibold text-urgent-warning">완전 삭제</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3: Coupang Wow (Normal Row) -->
+<div class="p-space-lg flex items-center justify-between hover:bg-surface-bright transition-colors rounded-b-2xl">
+<div class="flex items-center gap-space-md">
+<!-- Desaturated Avatar Badge -->
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary font-headline-md text-title-lg select-none border border-border-subtle">
+              쿠
+            </div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-text-primary leading-tight">쿠팡 와우 멤버십</span>
+<span class="text-body-sm font-body-sm text-text-tertiary mt-0.5">매월 7,890원 · 1월 28일 해지</span>
+</div>
+</div>
+<button aria-label="메뉴 더보기" class="w-9 h-9 rounded-full flex items-center justify-center text-text-tertiary hover:bg-surface-container hover:text-text-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</section>
+<!-- Supportive Information Micro-Card -->
+<section class="mt-space-xs p-space-lg bg-surface-card rounded-2xl border border-border-subtle">
+<div class="flex items-start gap-space-md">
+<span class="material-symbols-outlined text-text-tertiary text-[20px] mt-0.5">restore_page</span>
+<div class="flex flex-col">
+<h2 class="text-title-md font-title-md text-text-primary leading-snug">구독 재등록이 필요한가요?</h2>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">
+              언제든지 ‘다시 사용’ 버튼을 누르면 기존 결제 금액과 결제일 정보를 그대로 유지한 채 활성 구독으로 복원할 수 있습니다.
+            </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Shell Component with Settings context highlighted) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto pb-safe bg-surface-card border-t border-border-subtle shadow-sm">
+<!-- Tab 1: 홈 -->
+<button class="flex flex-col items-center justify-center gap-1 text-text-tertiary active:scale-95 transition-all duration-150 ease-out hover:bg-surface-container-low py-1 px-3 rounded-xl" type="button">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm">홈</span>
+</button>
+<!-- Tab 2: 캘린더 -->
+<button class="flex flex-col items-center justify-center gap-1 text-text-tertiary active:scale-95 transition-all duration-150 ease-out hover:bg-surface-container-low py-1 px-3 rounded-xl" type="button">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span class="text-label-sm font-label-sm">캘린더</span>
+</button>
+<!-- Tab 3: 설정 (Active context for sub-settings and archive views) -->
+<button class="flex flex-col items-center justify-center gap-1 text-primary-container font-semibold active:scale-95 transition-all duration-150 ease-out py-1 px-3 rounded-xl" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-sm font-label-sm">설정</span>
+</button>
+</nav>
+</div>
+</body></html>

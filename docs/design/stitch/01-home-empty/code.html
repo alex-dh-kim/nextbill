@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 홈 (빈 상태)</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Plus Jakarta Sans & Pretendard -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#e6ebff",
+            "surface-canvas-subtle": "#F7F8FA",
+            "urgent-text": "#BE123C",
+            "surface-container-highest": "#e0e3e5",
+            "on-primary-fixed": "#001945",
+            "on-tertiary-fixed": "#40000c",
+            "primary-fixed-dim": "#b0c6ff",
+            "urgent-warning": "#E11D48",
+            "surface-dim": "#d8dadc",
+            "text-secondary": "#6B7684",
+            "on-primary-fixed-variant": "#00429b",
+            "inverse-surface": "#2d3133",
+            "border-subtle": "#E5E8EB",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9fb",
+            "surface-card": "#FFFFFF",
+            "surface-container-low": "#f2f4f6",
+            "error-container": "#ffdad6",
+            "surface-tint": "#0058cb",
+            "tertiary-fixed": "#ffdada",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eceef0",
+            "background": "#f8f9fb",
+            "secondary-fixed-dim": "#bcc7d7",
+            "tertiary": "#a7002f",
+            "on-secondary-container": "#5a6573",
+            "surface-container-high": "#e6e8ea",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "surface": "#f8f9fb",
+            "outline-variant": "#c2c6d6",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#ffe6e6",
+            "text-primary": "#191F28",
+            "on-tertiary-fixed-variant": "#920028",
+            "on-secondary-fixed-variant": "#3d4855",
+            "inverse-primary": "#b0c6ff",
+            "on-background": "#191c1e",
+            "surface-variant": "#e0e3e5",
+            "primary-fixed": "#d9e2ff",
+            "surface-canvas": "#F2F4F6",
+            "inverse-on-surface": "#eff1f3",
+            "tertiary-container": "#d30b3f",
+            "primary-container": "#1b64da",
+            "on-secondary-fixed": "#121c28",
+            "secondary-container": "#d8e3f4",
+            "outline": "#737785",
+            "error": "#ba1a1a",
+            "badge-neutral-bg": "#EAECEF",
+            "text-tertiary": "#8B95A1",
+            "on-surface": "#191c1e",
+            "secondary": "#545f6d",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#d8e3f4",
+            "on-surface-variant": "#424654",
+            "badge-neutral-text": "#4E5968",
+            "primary": "#004cb2",
+            "on-tertiary": "#ffffff",
+            "urgent-surface": "#FFF1F2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "display-currency-mobile": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "title-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "display-currency": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Pretendard', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas text-text-primary min-h-screen flex justify-center selection:bg-secondary-container">
+<!-- Mobile Viewport Shell (Max 560px for Tablet/Large Screen Centering) -->
+<div class="w-full max-w-[560px] min-h-screen bg-surface-canvas flex flex-col relative pb-24 shadow-sm">
+<!-- Android Status Bar (System Layer) -->
+<header class="w-full pt-3 px-6 pb-1 flex justify-between items-center text-text-secondary select-none">
+<span class="font-label-md text-label-md font-semibold text-text-primary tracking-tight">09:41</span>
+<div class="flex items-center gap-2 text-text-primary">
+<span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</header>
+<!-- Shared TopAppBar -->
+<nav class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto bg-surface border-b border-border-subtle">
+<!-- Brand Headline Anchor (Literal from JSON) -->
+<div class="flex items-center gap-2">
+<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight font-bold">NextBill</h1>
+</div>
+<!-- Trailing Action: settings -->
+<button aria-label="설정" class="p-2 rounded-full text-text-secondary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-space-lg flex flex-col gap-y-4 pt-3">
+<!-- Summary Card (Home Hero - Empty/Zero State) -->
+<section class="bg-surface-card rounded-2xl p-6 border border-border-subtle transition-all">
+<!-- Header Row -->
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-sm text-body-sm text-text-secondary font-medium">이번 달 결제 예정</span>
+<span class="bg-badge-neutral-bg text-badge-neutral-text font-label-sm text-label-sm px-2.5 py-0.5 rounded-full font-medium tracking-tight">5월</span>
+</div>
+<!-- Large Amount (Zero State) -->
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-display-currency-mobile text-display-currency-mobile md:font-display-currency md:text-display-currency font-bold text-text-tertiary tracking-tight">₩0</span>
+</div>
+<!-- Muted Subtitle -->
+<p class="font-body-sm text-body-sm text-text-tertiary mt-1">등록된 고정비가 아직 없어요</p>
+</section>
+<!-- Empty State Body Container -->
+<section class="bg-surface-card rounded-2xl p-8 border border-border-subtle flex flex-col items-center text-center justify-center flex-1 my-1">
+<!-- Soft Circular Container with Material Symbol -->
+<div class="w-20 h-20 rounded-full bg-secondary-container/60 flex items-center justify-center text-primary-container mb-5">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<!-- Main Title -->
+<h2 class="font-headline-md text-headline-md font-bold text-text-primary mb-2 tracking-tight">
+          등록된 구독이 없어요
+        </h2>
+<!-- Explanatory Description (Korean UI Copy) -->
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed max-w-[280px] mb-8">
+          반복 결제를 등록하면 다음 결제일을 알려드려요<br/>매달 나가는 고정비를 한곳에서 관리해 보세요
+        </p>
+<!-- Primary Action Button: 첫 구독 추가하기 -->
+<button class="w-full max-w-[320px] h-13 bg-primary-container hover:bg-primary active:scale-[0.98] transition-all duration-150 ease-out text-on-primary font-label-lg text-label-lg rounded-2xl py-3.5 px-6 flex items-center justify-center gap-2 shadow-sm font-semibold" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>첫 구독 추가하기</span>
+</button>
+</section>
+<!-- Bottom Info Tip Card -->
+<aside class="bg-surface-card rounded-xl px-4 py-3.5 border border-border-subtle flex items-center gap-2.5 select-none">
+<span class="text-base select-none">💡</span>
+<p class="font-body-sm text-body-sm text-text-secondary font-medium tracking-tight">
+          모든 데이터는 기기에만 안전하게 보관돼요
+        </p>
+</aside>
+</main>
+<!-- Shared BottomNavBar Component -->
+<!-- Fixed Navigation Shell: 3 destinations (홈 [active], 캘린더, 설정) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto pb-safe bg-surface-card border-t border-border-subtle">
+<!-- Destination 1: 홈 (Active State) -->
+<button class="flex flex-col items-center justify-center gap-1 text-primary-container font-semibold transition-all duration-150 ease-out active:scale-95 flex-1 py-1" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</button>
+<!-- Destination 2: 캘린더 (Inactive State) -->
+<button class="flex flex-col items-center justify-center gap-1 text-text-tertiary transition-all duration-150 ease-out active:scale-95 flex-1 py-1 hover:text-text-primary" type="button">
+<span class="material-symbols-outlined text-[24px]">calendar_month</span>
+<span class="font-label-sm text-label-sm">캘린더</span>
+</button>
+<!-- Destination 3: 설정 (Inactive State) -->
+<button class="flex flex-col items-center justify-center gap-1 text-text-tertiary transition-all duration-150 ease-out active:scale-95 flex-1 py-1 hover:text-text-primary" type="button">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-label-sm text-label-sm">설정</span>
+</button>
+</nav>
+</div>
+</body></html>
