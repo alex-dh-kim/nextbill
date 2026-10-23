@@ -111,3 +111,56 @@ Create a Material 3 modal bottom sheet on top of the Add subscription screen. No
 ```
 Show the Home screen from step 0 in dark mode, keeping the same layout. Use Material 3 dark surfaces (not pure black), and keep the money numbers high-contrast.
 ```
+
+---
+
+# 2차 수정 프롬프트 (2026-10-23, 1차 시안 검토 반영)
+
+> 반영 대상: 설계 문서 §9 내비게이션, §9.1 시안과 다르게 구현하는 점, F11 캘린더.
+> Stitch에서는 **수정할 화면을 선택한 뒤** 해당 프롬프트를 넣습니다. A는 프로젝트 전체에 한 번 넣습니다.
+
+## A. 전체 공통 (먼저 한 번)
+```
+Apply these changes to every screen in this NextBill project:
+1. Font: replace Plus Jakarta Sans with "Noto Sans KR" for all text (Korean, Latin and numbers). Keep the existing font sizes, weights, line heights and letter spacing from the design system.
+2. Navigation: use a bottom navigation bar with exactly 3 tabs — 홈 / 캘린더 / 설정 — on the three top-level screens (Home, Calendar, Settings) only. Remove the settings gear icon from all top app bars. Detail, Add/Edit, Cancelled subscriptions and the permission sheet are pushed screens: they have a back arrow and no bottom navigation bar.
+3. Keep everything else in the design system unchanged (colors, 16dp cards, chips, avatars, spacing).
+```
+
+## B. 홈 (00-home, 08-home-dark 각각)
+```
+On the Home screen: remove the "내역보기 >" link, remove the "다음 달 예상 고정비 변동" card at the bottom, and remove the "날짜순" sort toggle next to "다가오는 결제" (the list is always sorted by date). Keep the "6" count badge. Make sure the "구독 추가" floating action button does not overlap any card; add bottom padding to the list. Change the month chip to "11월".
+```
+
+## C. 구독 상세 (03-detail)
+```
+On the subscription detail screen: remove the "스탠다드 멤버십" line under the name, and remove the small play badge on the avatar. In "다가오는 결제일", change the "D-Day" chip of the first row to "오늘" with the same urgent style used on Home.
+```
+
+## D. 구독 등록·수정 (02-editor)
+```
+On the Add subscription screen: remove the bottom "저장하기" button; keep only the "저장" text button in the top app bar. The avatar preview at the top must use the currently selected color swatch (red is selected, so the avatar background is red with a white letter).
+```
+
+## E. 해지한 구독 (04-archive)
+```
+On the Cancelled subscriptions screen: remove the filter (tune) icon in the top app bar and remove the "정렬: 최근 해지순" label. Remove the bottom navigation bar (this is a pushed screen with a back arrow).
+```
+
+## F. 설정 (05-settings)
+```
+On the Settings screen: remove the back arrow in the top app bar (Settings is a tab now); keep the title "설정" and the bottom navigation bar with 설정 selected.
+```
+
+## G. 홈 화면 위젯 (06-widget)
+```
+On the widget mockup: remove the "지출 리포트" widget entirely. On the 4x2 widget, remove the refresh icon and the "+ 추가" button; keep the header, "이번 달 예정 ₩86,400", the 3 rows, and the footer text "3개 결제 예정". Keep the 2x2 "다음 결제" widget as it is.
+```
+
+## H. 캘린더 (신규)
+```
+Create the "캘린더" (Calendar) tab screen in the same NextBill style. Top app bar: title "캘린더" with previous/next month arrows around "2026년 11월". Show a Material 3 monthly calendar grid where days with payments have small colored dots (the subscription colors, max 3 dots per day). Today is outlined. Below the calendar, a summary row: "이번 달 7건 · ₩86,400". When a day is selected (15일), show a card list under the calendar with that day's payments: avatar, name, amount and cycle text (e.g. 넷플릭스 ₩17,000 매월 15일). Use the bottom navigation bar (홈 / 캘린더 / 설정) with 캘린더 selected. Also create the dark mode version of this screen.
+```
+
+## export 요청
+수정 후 **전체 화면을 다시 export**합니다(캘린더 라이트·다크 포함). 기존 `docs/design/stitch/` 폴더를 교체합니다.
