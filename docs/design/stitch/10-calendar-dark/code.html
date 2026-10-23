@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 캘린더</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Noto Sans KR & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#f8f9fb",
+            "on-secondary": "#ffffff",
+            "tertiary": "#a7002f",
+            "secondary-container": "#d8e3f4",
+            "border-subtle": "#E5E8EB",
+            "surface-container-high": "#e6e8ea",
+            "inverse-on-surface": "#eff1f3",
+            "on-primary-fixed": "#001945",
+            "on-surface": "#191c1e",
+            "tertiary-fixed": "#ffdada",
+            "on-tertiary-fixed": "#40000c",
+            "tertiary-container": "#d30b3f",
+            "inverse-surface": "#2d3133",
+            "surface-card": "#FFFFFF",
+            "on-secondary-container": "#5a6573",
+            "inverse-primary": "#b0c6ff",
+            "on-tertiary-container": "#ffe6e6",
+            "surface-variant": "#e0e3e5",
+            "surface-container-low": "#f2f4f6",
+            "text-primary": "#191F28",
+            "surface": "#f8f9fb",
+            "urgent-warning": "#E11D48",
+            "surface-canvas-subtle": "#F7F8FA",
+            "surface-dim": "#d8dadc",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#bcc7d7",
+            "error": "#ba1a1a",
+            "urgent-text": "#BE123C",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#00429b",
+            "surface-canvas": "#F2F4F6",
+            "badge-neutral-text": "#4E5968",
+            "background": "#f8f9fb",
+            "surface-tint": "#0058cb",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e0e3e5",
+            "surface-container": "#eceef0",
+            "on-background": "#191c1e",
+            "primary-container": "#1b64da",
+            "on-tertiary-fixed-variant": "#920028",
+            "on-primary-container": "#e6ebff",
+            "secondary-fixed": "#d8e3f4",
+            "badge-neutral-bg": "#EAECEF",
+            "primary": "#004cb2",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "urgent-surface": "#FFF1F2",
+            "secondary": "#545f6d",
+            "text-secondary": "#6B7684",
+            "outline": "#737785",
+            "outline-variant": "#c2c6d6",
+            "text-tertiary": "#8B95A1",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#3d4855",
+            "on-secondary-fixed": "#121c28",
+            "primary-fixed": "#d9e2ff",
+            "on-surface-variant": "#424654",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-error": "#ffffff"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem"
+          },
+          fontFamily: {
+            "sans": ["'Noto Sans KR'", "sans-serif"],
+            "label-sm": ["'Noto Sans KR'", "sans-serif"],
+            "headline-md": ["'Noto Sans KR'", "sans-serif"],
+            "title-md": ["'Noto Sans KR'", "sans-serif"],
+            "body-md": ["'Noto Sans KR'", "sans-serif"],
+            "body-lg": ["'Noto Sans KR'", "sans-serif"],
+            "body-sm": ["'Noto Sans KR'", "sans-serif"],
+            "headline-lg": ["'Noto Sans KR'", "sans-serif"],
+            "title-lg": ["'Noto Sans KR'", "sans-serif"],
+            "display-currency": ["'Plus Jakarta Sans'", "'Noto Sans KR'", "sans-serif"],
+            "display-currency-mobile": ["'Plus Jakarta Sans'", "'Noto Sans KR'", "sans-serif"],
+            "label-md": ["'Noto Sans KR'", "sans-serif"],
+            "label-lg": ["'Noto Sans KR'", "sans-serif"]
+          },
+          fontSize: {
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "title-md": ["16px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "600" }],
+            "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }],
+            "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "400" }],
+            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "title-lg": ["18px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "600" }],
+            "display-currency": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "display-currency-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #121316;
+      color: #ffffff;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#121316] text-white selection:bg-[#1b64da] selection:text-white flex justify-center min-h-screen">
+<!-- Mobile Frame Constraint Container -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-[#121316] relative pb-28">
+<!-- Android Status Bar (09:41) -->
+<header class="w-full h-11 px-6 flex justify-between items-center text-xs font-medium text-[#8B95A1] select-none pt-1">
+<span class="tracking-tight text-white font-semibold text-sm">09:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[15px] leading-none text-[#A0A8B1]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[15px] leading-none text-[#A0A8B1]">wifi</span>
+<span class="material-symbols-outlined text-[17px] leading-none text-white">battery_full</span>
+</div>
+</header>
+<!-- Top App Bar (Top-level destination: '캘린더' with month switchers, no back arrow / gear icon) -->
+<div class="w-full px-5 py-3 flex items-center justify-between">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-white font-bold tracking-tight">캘린더</h1>
+</div>
+<!-- Month Switcher: < 2026년 11월 > -->
+<div class="flex items-center bg-[#1c1e22] rounded-full px-2 py-1 border border-[#2b2e35]">
+<button aria-label="이전 달" class="w-7 h-7 flex items-center justify-center rounded-full text-[#8B95A1] hover:text-white hover:bg-[#282b31] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="text-body-sm font-title-md text-white px-2 tracking-tight">2026년 11월</span>
+<button aria-label="다음 달" class="w-7 h-7 flex items-center justify-center rounded-full text-[#8B95A1] hover:text-white hover:bg-[#282b31] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 px-4 space-y-4 pt-1">
+<!-- Material 3 Dark Monthly Calendar Grid Card -->
+<section class="bg-[#1c1e22] rounded-2xl p-4 border border-[#282a30] shadow-sm">
+<!-- Day of Week Headers (Sunday to Saturday) -->
+<div class="grid grid-cols-7 mb-2 text-center">
+<div class="text-[12px] font-medium text-[#f87171] py-1">일</div>
+<div class="text-[12px] font-medium text-[#8B95A1] py-1">월</div>
+<div class="text-[12px] font-medium text-[#8B95A1] py-1">화</div>
+<div class="text-[12px] font-medium text-[#8B95A1] py-1">수</div>
+<div class="text-[12px] font-medium text-[#8B95A1] py-1">목</div>
+<div class="text-[12px] font-medium text-[#8B95A1] py-1">금</div>
+<div class="text-[12px] font-medium text-[#60a5fa] py-1">토</div>
+</div>
+<!-- 2026년 11월 Grid (11월 1일은 일요일 시작) -->
+<div class="grid grid-cols-7 gap-y-1.5 text-center">
+<!-- 1일 ~ 7일 -->
+<!-- 1일 (일) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-semibold text-[#f87171]">1</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1b64da]"></span>
+</div>
+</div>
+<!-- 2일 (월) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">2</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 3일 (화) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">3</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 4일 (수) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">4</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+</div>
+</div>
+<!-- 5일 (목) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">5</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#f43f5e]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6]"></span>
+</div>
+</div>
+<!-- 6일 (금) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">6</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 7일 (토) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#60a5fa]">7</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 8일 ~ 14일 -->
+<!-- 8일 (일) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-semibold text-[#f87171]">8</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 9일 (월) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">9</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 10일 (화) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">10</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
+</div>
+</div>
+<!-- 11일 (수) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">11</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 12일 (목) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">12</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 13일 (금) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">13</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 14일 (토) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#60a5fa]">14</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 15일 ~ 21일 -->
+<!-- 15일 (일) - SELECTED DAY: Highlight ring/fill -->
+<div class="relative flex flex-col items-center justify-start h-12 py-1 rounded-xl bg-[#1b64da]/20 ring-2 ring-[#3b82f6] shadow-sm cursor-pointer scale-105 z-10">
+<span class="text-sm font-bold text-white">15</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#e11d48]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-[#1b64da]"></span>
+</div>
+</div>
+<!-- 16일 (월) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">16</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 17일 (화) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">17</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 18일 (수) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">18</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 19일 (목) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">19</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 20일 (금) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">20</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+</div>
+</div>
+<!-- 21일 (토) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#60a5fa]">21</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 22일 ~ 28일 -->
+<!-- 22일 (일) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-semibold text-[#f87171]">22</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 23일 (월) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">23</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 24일 (화) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">24</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 25일 (수) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">25</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#8b5cf6]"></span>
+</div>
+</div>
+<!-- 26일 (목) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">26</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 27일 (금) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">27</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 28일 (토) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#60a5fa]">28</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 29일 ~ 30일 & 다음 달 날짜 -->
+<!-- 29일 (일) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-semibold text-[#f87171]">29</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 30일 (월) -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl cursor-pointer hover:bg-[#25282e] transition-colors">
+<span class="text-sm font-medium text-[#d1d5db]">30</span>
+<div class="flex space-x-0.5 mt-1 h-1.5 items-center"></div>
+</div>
+<!-- 다음 달 (12월 1일 ~ 5일) muted -->
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl opacity-25">
+<span class="text-sm font-normal text-[#5A6573]">1</span>
+</div>
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl opacity-25">
+<span class="text-sm font-normal text-[#5A6573]">2</span>
+</div>
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl opacity-25">
+<span class="text-sm font-normal text-[#5A6573]">3</span>
+</div>
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl opacity-25">
+<span class="text-sm font-normal text-[#5A6573]">4</span>
+</div>
+<div class="flex flex-col items-center justify-start h-12 py-1 rounded-xl opacity-25">
+<span class="text-sm font-normal text-[#5A6573]">5</span>
+</div>
+</div>
+</section>
+<!-- Monthly Summary Pill Card -->
+<section class="bg-[#1c1e22] rounded-2xl px-5 py-4 border border-[#282a30] flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-[#282b32] flex items-center justify-center text-[#82b1ff]">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-[#8B95A1]">이번 달 총 고정 지출</p>
+<p class="text-title-lg font-title-lg font-bold text-white tracking-tight">이번 달 7건 · ₩86,400</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#8B95A1] text-lg">chevron_right</span>
+</section>
+<!-- Selected Day's Payments Card List (15일 결제 예정) -->
+<section class="space-y-2.5 pt-1">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-title-md font-title-md text-white font-bold flex items-center gap-1.5">
+<span>11월 15일 결제 예정</span>
+<span class="w-2 h-2 rounded-full bg-[#e11d48]"></span>
+</h2>
+<span class="text-label-md font-label-md text-[#8B95A1]">총 2건</span>
+</div>
+<!-- Subscription Item 1: 넷플릭스 (Primary Highlighted Item) -->
+<article class="bg-[#1c1e22] rounded-2xl p-4 border border-[#2b2e36] flex items-center justify-between transition-all hover:border-[#3b404d]">
+<div class="flex items-center space-x-3.5">
+<!-- Avatar '넷' on red background -->
+<div class="w-11 h-11 rounded-full bg-[#E50914] flex items-center justify-center text-white font-bold text-base shadow-sm">
+              넷
+            </div>
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="text-title-md font-title-md font-bold text-white tracking-tight">넷플릭스</h3>
+<!-- Urgent soft red badge '오늘' in dark mode style -->
+<span class="bg-[#3d1a1e] text-[#ff6b76] text-label-sm font-bold px-2 py-0.5 rounded-full border border-[#ff6b76]/20">
+                  오늘
+                </span>
+</div>
+<p class="text-body-sm font-body-sm text-[#8B95A1] mt-0.5">매월 15일 · 프리미엄 플랜</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-title-lg font-title-lg font-bold text-white tracking-tight">₩17,000</p>
+<p class="text-[11px] font-medium text-[#8B95A1]">국민카드 결제</p>
+</div>
+</article>
+<!-- Subscription Item 2: 애플뮤직 (Second payment on 15th) -->
+<article class="bg-[#1c1e22] rounded-2xl p-4 border border-[#282a30] flex items-center justify-between opacity-95">
+<div class="flex items-center space-x-3.5">
+<div class="w-11 h-11 rounded-full bg-[#FA243C] flex items-center justify-center text-white font-bold text-base shadow-sm">
+              애
+            </div>
+<div>
+<div class="flex items-center space-x-2">
+<h3 class="text-title-md font-title-md font-bold text-white tracking-tight">애플 뮤직</h3>
+<span class="bg-[#3d1a1e] text-[#ff6b76] text-label-sm font-bold px-2 py-0.5 rounded-full border border-[#ff6b76]/20">
+                  오늘
+                </span>
+</div>
+<p class="text-body-sm font-body-sm text-[#8B95A1] mt-0.5">매월 15일 · 가족 요금제</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-title-lg font-title-lg font-bold text-white tracking-tight">₩13,500</p>
+<p class="text-[11px] font-medium text-[#8B95A1]">카카오페이</p>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Navigation Bar (BottomNavBar) -->
+<!-- Exactly 3 tabs: '홈', '캘린더', '설정' with '캘린더' active -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 bg-[#121316] border-t border-[#23262d] max-w-[560px] mx-auto pb-safe">
+<div class="flex justify-around items-center h-16 px-4">
+<!-- Tab 1: 홈 (Inactive) -->
+<a class="flex flex-col items-center justify-center gap-1 text-[#6B7684] hover:text-[#A0A8B1] active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm">홈</span>
+</a>
+<!-- Tab 2: 캘린더 (Active) -->
+<a class="flex flex-col items-center justify-center gap-1 text-[#82b1ff] font-semibold active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-label-sm font-label-sm">캘린더</span>
+</a>
+<!-- Tab 3: 설정 (Inactive) -->
+<a class="flex flex-col items-center justify-center gap-1 text-[#6B7684] hover:text-[#A0A8B1] active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-label-sm font-label-sm">설정</span>
+</a>
+</div>
+<!-- Android Bottom Home Indicator bar -->
+<div class="w-full flex justify-center pb-2 pt-0.5">
+<div class="w-32 h-1 bg-[#373b44] rounded-full"></div>
+</div>
+</nav>
+</div>
+</body></html>

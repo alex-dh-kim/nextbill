@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NextBill - 캘린더</title>
+<!-- Google Fonts: Noto Sans KR & Plus Jakarta Sans & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim as mandated -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#f8f9fb",
+            "on-secondary": "#ffffff",
+            "tertiary": "#a7002f",
+            "secondary-container": "#d8e3f4",
+            "border-subtle": "#E5E8EB",
+            "surface-container-high": "#e6e8ea",
+            "inverse-on-surface": "#eff1f3",
+            "on-primary-fixed": "#001945",
+            "on-surface": "#191c1e",
+            "tertiary-fixed": "#ffdada",
+            "on-tertiary-fixed": "#40000c",
+            "tertiary-container": "#d30b3f",
+            "inverse-surface": "#2d3133",
+            "surface-card": "#FFFFFF",
+            "on-secondary-container": "#5a6573",
+            "inverse-primary": "#b0c6ff",
+            "on-tertiary-container": "#ffe6e6",
+            "surface-variant": "#e0e3e5",
+            "surface-container-low": "#f2f4f6",
+            "text-primary": "#191F28",
+            "surface": "#f8f9fb",
+            "urgent-warning": "#E11D48",
+            "surface-canvas-subtle": "#F7F8FA",
+            "surface-dim": "#d8dadc",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#bcc7d7",
+            "error": "#ba1a1a",
+            "urgent-text": "#BE123C",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#00429b",
+            "surface-canvas": "#F2F4F6",
+            "badge-neutral-text": "#4E5968",
+            "background": "#f8f9fb",
+            "surface-tint": "#0058cb",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e0e3e5",
+            "surface-container": "#eceef0",
+            "on-background": "#191c1e",
+            "primary-container": "#1b64da",
+            "on-tertiary-fixed-variant": "#920028",
+            "on-primary-container": "#e6ebff",
+            "secondary-fixed": "#d8e3f4",
+            "badge-neutral-bg": "#EAECEF",
+            "primary": "#004cb2",
+            "tertiary-fixed-dim": "#ffb3b6",
+            "urgent-surface": "#FFF1F2",
+            "secondary": "#545f6d",
+            "text-secondary": "#6B7684",
+            "outline": "#737785",
+            "outline-variant": "#c2c6d6",
+            "text-tertiary": "#8B95A1",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#3d4855",
+            "on-secondary-fixed": "#121c28",
+            "primary-fixed": "#d9e2ff",
+            "on-surface-variant": "#424654",
+            "primary-fixed-dim": "#b0c6ff",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "sans": ["'Noto Sans KR'", "'Plus Jakarta Sans'", "sans-serif"],
+            "label-sm": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "headline-md": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "title-md": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "body-md": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "body-lg": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "body-sm": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "headline-lg": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "title-lg": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "display-currency": ["'Plus Jakarta Sans'", "'Noto Sans KR'"],
+            "label-md": ["'Noto Sans KR'", "'Plus Jakarta Sans'"],
+            "display-currency-mobile": ["'Plus Jakarta Sans'", "'Noto Sans KR'"],
+            "label-lg": ["'Noto Sans KR'", "'Plus Jakarta Sans'"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas min-h-screen text-text-primary antialiased selection:bg-secondary-container">
+<!-- Mobile Viewport Shell (Strict 560px max width anchor) -->
+<div class="max-w-[560px] mx-auto min-h-screen flex flex-col bg-surface-canvas relative shadow-sm">
+<!-- Top App Bar: Dedicated Top-Level Destination Anchor -->
+<header class="sticky top-0 z-40 bg-surface w-full h-16 px-margin flex items-center justify-between border-b border-border-subtle/60 backdrop-blur-md bg-opacity-95">
+<div class="flex items-center gap-2">
+<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight">캘린더</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-text-secondary text-label-md font-label-md transition-all active:scale-95 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">today</span>
+<span>오늘</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pt-space-md pb-28 flex flex-col gap-space-lg">
+<!-- Calendar Card Container -->
+<section class="bg-surface-card rounded-2xl p-space-lg shadow-sm border border-border-subtle">
+<!-- Month Navigator Header -->
+<div class="flex items-center justify-between mb-space-md px-1">
+<div class="flex items-center gap-1.5">
+<span class="text-title-lg font-title-lg text-text-primary tracking-tight">2026년 11월</span>
+<span class="text-body-sm font-body-sm text-text-tertiary">총 7건</span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="이전 달" class="w-8 h-8 flex items-center justify-center rounded-full text-text-secondary hover:bg-surface-container-low active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="다음 달" class="w-8 h-8 flex items-center justify-center rounded-full text-text-secondary hover:bg-surface-container-low active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Days of Week Header (Sun - Sat) -->
+<div class="grid grid-cols-7 mb-2 text-center">
+<span class="text-label-sm font-label-sm text-urgent-warning/80 py-1">일</span>
+<span class="text-label-sm font-label-sm text-text-secondary py-1">월</span>
+<span class="text-label-sm font-label-sm text-text-secondary py-1">화</span>
+<span class="text-label-sm font-label-sm text-text-secondary py-1">수</span>
+<span class="text-label-sm font-label-sm text-text-secondary py-1">목</span>
+<span class="text-label-sm font-label-sm text-text-secondary py-1">금</span>
+<span class="text-label-sm font-label-sm text-primary py-1">토</span>
+</div>
+<!-- 2026 November Calendar Grid (Nov 1, 2026 starts on Sunday) -->
+<div class="grid grid-cols-7 gap-y-1 text-center">
+<!-- Week 1: 1 - 7 -->
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-urgent-warning rounded-full group-hover:bg-surface-container-low transition-all">1</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">2</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">3</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">4</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">5</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">6</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-primary rounded-full group-hover:bg-surface-container-low transition-all">7</span>
+<span class="h-2"></span>
+</div>
+<!-- Week 2: 8 - 14 -->
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-urgent-warning rounded-full group-hover:bg-surface-container-low transition-all">8</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">9</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">10</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">11</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">12</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">13</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-primary rounded-full group-hover:bg-surface-container-low transition-all">14</span>
+<span class="h-2"></span>
+</div>
+<!-- Week 3: 15 - 21 (15 is Today & Selected) -->
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group relative">
+<!-- Selected Highlight Pill/Circle + Today Outline -->
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-title-md bg-primary-container text-white rounded-full shadow-sm ring-2 ring-primary-container/20">15</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E50914]" title="넷플릭스"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container" title="쿠팡와우"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">16</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container" title="통신비"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">17</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">18</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">19</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">20</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#FF0000]" title="유튜브"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-primary rounded-full group-hover:bg-surface-container-low transition-all">21</span>
+<span class="h-2"></span>
+</div>
+<!-- Week 4: 22 - 28 -->
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-urgent-warning rounded-full group-hover:bg-surface-container-low transition-all">22</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">23</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">24</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#0EA5E9]" title="iCloud+"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">25</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">26</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">27</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]" title="헬스장"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-primary rounded-full group-hover:bg-surface-container-low transition-all">28</span>
+<span class="h-2"></span>
+</div>
+<!-- Week 5: 29 - 30 + Next Month Days -->
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-urgent-warning rounded-full group-hover:bg-surface-container-low transition-all">29</span>
+<span class="h-2"></span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 cursor-pointer group">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-primary rounded-full group-hover:bg-surface-container-low transition-all">30</span>
+<div class="flex items-center gap-0.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" title="밀리의 서재"></span>
+</div>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 opacity-25">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-tertiary">1</span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 opacity-25">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-tertiary">2</span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 opacity-25">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-tertiary">3</span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 opacity-25">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-tertiary">4</span>
+</div>
+<div class="h-12 flex flex-col items-center justify-start pt-1 opacity-25">
+<span class="w-7 h-7 flex items-center justify-center text-body-sm font-body-sm text-text-tertiary">5</span>
+</div>
+</div>
+</section>
+<!-- Monthly Summary Bento Strip -->
+<section class="bg-surface-card rounded-2xl p-space-md border border-border-subtle flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-text-secondary">이번 달 결제 예정</div>
+<div class="text-title-md font-title-md text-text-primary tracking-tight">7건 · ₩86,400</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-text-tertiary text-label-md font-label-md bg-surface-canvas-subtle px-2.5 py-1 rounded-lg">
+<span>평균 ₩12,342</span>
+</div>
+</section>
+<!-- Selected Day's Payments Section -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-baseline gap-2">
+<h2 class="text-title-md font-title-md text-text-primary">11월 15일 결제 예정</h2>
+<span class="text-label-md font-label-md text-text-tertiary">일요일 · 1건</span>
+</div>
+<span class="text-label-md font-label-md text-primary font-semibold">합계 ₩17,000</span>
+</div>
+<!-- Payment Cards Container -->
+<div class="flex flex-col gap-space-sm">
+<!-- Subscription Item 1: Netflix (Matched from specs) -->
+<div class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle flex items-center justify-between hover:border-outline-variant/60 transition-all">
+<div class="flex items-center gap-space-md">
+<!-- Avatar Circle -->
+<div class="w-10 h-10 rounded-full bg-[#E50914] text-white flex items-center justify-center font-bold text-body-lg flex-shrink-0 shadow-sm">
+                넷
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-title-md font-title-md text-text-primary">넷플릭스</span>
+<span class="bg-urgent-surface text-urgent-text text-label-sm font-label-sm px-2 py-0.5 rounded-full font-bold">오늘</span>
+</div>
+<span class="text-body-sm font-body-sm text-text-secondary">매월 15일 · 프리미엄 플랜</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="text-title-md font-title-md text-text-primary font-bold">₩17,000</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">KB국민카드</span>
+</div>
+</div>
+<!-- Secondary Preview Item (Informative upcoming context) -->
+<div class="bg-surface-card/60 rounded-2xl p-space-lg border border-dashed border-border-subtle flex items-center justify-between opacity-80">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-body-lg flex-shrink-0">
+                통
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-title-md font-title-md text-text-primary">SKT 통신요금</span>
+<span class="bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm px-2 py-0.5 rounded-full">내일 (16일)</span>
+</div>
+<span class="text-body-sm font-body-sm text-text-secondary">매월 16일 · 5G 데이터 무제한</span>
+</div>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="text-title-md font-title-md text-text-primary font-semibold">₩49,000</span>
+<span class="text-label-sm font-label-sm text-text-tertiary">자동이체</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar: Strict adherence to Shared Components JSON -->
+<!-- Destination 2 ('캘린더') is explicitly marked active -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto pb-safe bg-surface-card border-t border-border-subtle shadow-sm">
+<!-- Tab 1: 홈 (Inactive) -->
+<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">홈</span>
+</a>
+<!-- Tab 2: 캘린더 (Active per Page Hierarchy & Intent) -->
+<a aria-current="page" class="flex flex-col items-center justify-center gap-1 text-primary-container font-semibold active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="calendar_month" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-label-sm font-label-sm">캘린더</span>
+</a>
+<!-- Tab 3: 설정 (Inactive) -->
+<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low active:scale-95 transition-all duration-150 ease-out py-1 px-4 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm">설정</span>
+</a>
+</nav>
+</div>
+</body></html>

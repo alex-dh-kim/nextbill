@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
     tailwind.config = {
@@ -94,18 +94,18 @@
             "margin": "1.25rem"
           },
           "fontFamily": {
-            "headline-md": ["Plus Jakarta Sans"],
-            "display-currency-mobile": ["Plus Jakarta Sans"],
-            "body-lg": ["Plus Jakarta Sans"],
-            "title-lg": ["Plus Jakarta Sans"],
-            "title-md": ["Plus Jakarta Sans"],
-            "body-md": ["Plus Jakarta Sans"],
-            "label-md": ["Plus Jakarta Sans"],
-            "body-sm": ["Plus Jakarta Sans"],
-            "headline-lg": ["Plus Jakarta Sans"],
-            "label-lg": ["Plus Jakarta Sans"],
-            "label-sm": ["Plus Jakarta Sans"],
-            "display-currency": ["Plus Jakarta Sans"]
+            "headline-md": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "display-currency-mobile": ["Plus Jakarta Sans", "Noto Sans KR", "sans-serif"],
+            "body-lg": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "title-lg": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "label-lg": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Noto Sans KR", "Plus Jakarta Sans", "sans-serif"],
+            "display-currency": ["Plus Jakarta Sans", "Noto Sans KR", "sans-serif"]
           },
           "fontSize": {
             "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
@@ -125,6 +125,28 @@
       }
     }
   </script>
+<style>
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+  }
+</style>
 </head>
 <body class="bg-surface-canvas min-h-screen text-text-primary flex justify-center antialiased selection:bg-secondary-container">
 <!-- Device Frame (560px max width to preserve Korean fintech fluid structure) -->
@@ -133,19 +155,19 @@
 <header class="w-full h-11 px-6 flex justify-between items-center text-text-primary z-10 select-none bg-surface">
 <span class="font-label-md text-label-md font-bold tracking-tight">09:41</span>
 <div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[17px] text-text-secondary" data-icon="wifi">wifi</span>
-<span class="material-symbols-outlined text-[17px] text-text-secondary" data-icon="signal_cellular_alt">signal_cellular_alt</span>
-<span class="material-symbols-outlined text-[19px] text-text-primary font-bold" data-icon="battery_full">battery_full</span>
+<span class="material-symbols-outlined text-[17px] text-text-secondary">wifi</span>
+<span class="material-symbols-outlined text-[17px] text-text-secondary">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[19px] text-text-primary font-bold">battery_full</span>
 </div>
 </header>
 <!-- Top App Bar (Docked full-width top from Shared Components JSON logic) -->
 <nav class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto bg-surface border-b border-border-subtle z-10">
 <button aria-label="뒤로 가기" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out text-text-primary" type="button">
-<span class="material-symbols-outlined text-[24px]" data-icon="arrow_back">arrow_back</span>
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
 </button>
 <h1 class="text-headline-md font-headline-md text-text-primary tracking-tight font-bold">구독 추가</h1>
 <button aria-label="설정" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out text-text-secondary" type="button">
-<span class="material-symbols-outlined text-[22px]" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-[22px]">settings</span>
 </button>
 </nav>
 <!-- Background Screen: Add Subscription Form Canvas (Under Scrim) -->
@@ -161,7 +183,7 @@
 <input class="font-title-lg text-title-lg text-text-primary font-semibold bg-transparent border-none p-0 focus:ring-0" id="sub-name" readonly="" tabindex="-1" type="text" value="넷플릭스"/>
 </div>
 <button class="text-text-tertiary" tabindex="-1" type="button">
-<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+<span class="material-symbols-outlined text-[20px]">search</span>
 </button>
 </div>
 </section>
@@ -174,7 +196,7 @@
 <span class="font-label-md text-label-md bg-badge-neutral-bg text-badge-neutral-text px-2.5 py-1 rounded-full">KRW ▾</span>
 </div>
 <p class="font-body-sm text-body-sm text-urgent-warning mt-1.5 flex items-center gap-1 font-medium">
-<span class="material-symbols-outlined text-[14px]" data-icon="error">error</span>
+<span class="material-symbols-outlined text-[14px]">error</span>
             0원 이상의 결제 금액을 입력해주세요.
           </p>
 </div>
@@ -195,14 +217,14 @@
 <span class="font-title-md text-title-md text-text-primary">다음 결제일</span>
 <div class="flex items-center gap-1 text-primary-container font-title-md text-title-md font-semibold">
 <span>2025. 04. 15</span>
-<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
 </div>
 </div>
 <div class="flex items-center justify-between py-1">
 <span class="font-title-md text-title-md text-text-primary">카테고리</span>
 <div class="flex items-center gap-1 text-text-secondary font-body-md text-body-md">
 <span>엔터테인먼트 / OTT</span>
-<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </div>
 </div>
 </section>
@@ -212,16 +234,16 @@
       </button>
 </main>
 <!-- Semi-transparent Scrim Backdrop (Material 3 Modal Overlay) -->
-<div class="absolute inset-0 bg-black/50 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
+<div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
 <!-- Material 3 Modal Bottom Sheet -->
-<aside aria-labelledby="modal-sheet-title" aria-modal="true" class="absolute bottom-0 inset-x-0 bg-surface-card rounded-t-3xl border-t border-border-subtle z-50 pt-3 pb-8 px-6 shadow-[0_-8px_30px_rgba(25,31,40,0.12)] flex flex-col animate-in slide-in-from-bottom duration-250 ease-out" role="dialog">
-<!-- Bottom Sheet Drag Handle -->
-<div aria-hidden="true" class="w-9 h-1 bg-outline-variant/60 rounded-full mx-auto mb-5"></div>
-<!-- Icon Container (Deep Blue Brand Accent) -->
-<div class="w-14 h-14 rounded-full bg-secondary-container/60 text-primary-container flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined text-[30px]" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<aside aria-labelledby="modal-sheet-title" aria-modal="true" class="absolute bottom-0 inset-x-0 bg-surface-card rounded-t-3xl border-t border-border-subtle z-50 pt-3.5 pb-8 px-6 shadow-[0_-8px_30px_rgba(25,31,40,0.12)] flex flex-col" role="dialog">
+<!-- Bottom Sheet Centered Drag Handle -->
+<div aria-hidden="true" class="w-10 h-1 bg-outline-variant/60 rounded-full mx-auto mb-6"></div>
+<!-- Large Circular Soft-Blue Container with Bell Icon -->
+<div class="w-16 h-16 rounded-full bg-secondary-container/70 text-primary flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
 </div>
-<!-- Modal Title -->
+<!-- Modal Title & Subtitle -->
 <div class="text-center space-y-2 mb-6">
 <h2 class="font-headline-md text-headline-md text-text-primary tracking-tight font-bold" id="modal-sheet-title">
           결제 전에 알려드릴게요
@@ -230,17 +252,17 @@
           결제일 알림을 받으려면 알림 권한이 필요해요.<br/>언제든 설정에서 바꿀 수 있어요.
         </p>
 </div>
-<!-- Micro-Benefits / Reassurance Card -->
-<div class="bg-surface-canvas rounded-2xl p-4 mb-7 space-y-2.5 border border-border-subtle/80">
-<div class="flex items-start gap-2.5">
-<span class="material-symbols-outlined text-[18px] text-primary-container mt-0.5 shrink-0" data-icon="schedule">schedule</span>
-<p class="font-body-sm text-body-sm text-badge-neutral-text">
+<!-- Micro-Benefits / Reassurance Cards -->
+<div class="bg-surface-canvas rounded-2xl p-4 mb-7 space-y-3 border border-border-subtle/80">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<p class="font-body-sm text-body-sm text-badge-neutral-text font-medium">
             결제 1일 전 오전 9시에 잊지 않게 알려드려요
           </p>
 </div>
-<div class="flex items-start gap-2.5">
-<span class="material-symbols-outlined text-[18px] text-primary-container mt-0.5 shrink-0" data-icon="verified_user">verified_user</span>
-<p class="font-body-sm text-body-sm text-badge-neutral-text">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-body-sm text-body-sm text-badge-neutral-text font-medium">
             불필요한 마케팅 알림은 절대 보내지 않아요
           </p>
 </div>
@@ -250,7 +272,7 @@
 <!-- Primary Action Button -->
 <button class="w-full h-[52px] bg-primary-container text-surface-card rounded-xl font-title-md text-title-md font-semibold hover:opacity-95 active:scale-[0.98] transition-all duration-150 ease-out shadow-sm flex items-center justify-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2" type="button">
 <span>알림 허용하기</span>
-<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+<span class="material-symbols-outlined text-[18px]">check</span>
 </button>
 <!-- Secondary Dismiss Action -->
 <button class="w-full h-11 text-text-secondary font-title-md text-title-md font-medium hover:text-text-primary active:scale-[0.98] transition-all duration-150 ease-out flex items-center justify-center rounded-xl" type="button">

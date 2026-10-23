@@ -4,14 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NextBill - 홈</title>
-<!-- Material Symbols Outlined -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Pretendard / Plus Jakarta Sans Typography -->
-<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<!-- Google Fonts: Material Symbols Outlined & Noto Sans KR -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
     tailwind.config = {
@@ -97,32 +94,7 @@
             "space-sm": "0.5rem"
           },
           "fontFamily": {
-            "label-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "display-currency": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "headline-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "headline-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "label-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "title-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "body-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "label-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "display-currency-mobile": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "body-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "body-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"],
-            "title-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"]
-          },
-          "fontSize": {
-            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
-            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
-            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
-            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
-            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }]
+            "sans": ["'Noto Sans KR'", "'Plus Jakarta Sans'", "sans-serif"]
           }
         }
       }
@@ -132,13 +104,23 @@
     body {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      font-family: 'Noto Sans KR', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     }
     .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      display: inline-block;
-      vertical-align: middle;
+      font-family: 'Material Symbols Outlined' !important;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
       line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
     .elevation-fab {
       box-shadow: 0 8px 24px rgba(27, 100, 218, 0.28);
@@ -149,49 +131,40 @@
   </style>
 </head>
 <body class="bg-surface-canvas min-h-screen text-text-primary antialiased flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
-<!-- Mobile Viewport Wrapper (Max 560px for tablet centering, fluid on mobile) -->
-<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface-canvas-subtle relative pb-28">
+<!-- Mobile Viewport Wrapper -->
+<div class="w-full max-w-[560px] min-h-screen flex flex-col bg-surface-canvas-subtle relative">
 <!-- Android Status Bar -->
 <div class="w-full h-8 px-6 flex justify-between items-center text-text-secondary select-none bg-surface shrink-0 pt-1">
-<span class="text-[13px] font-semibold text-text-primary">09:41</span>
+<span class="text-[13px] font-semibold text-text-primary tracking-tight">09:41</span>
 <div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
-<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">wifi</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">battery_full</span>
+<span class="material-symbols-outlined !text-[16px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined !text-[16px]" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<span class="material-symbols-outlined !text-[18px]" style="font-variation-settings: 'FILL' 1;">battery_full</span>
 </div>
 </div>
-<!-- Top App Bar (Shared Component Anchor) -->
-<!-- JSON: style_shell_layout: "flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto" -->
-<!-- Prohibiting top/bottom border lines per Semantic Shell Rule -->
-<header class="sticky top-0 z-40 bg-surface flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface flex justify-between items-center w-full h-14 px-margin">
 <div class="flex items-center gap-2">
-<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight font-bold">NextBill</h1>
-</div>
-<div class="flex items-center">
-<button aria-label="설정" class="w-10 h-10 flex items-center justify-center rounded-full text-text-secondary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
-<span class="material-symbols-outlined text-text-primary text-[24px]">settings</span>
-</button>
+<h1 class="text-2xl font-extrabold text-text-primary tracking-tight">NextBill</h1>
 </div>
 </header>
-<!-- Main Content Canvas -->
-<main class="flex-1 px-margin space-y-5 pt-1">
+<!-- Main Content Canvas with plenty of bottom padding for FAB & BottomNavBar -->
+<main class="flex-1 px-margin space-y-5 pt-2 pb-32">
 <!-- Hero Summary Card -->
-<section class="bg-surface-card rounded-2xl p-space-xl border border-border-subtle elevation-card transition-all">
-<div class="flex justify-between items-start mb-2">
-<span class="text-body-sm font-body-sm text-text-secondary font-medium">이번 달 결제 예정</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-canvas text-text-secondary text-label-sm font-label-sm">
-            5월
-          </span>
+<section class="bg-surface-card rounded-2xl p-5 border border-border-subtle elevation-card transition-all">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[13px] text-text-secondary font-medium">이번 달 결제 예정</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-canvas text-text-secondary text-[11px] font-semibold">11월</span>
 </div>
 <div class="flex items-baseline gap-2 mb-3">
-<span class="text-display-currency font-display-currency text-text-primary tracking-tight font-extrabold">₩86,400</span>
+<span class="text-[32px] leading-tight text-text-primary tracking-tight font-extrabold">₩86,400</span>
 </div>
-<div class="pt-3 border-t border-border-subtle/70 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-body-sm font-body-sm">
+<div class="pt-3 border-t border-border-subtle/80 flex flex-col gap-1.5 text-[13px]">
 <div class="flex items-center gap-1.5 text-text-secondary">
 <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
 <span>월 고정비 <strong class="text-text-primary font-semibold">₩72,300</strong></span>
 </div>
-<div class="text-text-tertiary flex items-center gap-1">
+<div class="flex items-center gap-1 text-text-tertiary pl-3">
 <span>해외 결제</span>
 <span class="font-semibold text-text-secondary">+ $19.98</span>
 </div>
@@ -199,178 +172,151 @@
 </section>
 <!-- Section: 다가오는 결제 Header -->
 <section class="pt-1">
-<div class="flex items-center justify-between mb-3 px-1">
-<div class="flex items-center gap-2">
-<h2 class="text-title-lg font-title-lg text-text-primary tracking-tight">다가오는 결제</h2>
-<span class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm font-bold">
-              6
-            </span>
+<div class="flex items-center gap-2 mb-3 px-1">
+<h2 class="text-lg font-bold text-text-primary tracking-tight">다가오는 결제</h2>
+<span class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-primary-container/10 text-primary-container text-[12px] font-bold">
+  6
+</span>
 </div>
-<button class="inline-flex items-center gap-0.5 text-text-secondary text-label-md font-label-md hover:text-text-primary transition-colors py-1 px-1.5 rounded-lg active:bg-surface-container" type="button">
-<span>날짜순</span>
-<span class="material-symbols-outlined text-[16px]">swap_vert</span>
-</button>
-</div>
-<!-- Subscription Items Card Container -->
+<!-- Subscription Items Card Container (6 items sorted by date) -->
 <div class="bg-surface-card rounded-2xl border border-border-subtle elevation-card divide-y divide-border-subtle overflow-hidden">
-<!-- 1. 넷플릭스 (D-Day 오늘) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<!-- 1. 넷플릭스 (오늘) -->
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Red -->
-<div class="w-10 h-10 rounded-full bg-[#E50914]/10 text-[#E50914] flex items-center justify-center font-bold text-title-md shrink-0">
-                넷
-              </div>
+<div class="w-10 h-10 rounded-full bg-[#E50914]/10 text-[#E50914] flex items-center justify-center font-bold text-base shrink-0">
+  넷
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">넷플릭스</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매월 15일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">넷플릭스</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매월 15일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">₩17,000</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-urgent-surface text-urgent-text text-label-sm font-label-sm font-bold">
-                오늘
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">₩17,000</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-urgent-surface text-urgent-text text-[11px] font-bold">
+  오늘
+</span>
 </div>
 </article>
-<!-- 2. 통신비 (D-Day 내일) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<!-- 2. 통신비 (내일) -->
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Blue -->
-<div class="w-10 h-10 rounded-full bg-primary-container/10 text-primary-container flex items-center justify-center font-bold text-title-md shrink-0">
-                통
-              </div>
+<div class="w-10 h-10 rounded-full bg-primary-container/10 text-primary-container flex items-center justify-center font-bold text-base shrink-0">
+  통
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">통신비</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매월 16일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">통신비</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매월 16일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">₩55,000</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-urgent-surface text-urgent-text text-label-sm font-label-sm font-bold">
-                내일
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">₩55,000</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-urgent-surface text-urgent-text text-[11px] font-bold">
+  내일
+</span>
 </div>
 </article>
 <!-- 3. 유튜브 프리미엄 (D-5) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Coral -->
-<div class="w-10 h-10 rounded-full bg-[#FF4E45]/10 text-[#FF4E45] flex items-center justify-center font-bold text-title-md shrink-0">
-                유
-              </div>
+<div class="w-10 h-10 rounded-full bg-[#FF4E45]/10 text-[#FF4E45] flex items-center justify-center font-bold text-base shrink-0">
+  유
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">유튜브 프리미엄</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매월 20일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">유튜브 프리미엄</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매월 20일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">₩14,900</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm">
-                D-5
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">₩14,900</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-medium">
+  D-5
+</span>
 </div>
 </article>
 <!-- 4. iCloud+ (D-9) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Sky Blue -->
-<div class="w-10 h-10 rounded-full bg-[#0088FF]/10 text-[#0088FF] flex items-center justify-center font-bold text-title-md shrink-0">
-                i
-              </div>
+<div class="w-10 h-10 rounded-full bg-[#0088FF]/10 text-[#0088FF] flex items-center justify-center font-bold text-base shrink-0">
+  i
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">iCloud+</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매월 24일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">iCloud+</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매월 24일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">$2.99</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm">
-                D-9
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">$2.99</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-medium">
+  D-9
+</span>
 </div>
 </article>
 <!-- 5. 헬스장 (D-12) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Emerald -->
-<div class="w-10 h-10 rounded-full bg-[#10B981]/10 text-[#059669] flex items-center justify-center font-bold text-title-md shrink-0">
-                헬
-              </div>
+<div class="w-10 h-10 rounded-full bg-[#10B981]/10 text-[#059669] flex items-center justify-center font-bold text-base shrink-0">
+  헬
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">헬스장</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매월 27일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">헬스장</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매월 27일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">₩60,000</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm">
-                D-12
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">₩60,000</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-medium">
+  D-12
+</span>
 </div>
 </article>
 <!-- 6. 자동차보험 (D-41) -->
-<article class="flex items-center justify-between p-space-lg hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
+<article class="flex items-center justify-between p-4 hover:bg-surface transition-colors cursor-pointer active:bg-surface-container-low min-h-[72px]">
 <div class="flex items-center gap-3.5">
-<!-- Avatar: Purple -->
-<div class="w-10 h-10 rounded-full bg-[#8B5CF6]/10 text-[#7C3AED] flex items-center justify-center font-bold text-title-md shrink-0">
-                자
-              </div>
+<div class="w-10 h-10 rounded-full bg-[#8B5CF6]/10 text-[#7C3AED] flex items-center justify-center font-bold text-base shrink-0">
+  자
+</div>
 <div class="flex flex-col">
-<span class="text-title-md font-title-md text-text-primary leading-tight">자동차보험</span>
-<span class="text-body-sm font-body-sm text-text-secondary mt-0.5">매년 3월 2일</span>
+<span class="text-[15px] font-bold text-text-primary leading-tight">자동차보험</span>
+<span class="text-[13px] text-text-secondary mt-0.5">매년 3월 2일</span>
 </div>
 </div>
 <div class="flex flex-col items-end gap-1">
-<span class="text-title-md font-title-md text-text-primary font-bold tracking-tight">₩480,000</span>
-<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-label-sm font-label-sm">
-                D-41
-              </span>
+<span class="text-[15px] font-bold text-text-primary tracking-tight">₩480,000</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-medium">
+  D-41
+</span>
 </div>
 </article>
 </div>
 </section>
-<!-- Quick Financial Health Insight Pill (Toss-style subtle banner) -->
-<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-[18px]">credit_card</span>
-</div>
-<div class="flex-1">
-<p class="text-body-sm font-body-sm text-text-secondary leading-snug">
-            다음 달 예상 고정비 변동은 <span class="font-semibold text-text-primary">없음</span> 상태입니다.
-          </p>
-</div>
-<span class="material-symbols-outlined text-text-tertiary text-[18px]">chevron_right</span>
-</section>
 </main>
-<!-- Extended Floating Action Button (M3 FAB) -->
-<!-- Positioned above BottomNavBar (16dp offset above bottom nav) -->
-<div class="fixed bottom-20 right-5 z-40 max-w-[560px] mx-auto">
-<button class="flex items-center gap-2 h-14 pl-4 pr-5 rounded-2xl bg-primary-container text-on-primary elevation-fab active:scale-95 transition-all duration-150 ease-out hover:opacity-95 focus:outline-none" type="button">
-<span class="material-symbols-outlined text-[24px]">add</span>
-<span class="text-title-md font-title-md tracking-tight font-semibold">구독 추가</span>
+<!-- Floating Action Button (+ 구독 추가) -->
+<div class="fixed bottom-20 right-5 z-40 max-w-[560px]">
+<button class="flex items-center gap-1.5 h-13 py-3 pl-4 pr-5 rounded-2xl bg-primary-container text-white elevation-fab active:scale-95 transition-all duration-150 ease-out hover:opacity-95 focus:outline-none" type="button">
+<span class="material-symbols-outlined !text-[22px]">add</span>
+<span class="text-[15px] tracking-tight font-semibold">구독 추가</span>
 </button>
 </div>
-<!-- BottomNavBar (Shared Component Anchor) -->
-<!-- Prohibiting border-t per Semantic Shell Rule; using subtle shadow separation instead -->
-<!-- JSON: active state is "홈" (index 0) -->
-<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto bg-surface-card shadow-[0_-2px_12px_rgba(25,31,40,0.04)] pb-safe">
+<!-- BottomNavBar (Exactly 3 tabs: 홈, 캘린더, 설정) -->
+<nav class="fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center h-16 px-space-md max-w-[560px] mx-auto bg-surface-card shadow-[0_-2px_12px_rgba(25,31,40,0.04)]">
 <!-- Tab 1: 홈 (Active) -->
-<a class="flex flex-col items-center justify-center gap-1 text-primary-container font-semibold transition-all duration-150 active:scale-95 py-1 px-4" href="#">
-<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="text-label-sm font-label-sm">홈</span>
+<a class="flex flex-col items-center justify-center gap-0.5 text-primary-container font-semibold transition-all duration-150 active:scale-95 py-1 px-6" href="#">
+<span class="material-symbols-outlined !text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px]">홈</span>
 </a>
 <!-- Tab 2: 캘린더 (Inactive) -->
-<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low transition-all duration-150 active:scale-95 py-1 px-4 rounded-xl" href="#">
-<span class="material-symbols-outlined text-[24px]">calendar_month</span>
-<span class="text-label-sm font-label-sm">캘린더</span>
+<a class="flex flex-col items-center justify-center gap-0.5 text-text-tertiary hover:text-text-secondary transition-all duration-150 active:scale-95 py-1 px-6" href="#">
+<span class="material-symbols-outlined !text-[24px]">calendar_month</span>
+<span class="text-[11px]">캘린더</span>
 </a>
 <!-- Tab 3: 설정 (Inactive) -->
-<a class="flex flex-col items-center justify-center gap-1 text-text-tertiary hover:bg-surface-container-low transition-all duration-150 active:scale-95 py-1 px-4 rounded-xl" href="#">
-<span class="material-symbols-outlined text-[24px]">settings</span>
-<span class="text-label-sm font-label-sm">설정</span>
+<a class="flex flex-col items-center justify-center gap-0.5 text-text-tertiary hover:text-text-secondary transition-all duration-150 active:scale-95 py-1 px-6" href="#">
+<span class="material-symbols-outlined !text-[24px]">settings</span>
+<span class="text-[11px]">설정</span>
 </a>
 </nav>
-<!-- Android Gesture Bar Indicator (Home Handle) -->
+<!-- Android Gesture Bar Indicator -->
 <div class="fixed bottom-1 left-0 right-0 max-w-[560px] mx-auto pointer-events-none z-50 flex justify-center">
 <div class="w-32 h-1 bg-text-primary/20 rounded-full"></div>
 </div>

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
-<html class="light" lang="ko"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>NextBill Android Widget Display</title>
 <!-- Google Fonts: Plus Jakarta Sans -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <!-- Material Symbols Outlined -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Tailwind Configuration -->
@@ -150,7 +148,7 @@
       box-shadow: 0 10px 30px -4px rgba(25, 31, 40, 0.12), 0 4px 12px -2px rgba(25, 31, 40, 0.06);
     }
   </style>
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><style>body, input, button, select, textarea, * { font-family: 'Noto Sans KR', sans-serif !important; }</style></head>
 <body class="bg-surface-dim font-body-md text-text-primary antialiased min-h-screen flex items-center justify-center p-0 md:p-6 select-none">
 <!-- Mobile Device Simulation Frame -->
 <div class="relative w-full max-w-[420px] h-[915px] bg-[#E9EEF5] overflow-hidden md:rounded-[44px] md:shadow-2xl md:ring-1 md:ring-black/10 flex flex-col justify-between">
@@ -177,10 +175,10 @@
 <div class="flex flex-col text-text-primary">
 <div class="flex items-center gap-1.5 text-text-secondary font-label-md text-label-md">
 <span class="material-symbols-outlined text-[16px] text-primary" data-icon="calendar_today">calendar_today</span>
-<span>5월 15일 수요일</span>
-<span>•</span>
+<span class="">5월 15일 수요일</span>
+<span class="">•</span>
 <span class="material-symbols-outlined text-[16px] text-amber-500 fill-1" data-icon="wb_sunny" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
-<span>21°C 서울</span>
+<span class="">21°C 서울</span>
 </div>
 </div>
 <!-- Google Mic/Lens Pill (Micro) -->
@@ -207,9 +205,7 @@
 <span class="block font-label-sm text-label-sm text-text-secondary leading-none">이번 달 예정</span>
 <span class="font-headline-md text-headline-md text-text-primary tracking-tight leading-snug">₩86,400</span>
 </div>
-<button class="p-1.5 rounded-full hover:bg-surface-container-low text-text-tertiary transition-colors" title="새로고침">
-<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
-</button>
+
 </div>
 </div>
 <!-- Subscription List Rows (Material 3 Compact) -->
@@ -274,11 +270,8 @@
 </div>
 <!-- Widget Footer: Quick Action -->
 <div class="mt-2.5 pt-2 flex items-center justify-between border-t border-border-subtle/50">
-<span class="font-label-sm text-label-sm text-text-tertiary">3개 결제 대기 중</span>
-<button class="flex items-center gap-1 text-primary hover:text-primary-container font-label-md text-label-md font-semibold transition-colors py-1 px-2 -mr-1 rounded-lg hover:bg-surface-canvas">
-<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
-<span>추가</span>
-</button>
+<span class="font-label-sm text-label-sm text-text-tertiary">3개 결제 예정</span>
+
 </div>
 </section>
 <!-- WIDGET 2 & Complementary Grid Section -->
@@ -317,26 +310,7 @@
 </div>
 </section>
 <!-- Native Weather / Quick Info Android Companion Widget (Visual Realism) -->
-<div class="bg-white/75 backdrop-blur-xl rounded-3xl p-4 widget-shadow border border-white/50 flex flex-col justify-between h-[184px]">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-text-secondary font-medium">지출 리포트</span>
-<span class="material-symbols-outlined text-primary text-[18px]" data-icon="insights">insights</span>
-</div>
-<div class="space-y-1">
-<span class="font-label-sm text-label-sm text-text-tertiary">지난달 대비</span>
-<p class="font-title-lg text-title-lg font-bold text-primary flex items-center gap-0.5">
-<span>- 12,000원</span>
-<span class="material-symbols-outlined text-[16px]" data-icon="trending_down">trending_down</span>
-</p>
-<div class="w-full bg-surface-canvas rounded-full h-1.5 mt-2 overflow-hidden">
-<div class="bg-primary-container h-full rounded-full" style="width: 68%;"></div>
-</div>
-</div>
-<div class="flex items-center justify-between text-text-tertiary font-label-sm text-label-sm pt-1 border-t border-border-subtle/50">
-<span>목표액 78% 소진</span>
-<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
-</div>
-</div>
+
 </div>
 </div>
 <!-- 4. Google Search Bar Pill (Material You style) -->
@@ -379,4 +353,6 @@
 </div>
 </div>
 </div>
+
+
 </body></html>

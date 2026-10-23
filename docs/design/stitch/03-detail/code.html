@@ -4,13 +4,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NextBill - 넷플릭스 상세</title>
-<!-- Google Fonts: Plus Jakarta Sans -->
+<!-- Google Fonts: Noto Sans KR & Plus Jakarta Sans -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <!-- Material Symbols Outlined -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <!-- Tailwind CSS with Forms & Container Queries -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
@@ -97,205 +96,207 @@
             "space-sm": "0.5rem"
           },
           "fontFamily": {
-            "label-sm": ["Plus Jakarta Sans"],
-            "display-currency": ["Plus Jakarta Sans"],
-            "headline-lg": ["Plus Jakarta Sans"],
-            "headline-md": ["Plus Jakarta Sans"],
-            "label-md": ["Plus Jakarta Sans"],
-            "title-md": ["Plus Jakarta Sans"],
-            "body-md": ["Plus Jakarta Sans"],
-            "label-lg": ["Plus Jakarta Sans"],
-            "display-currency-mobile": ["Plus Jakarta Sans"],
-            "body-sm": ["Plus Jakarta Sans"],
-            "body-lg": ["Plus Jakarta Sans"],
-            "title-lg": ["Plus Jakarta Sans"]
-          },
-          "fontSize": {
-            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
-            "display-currency": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }],
-            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
-            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
-            "display-currency-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
-            "title-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }]
+            "sans": ["'Noto Sans KR'", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+            "currency": ["'Plus Jakarta Sans'", "'Noto Sans KR'", "sans-serif"]
           }
         }
       }
-    }
+    };
   </script>
+<style>
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .font-currency {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+  }
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
 </head>
-<body class="bg-surface-canvas min-h-screen text-text-primary antialiased font-body-md selection:bg-primary selection:text-on-primary">
-<!-- Main Viewport Container: max-w-[560px] to match Material 3 handheld/tablet compact spec -->
-<div class="max-w-[560px] mx-auto min-h-screen flex flex-col bg-surface-canvas pb-12">
-<!-- TopAppBar (Task-Focused Detail View: with Back Arrow and Edit Action) -->
-<header class="sticky top-0 z-40 bg-surface-card/90 backdrop-blur-md transition-all duration-150">
-<div class="flex justify-between items-center w-full h-16 px-space-lg max-w-[560px] mx-auto">
-<button aria-label="뒤로 가기" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
+<body class="bg-surface-canvas min-h-screen text-text-primary antialiased selection:bg-primary selection:text-on-primary">
+<!-- Main Viewport Container -->
+<div class="max-w-[480px] mx-auto min-h-screen flex flex-col bg-surface-canvas pb-12 shadow-sm">
+<!-- Android System Status Bar -->
+<div class="w-full h-11 px-6 flex justify-between items-center text-text-primary text-[14px] font-semibold select-none bg-surface-card">
+<span class="tracking-tight font-currency font-bold">09:41</span>
+<div class="flex items-center gap-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px]">wifi</span>
+<span class="material-symbols-outlined text-[19px]">battery_full</span>
+</div>
+</div>
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-surface-card border-b border-border-subtle/40">
+<div class="relative flex items-center justify-between w-full h-14 px-3">
+<!-- Back Action Button -->
+<button aria-label="뒤로 가기" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container-low active:bg-surface-container transition-colors" type="button">
 <span class="material-symbols-outlined text-[24px]">arrow_back</span>
 </button>
-<h1 class="font-headline-md text-headline-md font-bold text-text-primary tracking-tight">
-          구독 상세
-        </h1>
-<button aria-label="수정" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container active:scale-95 transition-all duration-150 ease-out" type="button">
+<!-- Center Title -->
+<h1 class="text-[17px] font-bold text-text-primary tracking-tight">
+        구독 상세
+      </h1>
+<!-- Edit Action Button -->
+<button aria-label="수정" class="w-10 h-10 flex items-center justify-center rounded-full text-text-primary hover:bg-surface-container-low active:bg-surface-container transition-colors" type="button">
 <span class="material-symbols-outlined text-[22px]">edit</span>
 </button>
 </div>
 </header>
 <!-- Main Content Canvas -->
-<main class="flex-1 px-margin pt-space-lg flex flex-col gap-space-xl">
-<!-- Subscription Header & Amount Hero Bento Card -->
-<section class="bg-surface-card rounded-2xl p-space-xl border border-border-subtle flex flex-col items-center text-center">
-<!-- Logo Avatar Badge -->
-<div class="relative mb-space-md">
-<div class="w-16 h-16 rounded-full bg-[#E50914] text-white flex items-center justify-center font-bold text-2xl shadow-sm tracking-tight select-none">
-            넷
-          </div>
-<!-- Subtle verified/category micro badge -->
-<div class="absolute -bottom-1 -right-1 bg-surface-card p-0.5 rounded-full">
-<span class="flex items-center justify-center w-5 h-5 bg-tertiary-container text-white rounded-full">
-<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</span>
+<main class="flex-1 px-4 pt-4 flex flex-col gap-3.5">
+<!-- 3. Top Hero Section -->
+<section class="bg-surface-card rounded-2xl p-6 border border-border-subtle flex flex-col items-center text-center shadow-xs">
+<!-- Avatar Badge: Red circular with white '넷' -->
+<div class="mb-3.5">
+<div class="w-16 h-16 rounded-full bg-[#E50914] text-white flex items-center justify-center font-bold text-2xl shadow-sm select-none">
+          넷
+        </div>
 </div>
+<!-- Title & Category Chip -->
+<div class="flex items-center gap-2 mb-4">
+<h2 class="text-[22px] font-bold text-text-primary tracking-tight leading-tight">넷플릭스</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container text-text-secondary text-[12px] font-semibold border border-border-subtle">
+          영상
+        </span>
 </div>
-<!-- Title & Category Pill -->
-<div class="flex items-center gap-space-sm mb-1">
-<h2 class="font-headline-lg text-headline-lg text-text-primary font-bold tracking-tight">넷플릭스</h2>
-<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-low text-text-secondary font-label-sm text-label-sm font-medium border border-border-subtle">
-            영상
-          </span>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary mb-space-lg">스탠다드 멤버십</p>
-<!-- Big Amount Display -->
-<div class="w-full pt-space-lg border-t border-border-subtle/80 flex flex-col items-center">
-<div class="flex items-baseline gap-1 text-text-primary">
-<span class="font-display-currency text-display-currency tracking-tight">₩17,000</span>
-</div>
-<div class="mt-1 flex items-center gap-1.5 font-label-md text-label-md text-primary font-semibold">
+<!-- Large Bold Amount & Recurring Date -->
+<div class="w-full pt-4 border-t border-border-subtle/70 flex flex-col items-center">
+<span class="text-[32px] font-extrabold tracking-tight font-currency text-text-primary leading-tight">₩17,000</span>
+<div class="mt-1.5 flex items-center gap-1 text-[13px] text-primary font-semibold">
 <span class="material-symbols-outlined text-[16px]">event_repeat</span>
 <span>매월 15일 결제</span>
 </div>
 </div>
 </section>
-<!-- Financial Conversion & Alert Summary Bento Card -->
-<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
-<h3 class="font-label-md text-label-md text-text-tertiary font-semibold uppercase tracking-wider mb-space-md px-1">
-          비용 및 알림 요약
-        </h3>
-<div class="grid grid-cols-2 gap-space-sm mb-space-md">
-<!-- Monthly converted -->
-<div class="bg-surface-container-low/70 rounded-xl p-3.5 flex flex-col justify-between">
-<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mb-1">
-<span class="material-symbols-outlined text-[15px] text-text-tertiary">calendar_view_month</span>
-<span>월 환산</span>
+<!-- 4. Financial Summary Card -->
+<section class="bg-surface-card rounded-2xl p-5 border border-border-subtle shadow-xs">
+<h3 class="text-[12px] text-text-tertiary font-bold uppercase tracking-wider mb-3">
+        비용 및 알림 요약
+      </h3>
+<div class="grid grid-cols-2 gap-2.5 mb-3">
+<!-- Monthly Converted Column -->
+<div class="bg-surface-container-low/70 rounded-xl p-3 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-text-secondary text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-text-tertiary shrink-0">calendar_view_month</span>
+<span class="whitespace-nowrap font-medium">월 환산</span>
 </div>
-<span class="font-title-lg text-title-lg text-text-primary font-bold">₩17,000</span>
+<span class="text-[17px] font-bold text-text-primary font-currency whitespace-nowrap">₩17,000</span>
 </div>
-<!-- Annual converted -->
-<div class="bg-surface-container-low/70 rounded-xl p-3.5 flex flex-col justify-between">
-<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mb-1">
-<span class="material-symbols-outlined text-[15px] text-text-tertiary">calendar_today</span>
-<span>연 환산</span>
+<!-- Annual Converted Column -->
+<div class="bg-surface-container-low/70 rounded-xl p-3 flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-text-secondary text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-text-tertiary shrink-0">calendar_today</span>
+<span class="whitespace-nowrap font-medium">연 환산</span>
 </div>
-<span class="font-title-lg text-title-lg text-text-primary font-bold">₩204,000</span>
+<span class="text-[17px] font-bold text-text-primary font-currency whitespace-nowrap">₩204,000</span>
 </div>
 </div>
 <!-- Notification Row -->
-<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-canvas-subtle border border-border-subtle/60">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-primary border border-border-subtle">
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-canvas-subtle border border-border-subtle/70">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-primary border border-border-subtle shrink-0">
 <span class="material-symbols-outlined text-[18px]">notifications_active</span>
 </div>
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-text-tertiary">결제 알림</span>
-<span class="font-title-md text-title-md text-text-primary font-medium">1일 전 오전 9:00</span>
+<div class="flex flex-col min-w-0">
+<span class="text-[11px] text-text-tertiary font-medium leading-none mb-1">결제 알림</span>
+<span class="text-[14px] text-text-primary font-semibold truncate">1일 전 오전 9:00</span>
 </div>
 </div>
-<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm font-semibold">
-            활성
-          </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-secondary-container/50 text-on-secondary-container text-[11px] font-bold shrink-0">
+          활성
+        </span>
 </div>
 </section>
-<!-- Upcoming Payment Schedule Card -->
-<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
-<div class="flex items-center justify-between mb-space-md px-1">
+<!-- 5. Upcoming Payment Schedule Card -->
+<section class="bg-surface-card rounded-2xl p-5 border border-border-subtle shadow-xs">
+<div class="flex items-center justify-between mb-3.5">
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-primary text-[20px]">event_upcoming</span>
-<h3 class="font-title-md text-title-md text-text-primary font-bold">다가오는 결제일</h3>
+<h3 class="text-[15px] text-text-primary font-bold">다가오는 결제일</h3>
 </div>
-<span class="font-label-sm text-label-sm text-text-tertiary">예정 스케줄</span>
+<span class="text-[12px] text-text-tertiary font-medium">예정 스케줄</span>
 </div>
-<div class="space-y-space-xs">
+<div class="flex flex-col gap-2">
 <!-- Item 1: D-Day (Urgent) -->
 <div class="flex items-center justify-between p-3.5 rounded-xl bg-urgent-surface border border-urgent-warning/20">
 <div class="flex items-center gap-3">
-<div class="w-2 h-2 rounded-full bg-urgent-warning animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-urgent-warning shrink-0"></div>
 <div>
-<p class="font-title-md text-title-md text-text-primary font-bold">11월 15일 (토)</p>
-<p class="font-body-sm text-body-sm text-text-secondary">다음 결제 주기</p>
+<p class="text-[14px] text-text-primary font-bold leading-snug">11월 15일 (토)</p>
+<p class="text-[12px] text-text-secondary leading-snug">다음 결제 주기</p>
 </div>
 </div>
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-urgent-warning text-white font-label-sm text-label-sm font-bold shadow-xs">
-              D-Day
-            </span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-urgent-warning text-white text-[11px] font-bold tracking-tight">
+            오늘
+          </span>
 </div>
 <!-- Item 2: Next Month -->
-<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card hover:bg-surface-container-low transition-colors duration-150 border border-transparent">
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card border border-border-subtle/50">
 <div class="flex items-center gap-3">
-<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant shrink-0"></div>
 <div>
-<p class="font-title-md text-title-md text-text-primary font-semibold">12월 15일 (월)</p>
-<p class="font-body-sm text-body-sm text-text-tertiary">정기 결제</p>
+<p class="text-[14px] text-text-primary font-semibold leading-snug">12월 15일 (월)</p>
+<p class="text-[12px] text-text-tertiary leading-snug">정기 결제</p>
 </div>
 </div>
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-badge-neutral-bg text-badge-neutral-text font-label-sm text-label-sm font-medium">
-              D-30
-            </span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-bold font-currency">
+            D-30
+          </span>
 </div>
 <!-- Item 3: After 2 Months -->
-<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card hover:bg-surface-container-low transition-colors duration-150 border border-transparent">
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-card border border-border-subtle/50">
 <div class="flex items-center gap-3">
-<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant shrink-0"></div>
 <div>
-<p class="font-title-md text-title-md text-text-primary font-semibold">1월 15일 (목)</p>
-<p class="font-body-sm text-body-sm text-text-tertiary">정기 결제</p>
+<p class="text-[14px] text-text-primary font-semibold leading-snug">1월 15일 (목)</p>
+<p class="text-[12px] text-text-tertiary leading-snug">정기 결제</p>
 </div>
 </div>
-<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-badge-neutral-bg text-badge-neutral-text font-label-sm text-label-sm font-medium">
-              D-61
-            </span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-badge-neutral-bg text-badge-neutral-text text-[11px] font-bold font-currency">
+            D-61
+          </span>
 </div>
 </div>
 </section>
-<!-- Memo Card -->
-<section class="bg-surface-card rounded-2xl p-space-lg border border-border-subtle">
-<div class="flex items-center justify-between mb-space-sm px-1">
+<!-- 6. Memo Card -->
+<section class="bg-surface-card rounded-2xl p-5 border border-border-subtle shadow-xs">
+<div class="flex items-center justify-between mb-2.5">
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-text-secondary text-[18px]">sticky_note_2</span>
-<h3 class="font-title-md text-title-md text-text-primary font-bold">메모</h3>
+<h3 class="text-[15px] text-text-primary font-bold">메모</h3>
 </div>
-<button aria-label="메모 편집" class="text-text-tertiary hover:text-text-primary transition-colors text-body-sm" type="button">
-            편집
-          </button>
+<button aria-label="메모 편집" class="text-text-tertiary hover:text-text-primary text-[13px] font-medium transition-colors" type="button">
+          편집
+        </button>
 </div>
-<div class="bg-surface-container-low/60 rounded-xl p-4 border border-border-subtle/50 text-text-primary font-body-md text-body-md leading-relaxed">
-          스탠다드 요금제 4K 지원
-        </div>
+<div class="bg-surface-container-low/70 rounded-xl p-3.5 border border-border-subtle/60 text-text-primary text-[14px] leading-relaxed">
+        스탠다드 요금제 4K 지원
+      </div>
 </section>
-<!-- Bottom Actions Area -->
-<div class="pt-space-md flex flex-col gap-space-sm">
-<!-- Outlined Secondary Button: "해지 처리" -->
-<button class="w-full h-12 rounded-xl bg-surface-card border border-border-subtle font-title-md text-title-md text-badge-neutral-text font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-low active:scale-[0.99] transition-all duration-150 ease-out shadow-xs" type="button">
-<span class="material-symbols-outlined text-[20px]">cancel</span>
+<!-- 7. Bottom Action Buttons -->
+<div class="pt-2 flex flex-col gap-2.5">
+<!-- Outlined Button: "해지 처리" -->
+<button class="w-full h-12 rounded-xl bg-surface-card border border-border-subtle text-[15px] text-badge-neutral-text font-bold flex items-center justify-center gap-2 hover:bg-surface-container-low active:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-[19px]">cancel</span>
 <span>해지 처리</span>
 </button>
 <!-- Destructive Text Button: "삭제" -->
-<button class="w-full h-11 rounded-xl bg-transparent font-title-md text-title-md text-urgent-warning font-semibold flex items-center justify-center gap-1.5 hover:bg-urgent-surface active:scale-[0.99] transition-all duration-150 ease-out" type="button">
-<span class="material-symbols-outlined text-[18px] text-urgent-warning">delete</span>
+<button class="w-full h-11 rounded-xl bg-transparent text-[15px] text-urgent-warning font-bold flex items-center justify-center gap-1.5 hover:bg-urgent-surface active:bg-urgent-surface/80 transition-all" type="button">
+<span class="material-symbols-outlined text-[19px]">delete</span>
 <span>삭제</span>
 </button>
 </div>
