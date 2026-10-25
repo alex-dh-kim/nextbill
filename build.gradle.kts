@@ -20,26 +20,49 @@ plugins {
 val ktlintVersion = libs.versions.ktlint.get()
 val editorConfig = layout.projectDirectory.file(".editorconfig")
 
+// 대상은 걷기 전에 build/·.gradle/을 잘라 낸 fileTree로 줍니다. 문자열 target + targetExclude는
+// targetExclude 쪽도 프로젝트 디렉터리 전체를 걷기 때문에, 다른 태스크가 쓰고 있는 build/를 읽다가
+// "Could not read path"로 실패합니다. 최상위 *.kts는 디렉터리를 잘라 내 하위로 들어가지 않습니다.
 allprojects {
     apply(plugin = "com.diffplug.spotless")
+    val isRoot = this == rootProject
+    val pruned = arrayOf("**/build/**", "**/.gradle/**")
+    val topLevelKts = fileTree(projectDir) {
+        include("*.kts")
+        // 디렉터리는 모두 잘라 내 최상위 파일만 봅니다("*/**"는 최상위 파일까지 제외하므로 쓰지 않음).
+        exclude { it.isDirectory }
+    }
     extensions.configure<SpotlessExtension> {
-        val isRoot = this@allprojects == rootProject
         kotlin {
             if (isRoot) {
-                target("build-logic/**/*.kt")
+                target(
+                    fileTree("build-logic") {
+                        include("**/*.kt")
+                        exclude(*pruned)
+                    }
+                )
             } else {
-                target("src/**/*.kt")
+                target(
+                    fileTree("src") {
+                        include("**/*.kt")
+                        exclude(*pruned)
+                    }
+                )
             }
-            targetExclude("**/build/**")
             ktlint(ktlintVersion).setEditorConfigPath(editorConfig)
         }
         kotlinGradle {
             if (isRoot) {
-                target("*.kts", "build-logic/**/*.kts")
+                target(
+                    topLevelKts,
+                    fileTree("build-logic") {
+                        include("**/*.kts")
+                        exclude(*pruned)
+                    }
+                )
             } else {
-                target("*.kts")
+                target(topLevelKts)
             }
-            targetExclude("**/build/**")
             ktlint(ktlintVersion).setEditorConfigPath(editorConfig)
         }
     }
