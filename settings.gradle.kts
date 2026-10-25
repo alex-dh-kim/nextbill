@@ -32,4 +32,5 @@ rootProject.name = "nextbill"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":app")
-include(":core:model", ":core:domain", ":core:testing")
+include(":core:model", ":core:domain", ":core:testing", ":core:database")
+include(":core:datastore", ":core:data")

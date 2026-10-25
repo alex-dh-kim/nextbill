@@ -61,7 +61,11 @@ class ModuleRulesTest {
             "testImplementation",
             "androidTestImplementation",
             "testDebugImplementation",
-            "kspTest"
+            "kspTest",
+            "debugUnitTestImplementation",
+            "releaseUnitTestCompileClasspath",
+            "debugAndroidTestImplementation",
+            "kspDebugUnitTest"
         )
             .forEach { assertThat(isCheckedConfiguration(it)).isFalse() }
     }

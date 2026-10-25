@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "exportedAt": "2026-11-10T01:00:00Z",
+  "subscriptions": [
+    {
+      "name": "넷플릭스",
+      "priceMinor": 17000,
+      "currency": "KRW",
+      "cycle": { "unit": "MONTHS", "interval": 1 },
+      "anchorDate": "2026-01-15",
+      "category": "VIDEO",
+      "colorKey": "RED",
+      "memo": "",
+      "reminder": { "enabled": true, "daysBefore": 1, "time": "09:00" },
+      "periods": [
+        { "start": "2026-01-15", "end": "2026-01-20" },
+        { "start": "2026-04-20", "end": null }
+      ]
+    }
+  ],
+  "settings": {
+    "defaultReminder": { "enabled": true, "daysBefore": 1, "time": "09:00" },
+    "themeMode": "SYSTEM",
+    "useDynamicColor": false,
+    "defaultCurrency": "KRW"
+  }
+}

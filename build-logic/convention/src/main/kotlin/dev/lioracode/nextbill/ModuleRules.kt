@@ -37,5 +37,10 @@ private fun reasonFor(from: String, to: String): String? {
     }
 }
 
-/** 이름이 `test`·`androidTest`·`kspTest`로 시작하지 않는 의존 설정만 검사합니다. */
-fun isCheckedConfiguration(name: String): Boolean = TEST_PREFIXES.none { name.startsWith(it) }
+/**
+ * 이름이 `test`·`androidTest`·`kspTest`로 시작하거나 AGP 변종 테스트 설정(`debugUnitTest…`,
+ * `debugAndroidTest…`, `kspDebugUnitTest` 등)인 의존 설정은 검사하지 않습니다.
+ */
+fun isCheckedConfiguration(name: String): Boolean = TEST_PREFIXES.none { name.startsWith(it) } &&
+    !name.contains("UnitTest") &&
+    !name.contains("AndroidTest")

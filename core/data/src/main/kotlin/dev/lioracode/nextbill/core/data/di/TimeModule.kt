@@ -1,0 +1,15 @@
+package dev.lioracode.nextbill.core.data.di
+
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import dev.lioracode.nextbill.core.data.time.CurrentZoneClock
+import java.time.Clock
+
+@Module
+@InstallIn(SingletonComponent::class)
+object TimeModule {
+    @Provides
+    fun provideClock(): Clock = CurrentZoneClock
+}

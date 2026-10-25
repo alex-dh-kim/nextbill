@@ -28,6 +28,7 @@ class ModuleRulesPlugin : Plugin<Project> {
                                 .filter { isCheckedConfiguration(it.name) }
                                 .flatMap { it.dependencies.withType(ProjectDependency::class.java) }
                                 .map { it.path }
+                                .filter { it != sub.path } // AGP이 단위 테스트 설정에 자기 자신을 넣습니다.
                                 .toSortedSet()
                                 .joinToString(",")
                     }
