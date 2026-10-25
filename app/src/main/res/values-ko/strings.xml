@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">NextBill</string>
+
+  <string name="tab_home">홈</string>
+  <string name="tab_calendar">캘린더</string>
+  <string name="tab_settings">설정</string>
+
+  <string name="recovery_title">가져오기를 마치지 못했어요</string>
+  <string name="recovery_retry">다시 시도</string>
+  <string name="recovery_discard">가져오기 취소</string>
+  <string name="recovery_discard_confirm_title">가져오기를 취소할까요?</string>
+  <string name="recovery_discard_confirm_body">이미 바뀐 일부 데이터는 되돌아가지 않을 수 있어요.</string>
+  <string name="recovery_discard_dismiss">돌아가기</string>
 </resources>

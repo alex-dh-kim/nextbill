@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cycle_months_1_day">매월 %1$d일</string>
+    <string name="cycle_months_n_day">%1$d개월마다 %2$d일</string>
+    <string name="cycle_years_1">매년 %1$s</string>
+    <string name="cycle_years_n">%1$d년마다 %2$s</string>
+    <string name="cycle_weeks_1">매주 %1$s</string>
+    <string name="cycle_weeks_n">%1$d주마다</string>
+    <string name="cycle_days_1">매일</string>
+    <string name="cycle_days_n">%1$d일마다</string>
+    <string name="cycle_hint_months_1_day">매월 %1$d일에 결제돼요</string>
+    <string name="cycle_hint_months_n_day">%1$d개월마다 %2$d일에 결제돼요</string>
+    <string name="cycle_hint_years_1">매년 %1$s에 결제돼요</string>
+    <string name="cycle_hint_years_n">%1$d년마다 %2$s에 결제돼요</string>
+    <string name="cycle_hint_weeks_1">매주 %1$s에 결제돼요</string>
+    <string name="cycle_hint_weeks_n">%1$d주마다 결제돼요</string>
+    <string name="cycle_hint_days_1">매일 결제돼요</string>
+    <string name="cycle_hint_days_n">%1$d일마다 결제돼요</string>
+    <string name="date_month_day">%1$s %2$d일</string>
+    <string name="date_short">%1$s %2$d일 (%3$s)</string>
+    <string name="due_today">오늘</string>
+    <string name="due_tomorrow">내일</string>
+    <string name="due_in_days">D-%1$d</string>
+    <string-array name="month_short">
+        <item>1월</item><item>2월</item><item>3월</item><item>4월</item><item>5월</item><item>6월</item>
+        <item>7월</item><item>8월</item><item>9월</item><item>10월</item><item>11월</item><item>12월</item>
+    </string-array>
+    <string-array name="weekday_short">
+        <item>월</item><item>화</item><item>수</item><item>목</item><item>금</item><item>토</item><item>일</item>
+    </string-array>
+    <string-array name="weekday_full">
+        <item>월요일</item><item>화요일</item><item>수요일</item><item>목요일</item><item>금요일</item><item>토요일</item><item>일요일</item>
+    </string-array>
+</resources>

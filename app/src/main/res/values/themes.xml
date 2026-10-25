@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Compose가 그리기 전 창 배경. 색은 시안 surface-canvas(DESIGN.md). -->
+  <style name="Theme.NextBill" parent="android:Theme.Material.Light.NoActionBar">
+    <item name="android:windowBackground">@color/surface_canvas</item>
+  </style>
+
+  <!-- 시작 복구가 끝날 때까지 유지하는 시작 화면(SplashScreen). -->
+  <style name="Theme.NextBill.Starting" parent="Theme.SplashScreen">
+    <item name="windowSplashScreenBackground">@color/surface_canvas</item>
+    <item name="postSplashScreenTheme">@style/Theme.NextBill</item>
+  </style>
+</resources>

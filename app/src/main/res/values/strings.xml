@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">NextBill</string>
+
+  <string name="tab_home">Home</string>
+  <string name="tab_calendar">Calendar</string>
+  <string name="tab_settings">Settings</string>
+
+  <string name="recovery_title">Couldn\'t finish importing</string>
+  <string name="recovery_retry">Try again</string>
+  <string name="recovery_discard">Cancel import</string>
+  <string name="recovery_discard_confirm_title">Cancel the import?</string>
+  <string name="recovery_discard_confirm_body">Some data that has already changed may not be restored.</string>
+  <string name="recovery_discard_dismiss">Go back</string>
 </resources>

@@ -19,3 +19,4 @@
 - 앱이 거는 OS 알람은 알림 1개 + 위젯 자정 1개로 항상 2개 이하입니다(ADR-0003).
 - 자정 갱신이 늦어질 수 있습니다(비정확 알람).
 - **전이 의존성 출처:** `androidx.glance:glance-appwidget`이 `androidx.work:work-runtime-ktx`를 runtime 의존성으로 가져옵니다(glance-appwidget 1.2.0 POM에서 확인). 앱 코드는 WorkManager API를 직접 부르지 않습니다.
+- **전이 권한 [2026-10-25, Task 17]:** 합쳐진 앱 manifest에 `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `FOREGROUND_SERVICE`가 들어옵니다. 출처는 모두 `androidx.work:work-runtime:2.7.1`의 manifest입니다(Glance → WorkManager, `app/build/outputs/logs/manifest-merger-debug-report.txt`에서 확인). WorkManager가 내부 동작에 쓸 수 있어 `tools:node="remove"`로 지우지 않습니다. `INTERNET` 권한은 여전히 없습니다(ADR-0001).
