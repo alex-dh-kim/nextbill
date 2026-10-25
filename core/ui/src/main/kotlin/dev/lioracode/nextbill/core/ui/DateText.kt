@@ -16,7 +16,7 @@ fun shortDateText(date: LocalDate): String = stringResource(
 
 /** ko "3월 2일", en "Mar 2". */
 @Composable
-internal fun monthDayText(date: LocalDate): String = stringResource(
+fun monthDayText(date: LocalDate): String = stringResource(
     R.string.date_month_day,
     stringArrayResource(R.array.month_short)[date.monthValue - 1],
     date.dayOfMonth

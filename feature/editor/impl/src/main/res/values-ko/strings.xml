@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="editor_title_new">구독 추가</string>
+    <string name="editor_title_edit">구독 수정</string>
+    <string name="editor_back">뒤로 가기</string>
+    <string name="editor_save">저장</string>
+
+    <string name="editor_name_label">이름</string>
+    <string name="editor_name_placeholder">예: 넷플릭스</string>
+    <string name="editor_amount_label">금액</string>
+    <string name="editor_currency_desc">통화, %1$s</string>
+
+    <string name="editor_cycle_label">결제 주기</string>
+    <string name="editor_cycle_decrease">감소</string>
+    <string name="editor_cycle_increase">증가</string>
+    <string name="editor_cycle_interval">반복 간격</string>
+    <string name="editor_unit_days">일</string>
+    <string name="editor_unit_weeks">주</string>
+    <string name="editor_unit_months">개월</string>
+    <string name="editor_unit_years">년</string>
+
+    <string name="editor_anchor_label">첫 결제일</string>
+    <string name="editor_anchor_pattern">yyyy. M. d</string>
+    <string name="editor_pick_date">날짜 선택</string>
+
+    <string name="editor_category_label">카테고리</string>
+
+    <string name="editor_color_label">색상</string>
+    <string name="editor_color_red">빨강</string>
+    <string name="editor_color_blue">파랑</string>
+    <string name="editor_color_green">초록</string>
+    <string name="editor_color_amber">주황</string>
+    <string name="editor_color_violet">보라</string>
+    <string name="editor_color_pink">분홍</string>
+    <string name="editor_color_slate">회색</string>
+    <string name="editor_color_ink">검정</string>
+    <string name="editor_selected">%1$s, 선택됨</string>
+
+    <string name="editor_reminder_title">결제 알림</string>
+    <string name="editor_reminder_subtitle">결제 전 미리 알려드려요</string>
+    <string name="editor_reminder_days_label">며칠 전</string>
+    <string name="editor_reminder_time_label">알림 시각</string>
+    <string name="editor_reminder_unavailable">알림을 받을 수 없어요 · 설정에서 켜기</string>
+
+    <string name="editor_memo_label">메모</string>
+    <string name="editor_memo_placeholder">메모를 입력하세요</string>
+
+    <string name="editor_error_name_blank">이름을 입력해 주세요</string>
+    <string name="editor_error_name_too_long">30자 이내로 입력해 주세요</string>
+    <string name="editor_error_amount_blank">금액을 입력해 주세요</string>
+    <string name="editor_error_amount_invalid">금액을 다시 확인해 주세요</string>
+    <string name="editor_error_amount_too_large">너무 큰 금액이에요</string>
+    <string name="editor_error_interval_invalid">1~365 사이로 입력해 주세요</string>
+    <string name="editor_error_memo_too_long">500자 이내로 입력해 주세요</string>
+    <string name="editor_error_anchor_out_of_range">날짜를 다시 확인해 주세요</string>
+
+    <string name="editor_message_limit_reached">더 이상 추가할 수 없어요</string>
+    <string name="editor_message_storage_failed">저장하지 못했어요. 다시 시도해 주세요</string>
+    <string name="editor_message_not_ready">잠시 후 다시 시도해 주세요</string>
+
+    <string name="editor_dialog_ok">확인</string>
+    <string name="editor_dialog_cancel">취소</string>
+
+    <string name="permission_title">결제 전에 알려드릴게요</string>
+    <string name="permission_body">결제일 알림을 받으려면 알림 권한이 필요해요.\n언제든 설정에서 바꿀 수 있어요.</string>
+    <string name="permission_timing">결제 %1$s %2$s에 잊지 않게 알려드려요</string>
+    <string name="permission_timing_same_day">당일</string>
+    <plurals name="permission_timing_days_before">
+        <item quantity="other">%1$d일 전</item>
+    </plurals>
+    <string name="permission_no_marketing">불필요한 마케팅 알림은 절대 보내지 않아요</string>
+    <string name="permission_allow">알림 허용하기</string>
+    <string name="permission_later">나중에</string>
+</resources>

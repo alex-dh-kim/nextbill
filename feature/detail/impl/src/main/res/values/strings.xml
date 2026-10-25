@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_title">Subscription</string>
+    <string name="detail_back">Back</string>
+    <string name="detail_edit">Edit</string>
+    <string name="detail_cancelled_on">Cancelled %1$s</string>
+
+    <string name="detail_summary_title">Cost and reminder</string>
+    <string name="detail_monthly">Per month</string>
+    <string name="detail_yearly">Per year</string>
+    <string name="detail_reminder_label">Payment reminder</string>
+    <string name="detail_reminder_value">%1$s, %2$s</string>
+    <string name="detail_reminder_off">Off</string>
+    <string name="detail_reminder_unavailable">Can\'t receive notifications</string>
+    <string name="detail_reminder_on_badge">On</string>
+    <string name="detail_reminder_open_settings">Turn on in Settings</string>
+
+    <string name="detail_upcoming_title">Upcoming payments</string>
+    <string name="detail_upcoming_next">Next payment</string>
+    <string name="detail_upcoming_regular">Regular payment</string>
+    <string name="detail_cycle_billing">%1$s billing</string>
+    <string name="detail_upcoming_caption">Scheduled</string>
+    <string name="detail_memo_title">Memo</string>
+
+    <string name="detail_action_cancel">Cancel subscription</string>
+    <string name="detail_action_restore">Use again</string>
+    <string name="detail_action_delete">Delete</string>
+    <string name="detail_before_first_billing">It hasn\'t been charged yet, so it\'s deleted without a record</string>
+
+    <string name="detail_confirm_cancel_title">Cancel this subscription?</string>
+    <string name="detail_confirm_cancel_body">It will stop appearing in payments and reminders from today. You can use it again from cancelled subscriptions.</string>
+    <string name="detail_confirm_cancel_ok">Cancel subscription</string>
+    <string name="detail_confirm_delete_title">Delete this subscription?</string>
+    <string name="detail_confirm_delete_body">All past records are erased too. This can\'t be undone.</string>
+    <string name="detail_confirm_delete_ok">Delete</string>
+    <string name="detail_confirm_dismiss">Not now</string>
+
+    <string name="detail_message_period_limit">You can\'t use this again</string>
+    <string name="detail_message_not_ready">Please try again in a moment</string>
+    <string name="detail_message_storage_failed">Couldn\'t finish. Please try again</string>
+</resources>

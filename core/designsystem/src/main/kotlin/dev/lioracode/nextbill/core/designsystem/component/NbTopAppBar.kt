@@ -11,6 +11,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import dev.lioracode.nextbill.core.designsystem.theme.NextBillTheme
@@ -24,6 +25,7 @@ fun NbTopAppBar(
     navigationContentDescription: String? = null,
     onNavigationClick: () -> Unit = {},
     titleStyle: TextStyle = MaterialTheme.typography.headlineSmall,
+    containerColor: Color = NextBillTheme.colors.surfaceCanvas,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopAppBar(
@@ -38,7 +40,8 @@ fun NbTopAppBar(
         },
         actions = actions,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = NextBillTheme.colors.surfaceCanvas,
+            containerColor = containerColor,
+            scrolledContainerColor = containerColor,
             titleContentColor = NextBillTheme.colors.textPrimary,
             navigationIconContentColor = NextBillTheme.colors.textPrimary,
             actionIconContentColor = NextBillTheme.colors.textPrimary

@@ -29,8 +29,11 @@ dependencies {
     implementation(projects.feature.calendar.api)
     implementation(projects.feature.calendar.impl)
     implementation(projects.feature.editor.api)
+    implementation(projects.feature.editor.impl)
     implementation(projects.feature.detail.api)
+    implementation(projects.feature.detail.impl)
     implementation(projects.feature.archive.api)
+    implementation(projects.feature.archive.impl)
     implementation(projects.feature.settings.api)
 
     implementation(libs.androidx.activity.compose)

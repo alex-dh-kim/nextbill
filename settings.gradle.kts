@@ -35,7 +35,8 @@ include(":app")
 include(":core:model", ":core:domain", ":core:testing", ":core:database")
 include(":core:datastore", ":core:data", ":core:notifications")
 include(":core:designsystem", ":core:ui", ":core:navigation")
-include(":feature:home:impl", ":feature:calendar:impl")
+include(":feature:home:impl", ":feature:calendar:impl", ":feature:editor:impl")
+include(":feature:detail:impl", ":feature:archive:impl")
 include(":widget")
 include(
     ":feature:home:api",

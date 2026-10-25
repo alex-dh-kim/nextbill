@@ -31,4 +31,16 @@
     <string-array name="weekday_full">
         <item>Monday</item><item>Tuesday</item><item>Wednesday</item><item>Thursday</item><item>Friday</item><item>Saturday</item><item>Sunday</item>
     </string-array>
+    <string name="category_video">Video</string>
+    <string name="category_music">Music</string>
+    <string name="category_telecom">Phone</string>
+    <string name="category_insurance">Insurance</string>
+    <string name="category_cloud">Cloud</string>
+    <string name="category_living">Living</string>
+    <string name="category_other">Other</string>
+    <string name="reminder_same_day">Same day</string>
+    <plurals name="reminder_days_before">
+        <item quantity="one">%1$d day before</item>
+        <item quantity="other">%1$d days before</item>
+    </plurals>
 </resources>

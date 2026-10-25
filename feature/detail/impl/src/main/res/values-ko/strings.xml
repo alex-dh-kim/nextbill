@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_title">구독 상세</string>
+    <string name="detail_back">뒤로 가기</string>
+    <string name="detail_edit">수정</string>
+    <string name="detail_cancelled_on">%1$s 해지</string>
+
+    <string name="detail_summary_title">비용 및 알림 요약</string>
+    <string name="detail_monthly">월 환산</string>
+    <string name="detail_yearly">연 환산</string>
+    <string name="detail_reminder_label">결제 알림</string>
+    <string name="detail_reminder_value">%1$s %2$s</string>
+    <string name="detail_reminder_off">꺼짐</string>
+    <string name="detail_reminder_unavailable">알림을 받을 수 없어요</string>
+    <string name="detail_reminder_on_badge">활성</string>
+    <string name="detail_reminder_open_settings">설정에서 켜기</string>
+
+    <string name="detail_upcoming_title">다가오는 결제일</string>
+    <string name="detail_upcoming_next">다음 결제 주기</string>
+    <string name="detail_upcoming_regular">정기 결제</string>
+    <string name="detail_cycle_billing">%1$s 결제</string>
+    <string name="detail_upcoming_caption">예정 스케줄</string>
+    <string name="detail_memo_title">메모</string>
+
+    <string name="detail_action_cancel">해지 처리</string>
+    <string name="detail_action_restore">다시 사용</string>
+    <string name="detail_action_delete">삭제</string>
+    <string name="detail_before_first_billing">아직 첫 결제 전이라 기록 없이 삭제돼요</string>
+
+    <string name="detail_confirm_cancel_title">해지할까요?</string>
+    <string name="detail_confirm_cancel_body">오늘 이후 결제와 알림에서 빠지고, 해지한 구독에서 다시 사용할 수 있어요.</string>
+    <string name="detail_confirm_cancel_ok">해지</string>
+    <string name="detail_confirm_delete_title">삭제할까요?</string>
+    <string name="detail_confirm_delete_body">지난 기록까지 모두 지워지고 되돌릴 수 없어요.</string>
+    <string name="detail_confirm_delete_ok">삭제</string>
+    <string name="detail_confirm_dismiss">취소</string>
+
+    <string name="detail_message_period_limit">더 이상 다시 사용할 수 없어요</string>
+    <string name="detail_message_not_ready">잠시 후 다시 시도해 주세요</string>
+    <string name="detail_message_storage_failed">처리하지 못했어요. 다시 시도해 주세요</string>
+</resources>

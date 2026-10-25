@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -28,7 +29,8 @@ fun NbPrimaryButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    @DrawableRes leadingIcon: Int? = null
+    @DrawableRes leadingIcon: Int? = null,
+    @DrawableRes trailingIcon: Int? = null
 ) {
     Button(
         onClick = onClick,
@@ -45,6 +47,10 @@ fun NbPrimaryButton(
             Spacer(Modifier.width(8.dp))
         }
         Text(text, style = MaterialTheme.typography.titleMedium)
+        if (trailingIcon != null) {
+            Spacer(Modifier.width(6.dp))
+            Icon(painterResource(trailingIcon), contentDescription = null, Modifier.size(18.dp))
+        }
     }
 }
 
@@ -54,7 +60,8 @@ fun NbSecondaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null
 ) {
     val colors = NextBillTheme.colors
     OutlinedButton(
@@ -68,6 +75,10 @@ fun NbSecondaryButton(
             contentColor = colors.badgeNeutralText
         )
     ) {
+        if (leadingIcon != null) {
+            Icon(painterResource(leadingIcon), contentDescription = null, Modifier.size(19.dp))
+            Spacer(Modifier.width(8.dp))
+        }
         Text(text, style = MaterialTheme.typography.labelLarge)
     }
 }
@@ -78,7 +89,8 @@ fun NbDestructiveTextButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null
 ) {
     TextButton(
         onClick = onClick,
@@ -86,6 +98,10 @@ fun NbDestructiveTextButton(
         enabled = enabled,
         colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)
     ) {
+        if (leadingIcon != null) {
+            Icon(painterResource(leadingIcon), contentDescription = null, Modifier.size(19.dp))
+            Spacer(Modifier.width(6.dp))
+        }
         Text(text, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Medium)
     }
 }

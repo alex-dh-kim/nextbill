@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="archive_title">해지한 구독</string>
+    <string name="archive_back">뒤로 가기</string>
+    <string name="archive_notice">해지한 구독은 앞으로의 결제와 알림에서 빠져요</string>
+    <string name="archive_row_cancelled_on">%1$s 해지</string>
+    <string name="archive_more">%1$s 더보기</string>
+    <string name="archive_menu_restore">다시 사용</string>
+    <string name="archive_menu_delete">삭제</string>
+    <string name="archive_list_title">보관된 서비스 목록</string>
+    <string name="archive_count">총 %1$d건</string>
+    <string name="archive_row_open">상세 보기</string>
+    <string name="archive_empty">해지한 구독이 없어요</string>
+
+    <string name="archive_confirm_delete_title">삭제할까요?</string>
+    <string name="archive_confirm_delete_body">지난 기록까지 모두 지워지고 되돌릴 수 없어요.</string>
+    <string name="archive_confirm_delete_ok">삭제</string>
+    <string name="archive_confirm_dismiss">취소</string>
+
+    <string name="archive_message_restored">다시 사용해요</string>
+    <string name="archive_message_period_limit">더 이상 다시 사용할 수 없어요</string>
+    <string name="archive_message_not_ready">잠시 후 다시 시도해 주세요</string>
+    <string name="archive_message_storage_failed">처리하지 못했어요. 다시 시도해 주세요</string>
+    <string name="archive_message_missing">목록이 바뀌었어요. 다시 확인해 주세요</string>
+</resources>

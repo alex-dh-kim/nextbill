@@ -31,4 +31,15 @@
     <string-array name="weekday_full">
         <item>월요일</item><item>화요일</item><item>수요일</item><item>목요일</item><item>금요일</item><item>토요일</item><item>일요일</item>
     </string-array>
+    <string name="category_video">영상</string>
+    <string name="category_music">음악</string>
+    <string name="category_telecom">통신</string>
+    <string name="category_insurance">보험</string>
+    <string name="category_cloud">클라우드</string>
+    <string name="category_living">생활</string>
+    <string name="category_other">기타</string>
+    <string name="reminder_same_day">당일</string>
+    <plurals name="reminder_days_before">
+        <item quantity="other">%1$d일 전</item>
+    </plurals>
 </resources>

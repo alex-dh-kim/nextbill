@@ -15,6 +15,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
+/** 실제 화면(해지한 구독)의 영어 제목. 기본 로케일로 돌립니다. */
+private const val ARCHIVE_TITLE = "Cancelled subscriptions"
+
 /** 실제 Hilt 그래프(NextBillApplication)로 MainActivity를 띄웁니다. */
 @RunWith(RobolectricTestRunner::class)
 class StateRestorationTest {
@@ -30,11 +33,11 @@ class StateRestorationTest {
         }
         compose.onNode(settingsTab).performClick()
         compose.onNodeWithText(openLabel(ArchiveNavKey)).performClick()
-        compose.onNodeWithText(ArchiveNavKey.toString()).assertIsDisplayed()
+        compose.onNodeWithText(ARCHIVE_TITLE).assertIsDisplayed()
 
         compose.activityRule.scenario.recreate()
 
-        compose.onNodeWithText(ArchiveNavKey.toString()).assertIsDisplayed()
+        compose.onNodeWithText(ARCHIVE_TITLE).assertIsDisplayed()
         compose.onNodeWithTag(BOTTOM_BAR_TAG).assertDoesNotExist()
 
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }

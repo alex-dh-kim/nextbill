@@ -32,10 +32,13 @@ import dev.lioracode.nextbill.core.navigation.NavigationState
 import dev.lioracode.nextbill.core.navigation.Navigator
 import dev.lioracode.nextbill.core.navigation.rememberNavigationState
 import dev.lioracode.nextbill.feature.archive.api.ArchiveNavKey
+import dev.lioracode.nextbill.feature.archive.impl.archiveEntry
 import dev.lioracode.nextbill.feature.calendar.api.CalendarNavKey
 import dev.lioracode.nextbill.feature.calendar.impl.calendarEntry
 import dev.lioracode.nextbill.feature.detail.api.DetailNavKey
+import dev.lioracode.nextbill.feature.detail.impl.detailEntry
 import dev.lioracode.nextbill.feature.editor.api.EditorNavKey
+import dev.lioracode.nextbill.feature.editor.impl.editorEntry
 import dev.lioracode.nextbill.feature.home.api.HomeNavKey
 import dev.lioracode.nextbill.feature.home.impl.homeEntry
 import dev.lioracode.nextbill.feature.settings.api.LicensesNavKey
@@ -97,10 +100,13 @@ internal fun NextBillApp(
     }
 }
 
-/** 홈·캘린더가 실제 화면입니다. Task 20~23에서 남은 자리표시자가 `xxxEntry(navigator)`로 바뀝니다. */
+/** 홈·캘린더·편집·상세·해지 목록이 실제 화면입니다. Task 23에서 남은 자리표시자가 `xxxEntry(navigator)`로 바뀝니다. */
 internal fun appEntries(navigator: Navigator) = entryProvider<NavKey> {
     homeEntry(navigator)
     calendarEntry(navigator)
+    editorEntry(navigator)
+    detailEntry(navigator)
+    archiveEntry(navigator)
     placeholders(navigator)
 }
 
@@ -108,14 +114,14 @@ internal fun appEntries(navigator: Navigator) = entryProvider<NavKey> {
 internal fun placeholderEntries(navigator: Navigator) = entryProvider<NavKey> {
     entry<HomeNavKey> { Placeholder(it, navigator, DetailNavKey(1), EditorNavKey()) }
     entry<CalendarNavKey> { Placeholder(it, navigator, DetailNavKey(1)) }
+    entry<EditorNavKey> { Placeholder(it, navigator) }
+    entry<DetailNavKey> { Placeholder(it, navigator, EditorNavKey(it.subscriptionId)) }
+    entry<ArchiveNavKey> { Placeholder(it, navigator, DetailNavKey(1)) }
     placeholders(navigator)
 }
 
 private fun EntryProviderScope<NavKey>.placeholders(navigator: Navigator) {
     entry<SettingsNavKey> { Placeholder(it, navigator, ArchiveNavKey, LicensesNavKey) }
-    entry<EditorNavKey> { Placeholder(it, navigator) }
-    entry<DetailNavKey> { Placeholder(it, navigator, EditorNavKey(it.subscriptionId)) }
-    entry<ArchiveNavKey> { Placeholder(it, navigator, DetailNavKey(1)) }
     entry<LicensesNavKey> { Placeholder(it, navigator) }
 }
 
