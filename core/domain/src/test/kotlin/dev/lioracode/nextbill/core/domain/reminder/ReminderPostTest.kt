@@ -2,11 +2,11 @@ package dev.lioracode.nextbill.core.domain.reminder
 
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
-import dev.lioracode.nextbill.core.domain.billing.d
-import dev.lioracode.nextbill.core.domain.billing.sub
 import dev.lioracode.nextbill.core.model.ActivePeriod
 import dev.lioracode.nextbill.core.model.Subscription
 import dev.lioracode.nextbill.core.model.SubscriptionId
+import dev.lioracode.nextbill.core.testing.d
+import dev.lioracode.nextbill.core.testing.sub
 import java.time.LocalDate
 import org.junit.Test
 

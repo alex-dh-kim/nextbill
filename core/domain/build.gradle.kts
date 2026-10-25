@@ -10,4 +10,6 @@ dependencies {
     // KSP가 만드는 *_Factory가 dagger.internal.*을 import합니다(ADR-0011).
     compileOnly(libs.dagger)
     ksp(libs.dagger.compiler)
+
+    testImplementation(projects.core.testing)
 }

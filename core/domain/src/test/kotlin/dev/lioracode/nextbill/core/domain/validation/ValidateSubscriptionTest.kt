@@ -1,8 +1,6 @@
 package dev.lioracode.nextbill.core.domain.validation
 
 import com.google.common.truth.Truth.assertThat
-import dev.lioracode.nextbill.core.domain.billing.d
-import dev.lioracode.nextbill.core.domain.billing.sub
 import dev.lioracode.nextbill.core.domain.validation.FieldError.AMOUNT_BLANK
 import dev.lioracode.nextbill.core.domain.validation.FieldError.AMOUNT_INVALID
 import dev.lioracode.nextbill.core.domain.validation.FieldError.ANCHOR_OUT_OF_RANGE
@@ -19,6 +17,8 @@ import dev.lioracode.nextbill.core.model.Outcome.Err
 import dev.lioracode.nextbill.core.model.Outcome.Ok
 import dev.lioracode.nextbill.core.model.Reminder
 import dev.lioracode.nextbill.core.model.Subscription
+import dev.lioracode.nextbill.core.testing.d
+import dev.lioracode.nextbill.core.testing.sub
 import java.time.LocalDate
 import org.junit.Assert.assertThrows
 import org.junit.Test

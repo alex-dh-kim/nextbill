@@ -1,12 +1,12 @@
 package dev.lioracode.nextbill.core.domain.reminder
 
 import com.google.common.truth.Truth.assertThat
-import dev.lioracode.nextbill.core.domain.billing.SEOUL
-import dev.lioracode.nextbill.core.domain.billing.at
-import dev.lioracode.nextbill.core.domain.billing.d
-import dev.lioracode.nextbill.core.domain.billing.sub
 import dev.lioracode.nextbill.core.model.MAX_SUBSCRIPTIONS
 import dev.lioracode.nextbill.core.model.SubscriptionId
+import dev.lioracode.nextbill.core.testing.SEOUL
+import dev.lioracode.nextbill.core.testing.at
+import dev.lioracode.nextbill.core.testing.d
+import dev.lioracode.nextbill.core.testing.sub
 import org.junit.Test
 
 class NextAlarmTest {

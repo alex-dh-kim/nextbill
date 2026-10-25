@@ -6,6 +6,10 @@ import dev.lioracode.nextbill.core.model.BillingCycle.Months
 import dev.lioracode.nextbill.core.model.BillingCycle.Weeks
 import dev.lioracode.nextbill.core.model.BillingCycle.Years
 import dev.lioracode.nextbill.core.model.CurrencyCode
+import dev.lioracode.nextbill.core.testing.d
+import dev.lioracode.nextbill.core.testing.krw
+import dev.lioracode.nextbill.core.testing.sub
+import dev.lioracode.nextbill.core.testing.usd
 import java.time.YearMonth
 import org.junit.Test
 

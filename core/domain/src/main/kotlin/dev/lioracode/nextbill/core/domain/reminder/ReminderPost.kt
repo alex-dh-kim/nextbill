@@ -56,3 +56,20 @@ fun planShown(
     deliverable.forEach { merged[it.first.id] = it }
     return groupForPosting(merged.values.toList())
 }
+
+/**
+ * 화면의 앱 알림을 구분하는 tag. Single은 구독마다, Summary는 하나입니다.
+ * Stable contract: matches the tag of the posted Android notification; changing it orphans live notifications.
+ */
+val ReminderPost.tag: String
+    get() = when (this) {
+        is ReminderPost.Single -> "subscription-${subscription.id.value}"
+        is ReminderPost.Summary -> "summary"
+    }
+
+/** 이 알림이 담은 항목. */
+val ReminderPost.shownItems: List<ShownReminder>
+    get() = when (this) {
+        is ReminderPost.Single -> listOf(ShownReminder(subscription.id, billingDate))
+        is ReminderPost.Summary -> items.map { (s, d) -> ShownReminder(s.id, d) }
+    }

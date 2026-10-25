@@ -29,9 +29,9 @@ jobs:
         run: ./gradlew -p build-logic test
 
       # 모듈을 만드는 태스크에서 아래 명령에 추가합니다:
-      #   :core:testing:test verifyRoborazziDebug
+      #   verifyRoborazziDebug
       - name: Check, build and test
-        run: ./gradlew spotlessCheck checkModuleRules assembleDebug lintDebug testDebugUnitTest :core:model:test :core:domain:test
+        run: ./gradlew spotlessCheck checkModuleRules assembleDebug lintDebug testDebugUnitTest :core:model:test :core:domain:test :core:testing:test
 
       - name: Upload screenshot diffs
         if: failure()

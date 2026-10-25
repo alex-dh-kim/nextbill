@@ -5,6 +5,8 @@ import dev.lioracode.nextbill.core.model.ActivePeriod
 import dev.lioracode.nextbill.core.model.MAX_PERIODS
 import dev.lioracode.nextbill.core.model.Subscription
 import dev.lioracode.nextbill.core.model.SubscriptionStatus
+import dev.lioracode.nextbill.core.testing.d
+import dev.lioracode.nextbill.core.testing.sub
 import java.time.LocalDate
 import org.junit.Assert.assertThrows
 import org.junit.Test

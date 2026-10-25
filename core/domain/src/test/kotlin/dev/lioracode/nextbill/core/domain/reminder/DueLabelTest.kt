@@ -1,7 +1,7 @@
 package dev.lioracode.nextbill.core.domain.reminder
 
 import com.google.common.truth.Truth.assertThat
-import dev.lioracode.nextbill.core.domain.billing.d
+import dev.lioracode.nextbill.core.testing.d
 import org.junit.Test
 
 class DueLabelTest {

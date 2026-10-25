@@ -5,6 +5,9 @@ import dev.lioracode.nextbill.core.model.BillingCycle.Days
 import dev.lioracode.nextbill.core.model.BillingCycle.Months
 import dev.lioracode.nextbill.core.model.BillingCycle.Weeks
 import dev.lioracode.nextbill.core.model.BillingCycle.Years
+import dev.lioracode.nextbill.core.testing.krw
+import dev.lioracode.nextbill.core.testing.sub
+import dev.lioracode.nextbill.core.testing.usd
 import org.junit.Test
 
 class EquivalentsTest {
