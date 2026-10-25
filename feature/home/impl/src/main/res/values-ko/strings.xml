@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">NextBill</string>
+    <string name="home_due_this_month">이번 달 결제 예정</string>
+    <string name="home_fixed_cost">월 고정비 %1$s</string>
+    <string name="home_upcoming">다가오는 결제</string>
+    <string name="home_add">구독 추가</string>
+    <string name="home_empty_title">등록된 구독이 없어요</string>
+    <string name="home_empty_body">반복 결제를 등록하면 다음 결제일을 알려드려요</string>
+    <string name="home_empty_cta">첫 구독 추가하기</string>
+    <string name="home_local_only">모든 데이터는 이 기기에만 저장돼요</string>
+    <string-array name="home_months">
+        <item>1월</item><item>2월</item><item>3월</item><item>4월</item><item>5월</item><item>6월</item>
+        <item>7월</item><item>8월</item><item>9월</item><item>10월</item><item>11월</item><item>12월</item>
+    </string-array>
+</resources>

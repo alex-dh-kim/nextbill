@@ -27,7 +27,9 @@ class NextBillAppTest {
         compose.setContent {
             val state = rememberNextBillNavigationState()
             navigator = remember(state) { Navigator(state) }
-            NextBillTheme { NextBillApp(navigator, dataGeneration()) }
+            NextBillTheme {
+                NextBillApp(navigator, dataGeneration(), entries = ::placeholderEntries)
+            }
         }
     }
 

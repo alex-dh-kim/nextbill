@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -53,8 +52,9 @@ fun LetterAvatar(
     desaturated: Boolean = false
 ) {
     val colors = NextBillTheme.colors
-    val background = if (desaturated) colors.badgeNeutralBg else colorKey.toColor()
-    val letterColor = if (desaturated) colors.textSecondary else Color.White
+    val dark = NextBillTheme.isDark
+    val background = if (desaturated) colors.badgeNeutralBg else colorKey.avatarBackground(dark)
+    val letterColor = if (desaturated) colors.textSecondary else colorKey.avatarLetterColor(dark)
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier

@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import dev.lioracode.nextbill.core.designsystem.theme.NextBillTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,10 +23,11 @@ fun NbTopAppBar(
     @DrawableRes navigationIcon: Int? = null,
     navigationContentDescription: String? = null,
     onNavigationClick: () -> Unit = {},
+    titleStyle: TextStyle = MaterialTheme.typography.headlineSmall,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopAppBar(
-        title = { Text(title, style = MaterialTheme.typography.headlineSmall) },
+        title = { Text(title, style = titleStyle) },
         modifier = modifier,
         navigationIcon = {
             if (navigationIcon != null) {

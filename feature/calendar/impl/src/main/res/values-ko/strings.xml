@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calendar_title">캘린더</string>
+    <string name="calendar_today">오늘</string>
+    <string name="calendar_prev_month">이전 달</string>
+    <string name="calendar_next_month">다음 달</string>
+    <string name="calendar_month_title">%2$d년 %1$s</string>
+    <string name="calendar_month_summary_label">이번 달 결제 예정</string>
+    <plurals name="calendar_month_summary">
+        <item quantity="other">%1$d건 · %2$s</item>
+    </plurals>
+    <string name="calendar_no_payments">이 날은 결제가 없어요</string>
+    <string name="calendar_day_desc">%1$s %2$d일</string>
+    <plurals name="calendar_day_desc_payments">
+        <item quantity="other">, 결제 %1$d건</item>
+    </plurals>
+    <string name="calendar_day_desc_selected">, 선택됨</string>
+    <string-array name="calendar_months">
+        <item>1월</item><item>2월</item><item>3월</item><item>4월</item><item>5월</item><item>6월</item>
+        <item>7월</item><item>8월</item><item>9월</item><item>10월</item><item>11월</item><item>12월</item>
+    </string-array>
+    <string-array name="calendar_weekdays">
+        <item>월</item><item>화</item><item>수</item><item>목</item><item>금</item><item>토</item><item>일</item>
+    </string-array>
+</resources>

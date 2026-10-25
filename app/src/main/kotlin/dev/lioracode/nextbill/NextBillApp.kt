@@ -2,6 +2,7 @@ package dev.lioracode.nextbill
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
@@ -30,9 +33,11 @@ import dev.lioracode.nextbill.core.navigation.Navigator
 import dev.lioracode.nextbill.core.navigation.rememberNavigationState
 import dev.lioracode.nextbill.feature.archive.api.ArchiveNavKey
 import dev.lioracode.nextbill.feature.calendar.api.CalendarNavKey
+import dev.lioracode.nextbill.feature.calendar.impl.calendarEntry
 import dev.lioracode.nextbill.feature.detail.api.DetailNavKey
 import dev.lioracode.nextbill.feature.editor.api.EditorNavKey
 import dev.lioracode.nextbill.feature.home.api.HomeNavKey
+import dev.lioracode.nextbill.feature.home.impl.homeEntry
 import dev.lioracode.nextbill.feature.settings.api.LicensesNavKey
 import dev.lioracode.nextbill.feature.settings.api.SettingsNavKey
 
@@ -56,7 +61,8 @@ fun NextBillApp(dataGeneration: Long, modifier: Modifier = Modifier) {
 internal fun NextBillApp(
     navigator: Navigator,
     dataGeneration: Long,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    entries: (Navigator) -> (NavKey) -> NavEntry<NavKey> = ::appEntries
 ) {
     val state = navigator.state
     // 화면 기록과 함께 저장해, 재생성 뒤 같은 세대면 되돌리지 않습니다.
@@ -84,17 +90,28 @@ internal fun NextBillApp(
         }
     ) { padding ->
         NavDisplay(
-            entries = state.toEntries(placeholderEntries(navigator)),
+            entries = state.toEntries(entries(navigator)),
             onBack = navigator::goBack,
-            modifier = Modifier.padding(padding)
+            modifier = Modifier.padding(padding).consumeWindowInsets(padding)
         )
     }
 }
 
-/** Task 18~23에서 각 feature impl의 `xxxEntry(navigator)`로 바뀝니다. */
-private fun placeholderEntries(navigator: Navigator) = entryProvider<NavKey> {
+/** 홈·캘린더가 실제 화면입니다. Task 20~23에서 남은 자리표시자가 `xxxEntry(navigator)`로 바뀝니다. */
+internal fun appEntries(navigator: Navigator) = entryProvider<NavKey> {
+    homeEntry(navigator)
+    calendarEntry(navigator)
+    placeholders(navigator)
+}
+
+/** Hilt 없이 앱 셸을 시험하기 위한 전부 자리표시자인 진입점(홈 포함). */
+internal fun placeholderEntries(navigator: Navigator) = entryProvider<NavKey> {
     entry<HomeNavKey> { Placeholder(it, navigator, DetailNavKey(1), EditorNavKey()) }
     entry<CalendarNavKey> { Placeholder(it, navigator, DetailNavKey(1)) }
+    placeholders(navigator)
+}
+
+private fun EntryProviderScope<NavKey>.placeholders(navigator: Navigator) {
     entry<SettingsNavKey> { Placeholder(it, navigator, ArchiveNavKey, LicensesNavKey) }
     entry<EditorNavKey> { Placeholder(it, navigator) }
     entry<DetailNavKey> { Placeholder(it, navigator, EditorNavKey(it.subscriptionId)) }

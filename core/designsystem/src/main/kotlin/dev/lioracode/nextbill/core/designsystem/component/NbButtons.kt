@@ -1,16 +1,21 @@
 package dev.lioracode.nextbill.core.designsystem.component
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import dev.lioracode.nextbill.core.designsystem.theme.NbShapes
@@ -22,7 +27,8 @@ fun NbPrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null
 ) {
     Button(
         onClick = onClick,
@@ -34,6 +40,10 @@ fun NbPrimaryButton(
             contentColor = MaterialTheme.colorScheme.onPrimary
         )
     ) {
+        if (leadingIcon != null) {
+            Icon(painterResource(leadingIcon), contentDescription = null)
+            Spacer(Modifier.width(8.dp))
+        }
         Text(text, style = MaterialTheme.typography.titleMedium)
     }
 }

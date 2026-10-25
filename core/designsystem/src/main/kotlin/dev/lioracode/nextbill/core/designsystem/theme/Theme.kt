@@ -12,6 +12,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 
 private val LocalNextBillColors = staticCompositionLocalOf { LightNextBillColors }
+private val LocalIsDark = staticCompositionLocalOf { false }
 private val LocalSpacing = staticCompositionLocalOf { Spacing() }
 private val LocalNextBillTypography = staticCompositionLocalOf { DefaultNextBillTypography }
 
@@ -35,6 +36,7 @@ fun NextBillTheme(
     }
     CompositionLocalProvider(
         LocalNextBillColors provides nextBillColors,
+        LocalIsDark provides darkTheme,
         LocalSpacing provides Spacing(),
         LocalNextBillTypography provides DefaultNextBillTypography
     ) {
@@ -48,6 +50,11 @@ fun NextBillTheme(
 }
 
 object NextBillTheme {
+    /** [NextBillTheme]에 넘긴 `darkTheme` 값. 색상 값으로 추측하지 않고 이것을 씁니다. */
+    val isDark: Boolean
+        @Composable @ReadOnlyComposable
+        get() = LocalIsDark.current
+
     val colors: NextBillColors
         @Composable @ReadOnlyComposable
         get() = LocalNextBillColors.current
