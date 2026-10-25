@@ -1,0 +1,31 @@
+name: Record screenshots
+
+# Roborazzi 기준 이미지는 CI(Linux)에서 찍은 것을 커밋합니다. 로컬(macOS) 렌더링과 픽셀이 다를 수 있기 때문입니다.
+on:
+  workflow_dispatch:
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          validate-wrappers: true
+
+      - name: Record screenshots
+        run: ./gradlew recordRoborazziDebug
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v7
+        with:
+          name: roborazzi-screenshots
+          path: '**/src/test/screenshots/**'
+          if-no-files-found: error

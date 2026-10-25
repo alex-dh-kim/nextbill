@@ -1,1 +1,13 @@
 .DS_Store
+
+# Gradle / build outputs
+build/
+.gradle/
+.kotlin/
+
+# Local machine config
+local.properties
+
+# IDE
+.idea/
+*.iml

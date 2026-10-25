@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- API 28~30. 기기 간 전송일 때만 DB(WAL 파일 포함)와 설정 파일을 포함합니다(ADR-0008). -->
+<full-backup-content>
+  <include domain="database" path="nextbill.db" requireFlags="deviceToDeviceTransfer" />
+  <include domain="database" path="nextbill.db-wal" requireFlags="deviceToDeviceTransfer" />
+  <include domain="database" path="nextbill.db-shm" requireFlags="deviceToDeviceTransfer" />
+  <include domain="file" path="datastore/settings.preferences_pb" requireFlags="deviceToDeviceTransfer" />
+</full-backup-content>

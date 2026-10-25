@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- API 28+는 규칙 파일로 기기 간 전송만 허용합니다(ADR-0008). -->
+  <bool name="allow_backup">true</bool>
+</resources>
