@@ -60,7 +60,6 @@ NiA 카탈로그(`2982e63`)에서 설계 문서 §3.3 라이브러리만 옮긴 
 | Robolectric | 4.16 | 4.17 (sandbox SDK 34) | SDK 35+ sandbox는 Java 21 필요 |
 | Roborazzi (+ compose, gradle plugin) | 1.56.0 | 1.77.0 | |
 | Spotless / ktlint | 8.3.0 / 1.4.0 | 8.10.4 / 1.8.0 | |
-| GitHub Actions | - | checkout v7, setup-java v6, setup-gradle v6, upload-artifact v7 | 각 저장소 latest release |
 
 빌드 전용(앱에 들어가지 않는) 의존성: AGP `gradle-api`, Kotlin·Compose 컴파일러 Gradle 플러그인, KSP·Room·Roborazzi Gradle 플러그인. 모두 위 라이브러리의 일부라 별도 ADR을 두지 않습니다.
 
@@ -73,3 +72,7 @@ NiA 카탈로그(`2982e63`)에서 설계 문서 §3.3 라이브러리만 옮긴 
 - AndroidX 버전: https://dl.google.com/android/maven2/ (각 artifact의 `maven-metadata.xml`)
 - 그 밖의 라이브러리 버전: https://repo1.maven.org/maven2/ (각 artifact의 `maven-metadata.xml`)
 - Glance → WorkManager 전이 의존성: https://dl.google.com/android/maven2/androidx/glance/glance-appwidget/1.2.0/glance-appwidget-1.2.0.pom
+
+## CI를 두지 않음 [Alex 결정, 2026-10-25]
+
+NiA는 GitHub Actions로 PR마다 검사합니다. NextBill은 1인 저장소이고 main에 직접 커밋하므로 CI를 두지 않습니다. 대신 계획서의 커밋 지점마다 `./gradlew -p build-logic test`와 `./gradlew spotlessCheck checkModuleRules assembleDebug lintDebug testDebugUnitTest :core:model:test :core:domain:test :core:testing:test verifyRoborazziDebug`를 로컬에서 실행하고, 결과를 커밋 전에 확인합니다. Roborazzi 기준 이미지는 로컬(macOS)에서 찍습니다.

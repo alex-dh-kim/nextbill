@@ -251,7 +251,7 @@ widget                           F8 Glance 위젯
 - **`docs/superpowers/`:** 이 설계 문서와 구현 계획서. 커밋 순서상 코드보다 먼저 들어갑니다.
 - **`.claude/settings.json` Hooks:** Kotlin 파일 수정 후 Spotless 검사, 작업 종료 시 관련 모듈 단위 테스트를 실행합니다.
 - **커밋:** 작은 단위로 나누고, 메시지에 의도를 씁니다. AI가 쓴 코드는 Alex가 리뷰한 뒤 커밋합니다. AI 사용은 숨기지 않습니다(README에 "AI와 어떻게 일했나" 섹션을 둡니다).
-- **CI(GitHub Actions):** PR과 main 푸시마다 빌드, 단위 테스트, Spotless, 스크린샷 테스트 검증을 돌립니다.
+- **CI는 두지 않습니다 [Alex 결정, 2026-10-25]:** 1인 저장소라 커밋 지점마다 빌드, 단위 테스트, Spotless, 스크린샷 테스트 검증을 로컬에서 실행합니다(ADR-0011).
 
 ---
 

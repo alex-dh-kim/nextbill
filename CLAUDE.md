@@ -39,9 +39,10 @@
 ./gradlew -p build-logic test
 ./gradlew spotlessCheck checkModuleRules assembleDebug lintDebug
 ./gradlew testDebugUnitTest :core:model:test :core:domain:test :core:testing:test
-./gradlew verifyRoborazziDebug     # 기준 이미지는 CI의 record-screenshots 워크플로로 찍음
+./gradlew verifyRoborazziDebug     # 기준 이미지는 로컬에서 recordRoborazziDebug로 찍음
 ```
 - JDK 17을 씁니다.
+- CI는 두지 않습니다. 커밋 지점마다 위 명령 전체를 로컬에서 실행합니다(ADR-0011).
 - `.claude/settings.json` hook: `.kt`/`.kts` 수정 후 그 파일만 `spotlessApply`, 작업 종료 시 `scripts/test-changed.sh`가 바뀐 모듈의 테스트를 실행합니다.
 
 ## 커밋
