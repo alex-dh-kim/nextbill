@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="notification_channel_reminders">결제 알림</string>
+  <string name="reminder_due_today">오늘</string>
+  <string name="reminder_due_tomorrow">내일</string>
+  <string name="reminder_due_in_days">%1$d일 후</string>
+  <string name="reminder_single_title">%1$s %2$s 결제</string>
+  <string name="reminder_single_text">%1$s · %2$s</string>
+  <string name="reminder_date_pattern">M월 d일</string>
+  <plurals name="reminder_summary_title">
+    <item quantity="other">결제 예정 %1$d건</item>
+  </plurals>
+  <string name="reminder_summary_text_many">%1$s, %2$s 외 %3$d건</string>
+</resources>

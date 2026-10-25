@@ -33,4 +33,5 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":app")
 include(":core:model", ":core:domain", ":core:testing", ":core:database")
-include(":core:datastore", ":core:data")
+include(":core:datastore", ":core:data", ":core:notifications")
+include(":widget")
