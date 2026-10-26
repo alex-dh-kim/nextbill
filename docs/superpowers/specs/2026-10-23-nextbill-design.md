@@ -1,7 +1,7 @@
 # NextBill — 설계 문서 (v1)
 
 - 작성일: 2026-10-23
-- 상태: 승인 (2026-10-23) · Codex 적대적 리뷰 1~5차 반영 (2026-10-24~25, `docs/reviews/2026-10-24-review-response.md`)
+- 상태: 구현 완료 (v1, 2026-10-26) · 승인 (2026-10-23) · Codex 적대적 리뷰 1~5차 반영 (2026-10-24~25, `docs/reviews/2026-10-24-review-response.md`)
 - 저장소: `/Users/alex/Develop/personal/nextbill` → GitHub `alex-dh-kim/nextbill` (public)
 
 > 표기 규칙: **[Alex 결정]**은 Alex가 직접 정한 것, **[설계자 판단]**은 Claude가 정했고 Alex가 검토할 것입니다. 표시가 없는 항목은 둘 중 하나에서 그대로 따라 나온 내용입니다.

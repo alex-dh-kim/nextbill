@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NextBill 런처 아이콘 전경: 안전 영역(66dp) 안의 "N". 위젯 브랜드 표시와 같은 모양입니다. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M36,76 L36,32 L45,32 L63,60 L63,32 L72,32 L72,76 L63,76 L45,48 L45,76 Z" />
+</vector>

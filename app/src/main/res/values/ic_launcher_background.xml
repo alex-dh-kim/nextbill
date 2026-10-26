@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- primary 토큰(#1B64DA)과 같은 값 -->
+    <color name="ic_launcher_background">#1B64DA</color>
+</resources>

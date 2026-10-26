@@ -24,6 +24,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -97,11 +99,15 @@ fun HomeScreen(
                     }
                 }
                 if (!empty) {
+                    val addLabel = stringResource(R.string.home_add)
                     ExtendedFloatingActionButton(
                         onClick = onAddClick,
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
-                            .padding(end = NextBillTheme.spacing.margin, bottom = FabMargin),
+                            .padding(end = NextBillTheme.spacing.margin, bottom = FabMargin)
+                            // ExtendedFloatingActionButton은 text 슬롯을 클릭 노드에 병합하지 않아
+                            // TalkBack이 이름 없는 버튼으로 읽습니다(Task 25 에뮬레이터 점검). 이름을 직접 붙입니다.
+                            .semantics { contentDescription = addLabel },
                         shape = NbShapes.Card,
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onPrimary,
@@ -112,7 +118,7 @@ fun HomeScreen(
                         icon = { Icon(painterResource(NbIcons.Add), contentDescription = null) },
                         text = {
                             Text(
-                                stringResource(R.string.home_add),
+                                addLabel,
                                 style = MaterialTheme.typography.titleMedium
                             )
                         }
