@@ -1,0 +1,78 @@
+# NextBill v1 구현 중 판정 목록
+
+서브에이전트 기반 구현(2026-10-25~26) 동안 컨트롤러가 Alex 대신 내린 판정을 진행 기록에서 그대로 옮겼습니다. 형식: 판정 — 이유 — 틀렸을 때의 비용.
+
+- Ruling: Follow the plan's commit plan literally — implementers never stage or commit; controller reviews the unstaged+untracked diff (scripts/pkg.sh in this workspace), stages with `git add -A` after a clean task review, and commits only at C1–C11 after reviewing `git diff --cached` — Alex's standing instruction (memory commit-granularity) and plan Global Constraints — cost if wrong: review packages are hand-built instead of the skill script; no history impact.
+- Ruling: Pushes happen only at the plan's ✓ points (C2, C5, C7, C10, C11) to origin main — plan text + Alex chose main — cost if wrong: an early push to a public repo, revertable by follow-up commits only.
+- P1 Ruling: CI grows with modules — T1 ci.yml runs only tasks that exist at C2 (build-logic test, spotlessCheck, checkModuleRules, assembleDebug, lintDebug, testDebugUnitTest); T3 adds :core:model:test :core:domain:test, T7 adds :core:testing:test, first Roborazzi task (T15) adds verifyRoborazziDebug — plan's L163 list is the end state — cost if wrong: CI edits in later commits.
+- P2 Ruling: 14 ADR files (0001..0014, 0014 = best-effort reminders) — spec §6 has 14 rows — cost: none.
+- P3 Ruling: 10 convention plugins (the table) — table is the interface — cost: none.
+- P4 Ruling: every task that creates a module adds its own `include` to settings.gradle.kts and its own build.gradle.kts; feature impl may depend on other features' api modules — implied by module layout — cost: none.
+- P5 Ruling: repository removeIfMatches(Collection) maps to DAO removeAllIfMatches (one transaction); T11 adds a repository test for it — T7 interface governs — cost: none.
+- P6 Ruling: FakeSubscriptionRepository revision +1 on successful replaceAll AND on bumpRevision — T7 interface/T8 tests — cost: none.
+- P7 Ruling: ReminderPoster.show(posts, today) everywhere — T7 interface governs — cost: none.
+- P8 Ruling: T7 fakes add FakeReminderAlarm.cancelGate: CompletableDeferred<Unit>? (pauses inside cancel), FakeReminderPoster.silentPosts: MutableList<ReminderPost>; T8 may add further test gates to fakes if a listed test needs one — tests need them — cost: none.
+- P9 Ruling: writeWhenReady loops — wait until state != Recovering, take lock, if state is Recovering again release and wait again; only RecoveryFailed runs onNotReady — ADR-7 says early deliveries wait for recovery — cost: small extra code.
+- P10 Ruling: SaveSubscriptionUseCase returns Err(Missing) when the existing subscription is not ACTIVE (cancelled meanwhile) instead of letting withAnchor throw — editor has no cancelled entry; Missing = "the editable thing is gone" — cost: copy may read slightly off.
+- P11 Ruling: EditorViewModel injects DataCoordinator, stores generation in SavedStateHandle, calls save(draft, generation) — T8 signature governs — cost: none.
+- P12 Ruling: DetailViewModel same (DataCoordinator + SavedStateHandle generation) — T8/T22 — cost: none.
+- P13 Ruling: ArchiveMessage gains MISSING with the same copy the detail screen uses for MISSING — Stale maps to MISSING — cost: copy.
+- P14 Ruling: SettingsMessage gains SettingsNotReady and SettingsStorageFailed reusing the editor's NOT_READY / STORAGE_FAILED copy — UpdateSettingsUseCase can return them — cost: copy.
+- P15 Ruling: MAX_BACKUP_CHARS lives in core:domain (backup package, next to BackupCodec); core:data uses it — module rule 5 forbids feature → core:data — cost: none.
+- P16 Ruling: T14 creates a minimal NextBillWidget (GlanceAppWidget with placeholder content) + receiver + manifest entries incl. MidnightRefreshReceiver and the WidgetPresence impl; T24 replaces the content — removes forward reference — cost: T24 edits T14 files.
+- P17 Ruling: Navigator stays a concrete class; ViewModels never navigate (results are UiState). Tests that need a FakeNavigator become Compose/Robolectric screen tests using the real Navigator, or each feature defines a tiny local test double — no shared fake module — cost: slight duplication.
+- P18 Ruling: T9 implementer adds the obvious @Query/@Insert declarations Room needs — plan lists behaviour, not every annotation — cost: none.
+- P19 Ruling: see P4.
+- P20 Ruling: rowOpensDetail is a screen test (Robolectric Compose) — VM has no nav API — cost: none.
+- P21 Ruling: T6 defines its own draft() test helper — cost: none.
+- P22 Ruling: T11 adds tests for RoomScheduledReminderRepository and DataStoreSettingsRepository; the midnight test advances MutableClock together with virtual time — cost: none.
+- P23 Ruling: implementers derive assertions for name-only tests from the spec; reviewers check they assert something real — cost: none.
+- P24 Ruling: T20 adds a 48dp touch-target test for chips and swatches (§9.2); T21 detail gets a "go to settings" action next to the notification text (ADR-5) — spec governs — cost: small UI.
+- P25 Ruling: .superpowers/ is already ignored (its own .gitignore '*', verified with git check-ignore); RescheduleReceiver and widget receivers use goAsync + @ApplicationScope like ReminderReceiver; rename concurrentDeliveriesPostOnce → concurrentDeliveriesDoNotDuplicate — cost: none.
+- Ruling: Robolectric runs at sdk=34, pinned once in the nextbill.android.library convention (not per module) — Robolectric 4.17 needs Java 21 for SDK 35+, Global Constraints fix JDK 17 — cost if wrong: unit tests don't exercise API 35/36 framework behaviour; manual QA on API 36 emulator (Task 25) covers it. Apply in Task 9 (first Robolectric test) unless the Task 1 fix round does it.
+- Ruling: allow com.google.dagger:dagger as compileOnly in core:domain (runtime counterpart of the allowed dagger-compiler; Hilt already brings it transitively) — note it in ADR-0011's allowed list — cost: one extra allowed artifact.
+- Ruling: backup rules include nextbill.db-wal and nextbill.db-shm alongside nextbill.db (device-transfer + API 28-30 rules) — without WAL files a transfer can miss committed data (ADR-8 intent: transfer the data) — cost: none.
+- Task 1: review r0 — Needs fixes (4 Important: WAL/SHM backup, Robolectric sdk 34 pin, ADR-0011 dagger note, Stop hook loop). ⚠️ feature.api lacks kotlinx-serialization runtime → Ruling: add runtime dep in the plugin (NavKey @Serializable needs it) — cost: none.
+- Task 2: implementer DONE (8 tests). Ruling: rule 4 = only :core:data may depend on :core:database/:core:datastore (app included) — spec §5.2 + brief tests — cost: T9/T10 DI modules must be reachable via core:data's implementation deps (they are, transitively at runtime).
+- Ruling: C2's combined cached-diff review folded into the two task reviews — Task 2 only touched two Task 1 files and its reviewer saw those hunks — cost: a cross-task interaction could slip to the final review.
+- Task 3: review clean (Approved). Ruling: keep anchorDate range require in Subscription.init — spec §4.2 limits; keeps nthBillingDate out of DateTimeException — cost: Task 6 must validate before constructing; DB rows outside range would throw at mapping.
+- Ruling: cancelled subscriptions get no reminders even for billing dates before their end date — spec/brief: reminders only for ACTIVE — cost: none (cancelled = user stopped it).
+- Ruling: planShown keeps an already-shown item after the user turns that subscription's reminder off (brief drops only deleted/cancelled/past) — cost: a stale notification can linger until dismissed or expired.
+- Task 6: implementer DONE (18 tests). Ruling: name/memo length limits count Unicode code points (String.codePointCount), not UTF-16 units — spec says 30자/500자, users count an emoji as one — cost: Task 12 backup validation must use the same helper.
+- Ruling: C3 combined cached-diff review folded into per-task reviews (same as C2); controller ran :core:model:test :core:domain:test checkModuleRules spotlessCheck assembleDebug → exit 0 before commit.
+- Ruling: cancelGate/pruneGate block the calling thread (runBlocking) because cancel()/pruneExpired() are non-suspending; Task 8 gate tests run the gated caller on Dispatchers.Default and wait on cancelEntered/pruneEntered — cost: those tests use real threads (timeouts needed).
+- Ruling: cancel non-ACTIVE / restore non-CANCELLED / delete missing id → MISSING — closest existing ActionError; UI already refreshes — cost: copy.
+- Ruling: refresh requested only after a successful write — failed writes change nothing derived — cost: none.
+- Ruling: during RecoveryFailed the refresher skips sync+prune but still schedules midnight + widget update — widget shows nothing harmful; keeps day-change alive — cost: widget may show pre-import data until recovery.
+- Ruling: repeatedInterruptionAfterPost test dismisses between attempts so each attempt re-posts (fake skips unchanged posts) — keeps the test meaningful — cost: none.
+- Ruling: in sync, applied == Retry && desired <= now → keep the retry alarm (no setNext) — bounds repeated failures to the 15-min retry; success path unchanged — cost: if a retry is lost by the OS mid-Retry, recovery waits for the next refresh/new process.
+- Ruling: refresher consumer loop survives stray CancellationExceptions from steps (rethrow only when its scope is cancelled) — a dead loop drops all derived refreshes for the process — cost: none.
+- Task 9: review clean (Approved). Ruling: fix module-rules root cause now — exclude AGP variant test configs (UnitTest/AndroidTest) in isCheckedConfiguration, keep self-edge filter — Task 2 deferred minor became real — cost: none.
+- Task 10: fix round 1/5 (3 addressed — corruption handler, IOException catch, update composition tests). Ruling: controller verified this 3-line fix directly (grep of handler + catch, implementer test run 10/10) instead of a reviewer dispatch — trivial additive change — cost: an unreviewed edge could reach the final review.
+- Ruling: unknown cycleUnit string falls back to MONTHS — same DB-damage tolerance as OTHER/BLUE — cost: a corrupted row shows a wrong cycle instead of crashing.
+- Ruling: in-memory overlay in ReminderNotifier (tag → last written state, TTL 5 s, dropped when OS list agrees) — closes the lag window without an extra store; reviewer's AOSP claim is from memory, unverified, but the fix is cheap and harmless if the lag never occurs — cost: within 5 s of a write, a user dismissal is not seen.
+- Task 14: review clean (Approved). Ruling: midnight receiver schedules next before updating widgets — a hung widget update must not break the chain; deviates from brief order — cost: none. Folding cancelled/tie-break widget tests (round 1). minor (deferred): GlanceWidgetUpdater/Presence untested (thin wrappers).
+- Ruling: keep full Pretendard OTFs (~6 MB) for v1 — subsetting adds a build tool and a licence nuance; size is not a v1 goal — cost: larger APK/repo.
+- Task 16: review r0 Needs fixes (1 Important: avatar letter not cleared from semantics). Ruling: desaturated avatar = archive design's neutral gray (badgeNeutralBg / textSecondary / border), not alpha fade — design is source of truth — cost: none.
+- Ruling: back from any non-start tab root goes to Home (brief text) even after tab-to-tab switches — NiA's history-based variant contradicted the brief — cost: none.
+- Ruling: recovery actions run on @ApplicationScope (not viewModelScope) so closing the app mid-retry can't strand state — cost: none.
+- Ruling: merged WAKE_LOCK/ACCESS_NETWORK_STATE/FOREGROUND_SERVICE come transitively from Glance→WorkManager; record in ADR-0006 (fix round) — cost: visible permissions in the store listing if ever published.
+- Ruling: avatars are tinted (10% color bg + darker AA-contrast letter) per DESIGN.md:219 and all mockups, overriding Task 16's "white letter" — spec defers visuals to the design source — cost: core:ui baselines re-recorded; per-color shades derived where the design gives none.
+- Ruling: "+ $19.98" stays under the big number and title weight stays 700 (brief explicit / Pretendard bundled 400–700); empty-state CTA gets the design's "+" icon; count badge/fixed-cost/USD line styles follow the design (brief silent).
+- Ruling: 88 dp bottom padding (FAB 56 + 16×2) kept over the brief's literal 72 dp — leaves the real 16 dp gap the design shows — cost: none.
+- Ruling (design deltas): fix now — today ring when selected, "오늘" pill w/ icon, faded out-of-month numbers, "오늘" chip on payment card; keep (brief explicit) — centred month header, selected-day header text, 48dp margin rule; out of scope (spec §9.1/§2.4) — 평균 chip, plan subtitle, payment method, next-day preview card — cost: calendar differs from mockup only where spec trimmed scope.
+- Ruling: color swatches in 2 rows of 4 on phones — eight 48 dp targets don't fit one row at 360 dp; §9.2 48 dp rule beats the one-row mockup — cost: taller form.
+- Ruling: category / days-before / reminder-time labels move to core:ui when Task 21 needs them (carry to T21) — avoid duplicating copy across features — cost: small move.
+- Ruling: "asked permission on this screen" flag lives in SavedStateHandle (survives process death) — restored screen = same session for the user — cost: none.
+- Ruling: AskingPermission not restored after process death (user taps Save again) — accepted.
+- Ruling: unit segments stay one row (~36 dp wide at 360 dp, 48 dp tall) — four 48 dp-wide segments would break design 02 — cost: segment width below 48 dp on 360 dp windows.
+- Task 21: implementer DONE (13 VM + 17 screen tests, 4 baselines). Ruling: NOT_STARTED mapped to the STORAGE_FAILED message (unreachable from UI) — cost: none.
+- Ruling: omit design 04's "구독 재등록이 필요한가요?" card — its copy (price and billing date kept) contradicts restore-with-new-period semantics — cost: none.
+- Ruling: menu label "삭제" (brief) over design's "완전 삭제" — cost: none.
+- Ruling: Compose BOM excluded from LicensesCatalogTest (no code; constrains versions only) — cost: none.
+- Ruling: export storage failure reuses "저장하지 못했어요. 다시 시도해 주세요" — cost: none.
+- Ruling: keep provider XML name next_bill_widget_info.xml (Task 14 file) — cost: none.
+- Ruling: widget collects combine(today, observeAll, settings) inside provideContent instead of reading once — keeps a live session correct after date/data changes (spec F8/ADR-12 intent) — cost: deviates from brief text; slightly more work per session.
+- Ruling: narrow designsystem palette exposure to a small public API — cost: none.
+- Ruling: one fix wave for C1+I1+M1+M2+M3, incl. Android Lint on JVM modules + app checkDependencies, and an API 26 (or 33) emulator save→notification pass (download system image + AVD locally) — cost: SDK image download.
+- Ruling: one more targeted follow-up on the same fix implementer (stale date recompute, checkAndroidApi false negatives + backport allowlist, comment, ADR/CLAUDE notes), verified by the controller with targeted tests + full clean check instead of another reviewer — Alex: correctness over tokens; skill allows adjudicating residuals — cost: no independent reviewer on the last small diff.

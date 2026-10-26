@@ -144,6 +144,12 @@ stateDiagram-v2
 | 화면 상태 | 함수형: Room `Flow` + 오늘 날짜 `Flow` → `combine` → 불변 `UiState` |
 | 사용자 액션 | ViewModel 메서드 → UseCase, 결과는 직접 정의한 sealed 타입 |
 
+**MVI가 아니라 MVVM + 단방향 데이터 흐름(UDF)을 고른 이유**
+
+Compose에 필요한 것은 패턴 이름보다 세 가지입니다. 화면 상태가 불변 객체 하나일 것, 상태는 아래로·사용자 행동은 위로만 흐를 것, 화면은 상태를 받아 그리기만 할 것. NextBill은 이 셋을 지킵니다. 화면마다 `StateFlow<UiState>`를 내보내고(알림 권한을 묻는 편집·상세·설정 화면은 "이미 물어봤는지" `StateFlow<Boolean>`을 하나 더 받습니다), 화면 단계는 sealed 타입(예: `EditorPhase`의 Editing·AskingPermission·Saving·Saved·Missing)으로 나타내며, 저장 완료처럼 한 번만 일어나는 결과도 Channel 이벤트가 아니라 상태로 표현합니다.
+
+MVI는 여기에 sealed `Intent` 하나와 `reduce(state, intent)`를 더합니다. 상태 변경 경로가 많은 화면에서는 이 두 가지가 변경을 한곳에 모아 줍니다. NextBill의 상태 변경은 대부분 UseCase → Room `Flow` → `combine`을 거쳐 들어오므로 리듀서에 남는 로직이 적습니다. 화면 6개 규모에서는 Intent 타입과 분기 코드만 늘어난다고 판단해 의도별 메서드(`onSaveClick`, `onReminderSwitch` 등)를 두었습니다. 한 화면에서 상태 변경 경로가 크게 늘면 그 화면부터 sealed `Action` + `onAction()`으로 바꾸는 것이 다음 단계입니다.
+
 성능 개선 수치는 측정하지 않았으므로 쓰지 않습니다. 설계에서 의도한 것은 두 가지입니다. 계산은 `@DefaultDispatcher`에서 하고, 목록은 지연 그리기(`LazyColumn` `items` + key)로 그립니다. 구독 한도는 1,000건입니다.
 
 Compose 컴파일러 리포트(`./gradlew assembleRelease -PcomposeReports=true`)에서 확인한 것:
