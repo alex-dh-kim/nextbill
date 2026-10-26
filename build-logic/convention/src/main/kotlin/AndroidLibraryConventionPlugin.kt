@@ -3,6 +3,7 @@ import dev.lioracode.nextbill.AndroidSdk
 import dev.lioracode.nextbill.configureAndroidCommon
 import dev.lioracode.nextbill.configureRobolectricSdk
 import dev.lioracode.nextbill.configureRoborazziWhenApplied
+import dev.lioracode.nextbill.configureWarningsAsErrors
 import dev.lioracode.nextbill.lib
 import dev.lioracode.nextbill.libs
 import org.gradle.api.Plugin
@@ -17,6 +18,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             apply(plugin = "com.android.library")
             configureRoborazziWhenApplied()
             configureRobolectricSdk()
+            configureWarningsAsErrors()
 
             extensions.configure<LibraryExtension> {
                 configureAndroidCommon(this)

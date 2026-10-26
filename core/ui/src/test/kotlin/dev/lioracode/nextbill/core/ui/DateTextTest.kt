@@ -1,6 +1,6 @@
 package dev.lioracode.nextbill.core.ui
 
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import com.google.common.truth.Truth.assertThat
 import java.time.LocalDate
 import org.junit.Rule

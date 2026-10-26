@@ -6,6 +6,7 @@ import dev.lioracode.nextbill.core.domain.billing.cancelledOn
 import dev.lioracode.nextbill.core.model.SubscriptionId
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -14,6 +15,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class FakeSubscriptionRepositoryTest {
     private val repo = FakeSubscriptionRepository()
 

@@ -2,7 +2,7 @@ package dev.lioracode.nextbill.feature.home.impl
 
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import dev.lioracode.nextbill.core.designsystem.theme.NextBillTheme
 import dev.lioracode.nextbill.core.domain.billing.AmountSummary
 import dev.lioracode.nextbill.core.domain.reminder.DueLabel

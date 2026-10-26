@@ -1,6 +1,6 @@
 package dev.lioracode.nextbill.feature.archive.impl
 
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.captureRoboImage
 import dev.lioracode.nextbill.core.designsystem.theme.NextBillTheme

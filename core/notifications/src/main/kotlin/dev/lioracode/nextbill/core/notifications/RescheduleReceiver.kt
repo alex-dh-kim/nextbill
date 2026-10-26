@@ -9,6 +9,7 @@ import dev.lioracode.nextbill.core.domain.usecase.DerivedStateRefresher
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
@@ -44,6 +45,8 @@ class RescheduleReceiver : HiltBroadcastReceiver() {
     }
 }
 
+// ATOMIC: 시작 전에 취소돼도 본문이 실행되어 finally의 finish()가 반드시 불립니다(goAsync 결과를 남기지 않기 위해).
+@OptIn(DelicateCoroutinesApi::class)
 internal fun handleReschedule(
     scope: CoroutineScope,
     refresh: suspend () -> Unit,

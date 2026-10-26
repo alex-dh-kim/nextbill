@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.Lint
 import dev.lioracode.nextbill.configureAndroidApiCheck
+import dev.lioracode.nextbill.configureWarningsAsErrors
 import dev.lioracode.nextbill.lib
 import dev.lioracode.nextbill.libs
 import org.gradle.api.JavaVersion
@@ -36,6 +37,7 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
                 abortOnError = true
             }
             configureAndroidApiCheck()
+            configureWarningsAsErrors()
 
             dependencies {
                 "testImplementation"(libs.lib("junit"))

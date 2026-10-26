@@ -1,7 +1,7 @@
 package dev.lioracode.nextbill.core.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import com.google.common.truth.Truth.assertThat
 import dev.lioracode.nextbill.core.model.BillingCycle
 import java.time.LocalDate

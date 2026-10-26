@@ -2,7 +2,7 @@ package dev.lioracode.nextbill.core.ui
 
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.hasText
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import dev.lioracode.nextbill.core.designsystem.theme.NextBillTheme
 import dev.lioracode.nextbill.core.model.ColorKey
 import org.junit.Rule

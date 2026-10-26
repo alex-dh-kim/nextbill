@@ -11,6 +11,8 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 
+// ScheduledAlarm.operation은 deprecated이지만 Robolectric 4.17에는 PendingIntent를 꺼낼 다른 API가 없습니다(type도 Kotlin에서 같은 deprecated 필드로 해석됨).
+@Suppress("DEPRECATION")
 @RunWith(RobolectricTestRunner::class)
 class AlarmReminderAlarmTest {
     private val context: Context = RuntimeEnvironment.getApplication()

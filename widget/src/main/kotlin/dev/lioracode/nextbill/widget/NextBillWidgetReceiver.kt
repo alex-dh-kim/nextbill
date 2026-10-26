@@ -7,6 +7,7 @@ import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import dev.lioracode.nextbill.core.domain.usecase.runCatchingNonCancellation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
@@ -36,6 +37,8 @@ class NextBillWidgetReceiver : GlanceAppWidgetReceiver() {
     }
 }
 
+// ATOMIC: 시작 전에 취소돼도 본문이 실행되어 finally의 finish()가 반드시 불립니다(goAsync 결과를 남기지 않기 위해).
+@OptIn(DelicateCoroutinesApi::class)
 internal fun scheduleWithin(
     scope: CoroutineScope,
     scheduleNext: suspend () -> Unit,

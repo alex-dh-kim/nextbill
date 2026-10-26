@@ -13,6 +13,7 @@ import dev.lioracode.nextbill.core.notifications.HiltBroadcastReceiver
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
@@ -56,6 +57,8 @@ class MidnightRefreshReceiver : HiltBroadcastReceiver() {
  * [recomputeDate] → [scheduleNext] → [refresh] 순서입니다. [scheduleNext]를 [refresh]보다 먼저 부르므로
  * [refresh]가 멈추거나 실패해도 다음 자정 알람은 남습니다.
  */
+// ATOMIC: 시작 전에 취소돼도 본문이 실행되어 finally의 finish()가 반드시 불립니다(goAsync 결과를 남기지 않기 위해).
+@OptIn(DelicateCoroutinesApi::class)
 internal fun handleMidnight(
     scope: CoroutineScope,
     recomputeDate: () -> Unit,

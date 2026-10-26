@@ -43,6 +43,8 @@
 ./gradlew verifyRoborazziDebug     # 기준 이미지는 로컬에서 recordRoborazziDebug로 찍음
 ```
 - JDK 17을 씁니다.
+- Kotlin 컴파일러 경고(main·test)와 Android Lint 경고는 빌드 실패입니다. 경고를 남길 때는 그 자리에 `@Suppress`·`@OptIn`·`tools:ignore`를 이유와 함께 답니다.
+- spotless가 `NoClassDefFoundError`(ktlint `EditorConfigDefaults`)로 실패하면 코드 문제가 아니라 daemon 문제입니다. `./gradlew --stop` 후 다시 실행합니다.
 - CI는 두지 않습니다. 커밋 지점마다 위 명령 전체를 로컬에서 실행합니다(ADR-0011).
 - `.claude/settings.json` hook: `.kt`/`.kts` 수정 후 그 파일만 `spotlessApply`, 작업 종료 시 `scripts/test-changed.sh`가 바뀐 모듈의 테스트를 실행합니다.
 

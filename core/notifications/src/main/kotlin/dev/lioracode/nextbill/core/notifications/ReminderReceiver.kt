@@ -12,6 +12,7 @@ import dev.lioracode.nextbill.core.domain.usecase.runCatchingNonCancellation
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
@@ -55,6 +56,8 @@ class ReminderReceiver : HiltBroadcastReceiver() {
  * [deliver]의 취소 아닌 예외는 밖으로 나가지 않고, 어떤 경우에도 [requestRefresh] 뒤 [finish]를 부릅니다.
  * `finally`에는 멈추지 않는 일만 둡니다.
  */
+// ATOMIC: 시작 전에 취소돼도 본문이 실행되어 finally의 finish()가 반드시 불립니다(goAsync 결과를 남기지 않기 위해).
+@OptIn(DelicateCoroutinesApi::class)
 internal fun handleReminderAlarm(
     scope: CoroutineScope,
     onAlarmFired: () -> Unit,
