@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">Settings</string>
+
+    <string name="settings_section_notifications">Notifications</string>
+    <string name="settings_default_days_before">Default reminder</string>
+    <string name="settings_default_time">Default reminder time</string>
+    <string name="settings_notification_status">Notification permission</string>
+    <string name="settings_notification_allowed">Allowed</string>
+    <string name="settings_notification_unavailable">Unavailable</string>
+
+    <string name="settings_section_display">Display</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dynamic_color">Use dynamic color</string>
+    <string name="settings_dynamic_color_hint">Match the app theme to your wallpaper</string>
+
+    <string name="settings_section_defaults">Defaults</string>
+    <string name="settings_default_currency">Default currency</string>
+
+    <string name="settings_section_data">Data</string>
+    <string name="settings_export">Export backup file</string>
+    <string name="settings_export_hint">If you choose a cloud app as the location, the file is saved there</string>
+    <string name="settings_import">Import backup file</string>
+    <string name="settings_import_hint">Replaces all current data</string>
+    <string name="settings_archive">Cancelled subscriptions</string>
+
+    <string name="settings_section_about">About</string>
+    <string name="settings_licenses">Open source licenses</string>
+    <string name="settings_app_version">App version</string>
+    <string name="settings_local_only">All data stays on this device</string>
+
+    <string name="settings_import_confirm_body">Import this backup file? All current data will be replaced.</string>
+    <string name="settings_import_confirm_ok">Import</string>
+    <string name="settings_dialog_ok">OK</string>
+    <string name="settings_dialog_cancel">Cancel</string>
+
+    <string name="settings_message_exported">Backup file saved</string>
+    <plurals name="settings_message_imported">
+        <item quantity="one">Imported %1$d subscription</item>
+        <item quantity="other">Imported %1$d subscriptions</item>
+    </plurals>
+    <string name="settings_message_import_malformed">Can\'t read this backup file</string>
+    <string name="settings_message_import_too_large">The file is too large</string>
+    <string name="settings_message_import_unsupported">This backup was made by a newer version of the app</string>
+    <string name="settings_message_import_staging_failed">Couldn\'t import. Please check your storage space</string>
+    <string name="settings_message_io_failed">Couldn\'t open the file</string>
+    <string name="settings_message_not_ready">Please try again in a moment</string>
+    <string name="settings_message_storage_failed">Couldn\'t save. Please try again</string>
+
+    <string name="licenses_title">Open source licenses</string>
+    <string name="licenses_back">Back</string>
+    <string name="licenses_close">Close</string>
+    <plurals name="licenses_artifact_count">
+        <item quantity="one">%1$d artifact</item>
+        <item quantity="other">%1$d artifacts</item>
+    </plurals>
+</resources>

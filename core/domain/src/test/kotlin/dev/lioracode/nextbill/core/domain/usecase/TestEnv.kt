@@ -108,7 +108,7 @@ class TestEnv(
     val restore get() = RestoreSubscriptionUseCase(repo, coordinator, refresher, dateSource)
     val delete get() = DeleteSubscriptionUseCase(repo, coordinator, refresher)
     val updateSettings get() = UpdateSettingsUseCase(settings, coordinator)
-    val export get() = ExportBackupUseCase(repo, settings, codec)
+    val export get() = ExportBackupUseCase(repo, settings, codec, coordinator)
     val import
         get() = ImportBackupUseCase(repo, settings, codec, staging, coordinator, sync, refresher)
 

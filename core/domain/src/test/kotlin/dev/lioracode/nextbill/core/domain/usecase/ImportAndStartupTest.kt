@@ -250,10 +250,48 @@ class ImportBackupUseCaseTest {
             listOf(netflix, phoneBill),
             initialSettings = darkSettings
         )
+        env.startup.start()
 
-        assertThat(env.export()).isEqualTo("fake-backup:2")
+        assertThat(env.export()).isEqualTo(Outcome.Ok("fake-backup:2"))
         assertThat(env.codec.lastEncoded)
             .isEqualTo(BackupSnapshot(listOf(netflix, phoneBill), darkSettings))
+    }
+
+    @Test fun exportWhileNotReadyIsRejected() = runTest {
+        val env = TestEnv(appScope(), listOf(netflix))
+
+        assertThat(env.export()).isEqualTo(Outcome.Err(ExportError.NotReady))
+        assertThat(env.codec.lastEncoded).isNull()
+    }
+
+    @Test fun exportReadFailureIsReported() = runTest {
+        val env = readyEnv(appScope())
+        env.repo.failNextGetAll = IOException("db")
+
+        assertThat(env.export()).isEqualTo(Outcome.Err(ExportError.ReadFailed))
+        assertThat(env.codec.lastEncoded).isNull()
+    }
+
+    @Test fun exportDuringImportSeesOnlyNewData() = runTest {
+        val env = readyEnv(appScope())
+        env.prepare(phoneOnly)
+        val gate = CompletableDeferred<Unit>()
+        env.repo.replaceAllGate = gate
+        val importing = async { env.import("json") }
+        env.repo.replaceAllEntered.await()
+
+        // 가져오기가 구독만 바꾸고 설정은 아직인 시점에 내보내기를 시작합니다.
+        val exporting = async { env.export() }
+        advanceUntilIdle()
+        assertThat(exporting.isCompleted).isFalse()
+        gate.complete(Unit)
+
+        assertThat(importing.await()).isEqualTo(Outcome.Ok(1))
+        assertThat(exporting.await()).isEqualTo(Outcome.Ok("fake-backup:1"))
+        val exported = env.codec.lastEncoded!!
+        assertThat(exported.subscriptions.withoutIds())
+            .isEqualTo(phoneOnly.subscriptions.withoutIds())
+        assertThat(exported.settings).isEqualTo(darkSettings)
     }
 }
 

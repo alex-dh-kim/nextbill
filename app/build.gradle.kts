@@ -17,7 +17,7 @@ android {
 }
 
 dependencies {
-    // 조립: 저장소·알림·위젯 구현과 각 feature의 진입점(NavKey). feature impl은 Task 18~23에서 붙습니다.
+    // 조립: 저장소·알림·위젯 구현과 각 feature의 진입점(NavKey).
     implementation(projects.core.data)
     implementation(projects.core.notifications)
     implementation(projects.widget)
@@ -35,6 +35,7 @@ dependencies {
     implementation(projects.feature.archive.api)
     implementation(projects.feature.archive.impl)
     implementation(projects.feature.settings.api)
+    implementation(projects.feature.settings.impl)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

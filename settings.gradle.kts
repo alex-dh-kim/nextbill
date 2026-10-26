@@ -37,6 +37,7 @@ include(":core:datastore", ":core:data", ":core:notifications")
 include(":core:designsystem", ":core:ui", ":core:navigation")
 include(":feature:home:impl", ":feature:calendar:impl", ":feature:editor:impl")
 include(":feature:detail:impl", ":feature:archive:impl")
+include(":feature:settings:impl")
 include(":widget")
 include(
     ":feature:home:api",

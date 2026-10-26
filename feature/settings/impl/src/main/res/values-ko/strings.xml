@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_title">설정</string>
+
+    <string name="settings_section_notifications">알림</string>
+    <string name="settings_default_days_before">기본 알림 시점</string>
+    <string name="settings_default_time">기본 알림 시각</string>
+    <string name="settings_notification_status">알림 권한 상태</string>
+    <string name="settings_notification_allowed">허용됨</string>
+    <string name="settings_notification_unavailable">받을 수 없어요</string>
+
+    <string name="settings_section_display">화면</string>
+    <string name="settings_theme">테마 설정</string>
+    <string name="settings_theme_system">시스템 설정</string>
+    <string name="settings_theme_light">라이트</string>
+    <string name="settings_theme_dark">다크</string>
+    <string name="settings_dynamic_color">동적 색상 사용</string>
+    <string name="settings_dynamic_color_hint">기기 배경화면 색상에 맞춰 앱 테마 적용</string>
+
+    <string name="settings_section_defaults">기본값</string>
+    <string name="settings_default_currency">기본 통화</string>
+
+    <string name="settings_section_data">데이터</string>
+    <string name="settings_export">백업 파일 내보내기</string>
+    <string name="settings_export_hint">저장 위치를 클라우드 앱으로 고르면 그곳에 저장돼요</string>
+    <string name="settings_import">백업 파일 가져오기</string>
+    <string name="settings_import_hint">현재 데이터가 모두 바뀌어요</string>
+    <string name="settings_archive">해지한 구독</string>
+
+    <string name="settings_section_about">정보</string>
+    <string name="settings_licenses">오픈소스 라이선스</string>
+    <string name="settings_app_version">앱 버전</string>
+    <string name="settings_local_only">모든 데이터는 이 기기에만 저장돼요</string>
+
+    <string name="settings_import_confirm_body">백업 파일을 가져올까요? 현재 데이터가 모두 바뀌어요.</string>
+    <string name="settings_import_confirm_ok">가져오기</string>
+    <string name="settings_dialog_ok">확인</string>
+    <string name="settings_dialog_cancel">취소</string>
+
+    <string name="settings_message_exported">백업 파일을 저장했어요</string>
+    <plurals name="settings_message_imported">
+        <item quantity="other">%1$d개 구독을 가져왔어요</item>
+    </plurals>
+    <string name="settings_message_import_malformed">백업 파일을 읽을 수 없어요</string>
+    <string name="settings_message_import_too_large">파일이 너무 커요</string>
+    <string name="settings_message_import_unsupported">새 버전 앱에서 만든 백업이라 가져올 수 없어요</string>
+    <string name="settings_message_import_staging_failed">가져오지 못했어요. 저장 공간을 확인해 주세요</string>
+    <string name="settings_message_io_failed">파일을 열 수 없어요</string>
+    <string name="settings_message_not_ready">잠시 후 다시 시도해 주세요</string>
+    <string name="settings_message_storage_failed">저장하지 못했어요. 다시 시도해 주세요</string>
+
+    <string name="licenses_title">오픈소스 라이선스</string>
+    <string name="licenses_back">뒤로 가기</string>
+    <string name="licenses_close">닫기</string>
+    <plurals name="licenses_artifact_count">
+        <item quantity="other">아티팩트 %1$d개</item>
+    </plurals>
+</resources>

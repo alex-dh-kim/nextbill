@@ -1,0 +1,202 @@
+{
+ "entries": [
+  {
+   "name": "Kotlin Standard Library",
+   "artifact": "org.jetbrains.kotlin:kotlin-stdlib",
+   "license": "Apache-2.0",
+   "url": "https://github.com/JetBrains/kotlin"
+  },
+  {
+   "name": "Kotlin Coroutines (Core)",
+   "artifact": "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+   "license": "Apache-2.0",
+   "url": "https://github.com/Kotlin/kotlinx.coroutines"
+  },
+  {
+   "name": "Kotlin Coroutines (Android)",
+   "artifact": "org.jetbrains.kotlinx:kotlinx-coroutines-android",
+   "license": "Apache-2.0",
+   "url": "https://github.com/Kotlin/kotlinx.coroutines"
+  },
+  {
+   "name": "Kotlin Serialization (Core)",
+   "artifact": "org.jetbrains.kotlinx:kotlinx-serialization-core",
+   "license": "Apache-2.0",
+   "url": "https://github.com/Kotlin/kotlinx.serialization"
+  },
+  {
+   "name": "Kotlin Serialization (JSON)",
+   "artifact": "org.jetbrains.kotlinx:kotlinx-serialization-json",
+   "license": "Apache-2.0",
+   "url": "https://github.com/Kotlin/kotlinx.serialization"
+  },
+  {
+   "name": "AndroidX Activity Compose",
+   "artifact": "androidx.activity:activity-compose",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/activity"
+  },
+  {
+   "name": "Jetpack Compose Foundation",
+   "artifact": "androidx.compose.foundation:foundation",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation"
+  },
+  {
+   "name": "Jetpack Compose Material 3",
+   "artifact": "androidx.compose.material3:material3",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3"
+  },
+  {
+   "name": "Jetpack Compose UI",
+   "artifact": "androidx.compose.ui:ui",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui"
+  },
+  {
+   "name": "Jetpack Compose UI Tooling Preview",
+   "artifact": "androidx.compose.ui:ui-tooling-preview",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui"
+  },
+  {
+   "name": "AndroidX Core KTX",
+   "artifact": "androidx.core:core-ktx",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/core"
+  },
+  {
+   "name": "AndroidX Core Splashscreen",
+   "artifact": "androidx.core:core-splashscreen",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/core"
+  },
+  {
+   "name": "AndroidX DataStore Preferences",
+   "artifact": "androidx.datastore:datastore-preferences",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/datastore"
+  },
+  {
+   "name": "Jetpack Glance App Widget",
+   "artifact": "androidx.glance:glance-appwidget",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/glance"
+  },
+  {
+   "name": "Jetpack Glance Material 3",
+   "artifact": "androidx.glance:glance-material3",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/glance"
+  },
+  {
+   "name": "AndroidX Hilt Lifecycle ViewModel Compose",
+   "artifact": "androidx.hilt:hilt-lifecycle-viewmodel-compose",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/hilt"
+  },
+  {
+   "name": "AndroidX Lifecycle Process",
+   "artifact": "androidx.lifecycle:lifecycle-process",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle"
+  },
+  {
+   "name": "AndroidX Lifecycle Runtime Compose",
+   "artifact": "androidx.lifecycle:lifecycle-runtime-compose",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle"
+  },
+  {
+   "name": "AndroidX Lifecycle ViewModel Compose",
+   "artifact": "androidx.lifecycle:lifecycle-viewmodel-compose",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle"
+  },
+  {
+   "name": "AndroidX Lifecycle ViewModel Navigation 3",
+   "artifact": "androidx.lifecycle:lifecycle-viewmodel-navigation3",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle"
+  },
+  {
+   "name": "Jetpack Navigation 3 Runtime",
+   "artifact": "androidx.navigation3:navigation3-runtime",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/navigation3"
+  },
+  {
+   "name": "Jetpack Navigation 3 UI",
+   "artifact": "androidx.navigation3:navigation3-ui",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/navigation3"
+  },
+  {
+   "name": "Room Runtime",
+   "artifact": "androidx.room:room-runtime",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx/releases/room"
+  },
+  {
+   "name": "Dagger",
+   "artifact": "com.google.dagger:dagger",
+   "license": "Apache-2.0",
+   "url": "https://github.com/google/dagger"
+  },
+  {
+   "name": "Hilt Android",
+   "artifact": "com.google.dagger:hilt-android",
+   "license": "Apache-2.0",
+   "url": "https://github.com/google/dagger"
+  },
+  {
+   "name": "javax.inject",
+   "artifact": "javax.inject:javax.inject",
+   "license": "Apache-2.0",
+   "url": "https://github.com/javax-inject/javax-inject"
+  },
+  {
+   "name": "Pretendard",
+   "artifact": "github.com/orioncactus/pretendard (Pretendard 400, 500, 600, 700)",
+   "license": "OFL-1.1",
+   "url": "https://github.com/orioncactus/pretendard"
+  },
+  {
+   "name": "Material Symbols",
+   "artifact": "github.com/google/material-design-icons@10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7 (symbols/web, outlined)",
+   "license": "Apache-2.0",
+   "url": "https://github.com/google/material-design-icons"
+  },
+  {
+   "name": "Protocol Buffers (copy bundled in DataStore)",
+   "artifact": "androidx.datastore:datastore-preferences-external-protobuf",
+   "license": "BSD-3-Clause",
+   "url": "https://github.com/protocolbuffers/protobuf"
+  },
+  {
+   "name": "Protocol Buffers (copy bundled in Glance)",
+   "artifact": "androidx.glance:glance-appwidget-external-protobuf",
+   "license": "BSD-3-Clause",
+   "url": "https://github.com/protocolbuffers/protobuf"
+  },
+  {
+   "name": "Jakarta Dependency Injection",
+   "artifact": "jakarta.inject:jakarta.inject-api",
+   "license": "Apache-2.0",
+   "url": "https://github.com/eclipse-ee4j/injection-api",
+   "notice": "# Notices for Eclipse Jakarta Dependency Injection\n\nThis content is produced and maintained by the Eclipse Jakarta Dependency Injection project.\n\n* Project home: https://projects.eclipse.org/projects/cdi.batch\n\n## Trademarks\n\nJakarta Dependency Injection is a trademark of the Eclipse Foundation.\n\n## Copyright\n\nAll content is the property of the respective authors or their employers. For\nmore information regarding authorship of content, please consult the listed\nsource code repository logs.\n\n## Declared Project Licenses\n\nThis program and the accompanying materials are made available under the terms\nof the Apache License, Version 2.0 which is available at\nhttps://www.apache.org/licenses/LICENSE-2.0.\n\nSPDX-License-Identifier: Apache-2.0\n\n## Source Code\n\nThe project maintains the following source code repositories:\n\nhttps://github.com/eclipse-ee4j/injection-api\nhttps://github.com/eclipse-ee4j/injection-spec\nhttps://github.com/eclipse-ee4j/injection-tck\n\n## Third-party Content\n\nThis project leverages the following third party content.\n\nNone\n\n## Cryptography\n\nNone"
+  },
+  {
+   "name": "AndroidX and other transitive dependencies",
+   "artifact": "androidx.activity:activity\nandroidx.activity:activity-ktx\nandroidx.annotation:annotation\nandroidx.annotation:annotation-experimental\nandroidx.annotation:annotation-jvm\nandroidx.appcompat:appcompat-resources\nandroidx.arch.core:core-common\nandroidx.arch.core:core-runtime\nandroidx.autofill:autofill\nandroidx.collection:collection\nandroidx.collection:collection-jvm\nandroidx.collection:collection-ktx\nandroidx.compose.animation:animation\nandroidx.compose.animation:animation-android\nandroidx.compose.animation:animation-core\nandroidx.compose.animation:animation-core-android\nandroidx.compose.foundation:foundation-android\nandroidx.compose.foundation:foundation-layout\nandroidx.compose.foundation:foundation-layout-android\nandroidx.compose.material3:material3-android\nandroidx.compose.material:material-ripple\nandroidx.compose.material:material-ripple-android\nandroidx.compose.runtime:runtime\nandroidx.compose.runtime:runtime-android\nandroidx.compose.runtime:runtime-annotation\nandroidx.compose.runtime:runtime-annotation-android\nandroidx.compose.runtime:runtime-retain\nandroidx.compose.runtime:runtime-retain-android\nandroidx.compose.runtime:runtime-saveable\nandroidx.compose.runtime:runtime-saveable-android\nandroidx.compose.ui:ui-android\nandroidx.compose.ui:ui-geometry\nandroidx.compose.ui:ui-geometry-android\nandroidx.compose.ui:ui-graphics\nandroidx.compose.ui:ui-graphics-android\nandroidx.compose.ui:ui-text\nandroidx.compose.ui:ui-text-android\nandroidx.compose.ui:ui-tooling-preview-android\nandroidx.compose.ui:ui-unit\nandroidx.compose.ui:ui-unit-android\nandroidx.compose.ui:ui-util\nandroidx.compose.ui:ui-util-android\nandroidx.compose:compose-bom\nandroidx.concurrent:concurrent-futures\nandroidx.concurrent:concurrent-futures-ktx\nandroidx.core:core\nandroidx.core:core-remoteviews\nandroidx.core:core-viewtree\nandroidx.customview:customview\nandroidx.customview:customview-poolingcontainer\nandroidx.datastore:datastore\nandroidx.datastore:datastore-android\nandroidx.datastore:datastore-core\nandroidx.datastore:datastore-core-android\nandroidx.datastore:datastore-core-okio\nandroidx.datastore:datastore-core-okio-jvm\nandroidx.datastore:datastore-preferences-android\nandroidx.datastore:datastore-preferences-core\nandroidx.datastore:datastore-preferences-core-android\nandroidx.datastore:datastore-preferences-proto\nandroidx.emoji2:emoji2\nandroidx.fragment:fragment\nandroidx.glance:glance\nandroidx.glance:glance-appwidget-proto\nandroidx.graphics:graphics-path\nandroidx.hilt:hilt-lifecycle-viewmodel\nandroidx.interpolator:interpolator\nandroidx.lifecycle:lifecycle-common\nandroidx.lifecycle:lifecycle-common-java8\nandroidx.lifecycle:lifecycle-common-jvm\nandroidx.lifecycle:lifecycle-livedata\nandroidx.lifecycle:lifecycle-livedata-core\nandroidx.lifecycle:lifecycle-livedata-core-ktx\nandroidx.lifecycle:lifecycle-runtime\nandroidx.lifecycle:lifecycle-runtime-android\nandroidx.lifecycle:lifecycle-runtime-compose-android\nandroidx.lifecycle:lifecycle-runtime-ktx\nandroidx.lifecycle:lifecycle-runtime-ktx-android\nandroidx.lifecycle:lifecycle-service\nandroidx.lifecycle:lifecycle-viewmodel\nandroidx.lifecycle:lifecycle-viewmodel-android\nandroidx.lifecycle:lifecycle-viewmodel-compose-android\nandroidx.lifecycle:lifecycle-viewmodel-ktx\nandroidx.lifecycle:lifecycle-viewmodel-navigation3-android\nandroidx.lifecycle:lifecycle-viewmodel-savedstate\nandroidx.lifecycle:lifecycle-viewmodel-savedstate-android\nandroidx.loader:loader\nandroidx.navigation3:navigation3-runtime-android\nandroidx.navigation3:navigation3-ui-android\nandroidx.navigationevent:navigationevent\nandroidx.navigationevent:navigationevent-android\nandroidx.navigationevent:navigationevent-compose\nandroidx.navigationevent:navigationevent-compose-android\nandroidx.profileinstaller:profileinstaller\nandroidx.room:room-common\nandroidx.room:room-common-jvm\nandroidx.room:room-runtime-android\nandroidx.savedstate:savedstate\nandroidx.savedstate:savedstate-android\nandroidx.savedstate:savedstate-compose\nandroidx.savedstate:savedstate-compose-android\nandroidx.savedstate:savedstate-ktx\nandroidx.sqlite:sqlite\nandroidx.sqlite:sqlite-android\nandroidx.sqlite:sqlite-framework\nandroidx.sqlite:sqlite-framework-android\nandroidx.startup:startup-runtime\nandroidx.tracing:tracing\nandroidx.tracing:tracing-android\nandroidx.vectordrawable:vectordrawable\nandroidx.vectordrawable:vectordrawable-animated\nandroidx.versionedparcelable:versionedparcelable\nandroidx.viewpager:viewpager\nandroidx.window:window\nandroidx.window:window-core\nandroidx.window:window-core-android\nandroidx.work:work-runtime\nandroidx.work:work-runtime-ktx\ncom.google.code.findbugs:jsr305\ncom.google.dagger:dagger-lint-aar\ncom.google.dagger:hilt-core\ncom.google.guava:listenablefuture\ncom.squareup.okio:okio\ncom.squareup.okio:okio-jvm\norg.jetbrains.kotlinx:atomicfu\norg.jetbrains.kotlinx:atomicfu-jvm\norg.jetbrains.kotlinx:kotlinx-coroutines-bom\norg.jetbrains.kotlinx:kotlinx-coroutines-core-jvm\norg.jetbrains.kotlinx:kotlinx-serialization-bom\norg.jetbrains.kotlinx:kotlinx-serialization-core-jvm\norg.jetbrains.kotlinx:kotlinx-serialization-json-jvm\norg.jetbrains:annotations\norg.jspecify:jspecify",
+   "license": "Apache-2.0",
+   "url": "https://developer.android.com/jetpack/androidx"
+  }
+ ],
+ "texts": {
+  "Apache-2.0": "                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS",
+  "OFL-1.1": "Copyright (c) 2021, Kil Hyung-jin (https://github.com/orioncactus/pretendard),\nwith Reserved Font Name Pretendard.\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttps://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.",
+  "BSD-3-Clause": "Copyright 2008 Google Inc.  All rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n    * Redistributions of source code must retain the above copyright\nnotice, this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above\ncopyright notice, this list of conditions and the following disclaimer\nin the documentation and/or other materials provided with the\ndistribution.\n    * Neither the name of the copyright holder nor the names of its\ncontributors may be used to endorse or promote products derived from\nthis software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\nLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\nA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\nHOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\nLIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\nDATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\nTHEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+ }
+}

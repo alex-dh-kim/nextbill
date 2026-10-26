@@ -8,15 +8,17 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import dev.lioracode.nextbill.feature.archive.api.ArchiveNavKey
-import dev.lioracode.nextbill.feature.settings.api.SettingsNavKey
+import androidx.compose.ui.test.performScrollTo
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-/** 실제 화면(해지한 구독)의 영어 제목. 기본 로케일로 돌립니다. */
-private const val ARCHIVE_TITLE = "Cancelled subscriptions"
+/** 실제 화면(설정·해지한 구독)의 영어 문구. 기본 로케일로 돌립니다. */
+private const val ARCHIVE_ROW = "Cancelled subscriptions"
+private const val ARCHIVE_NOTICE =
+    "Cancelled subscriptions are left out of upcoming payments and reminders"
+private const val LICENSES_ROW = "Open source licenses"
 
 /** 실제 Hilt 그래프(NextBillApplication)로 MainActivity를 띄웁니다. */
 @RunWith(RobolectricTestRunner::class)
@@ -32,17 +34,17 @@ class StateRestorationTest {
             compose.onAllNodes(settingsTab).fetchSemanticsNodes().isNotEmpty()
         }
         compose.onNode(settingsTab).performClick()
-        compose.onNodeWithText(openLabel(ArchiveNavKey)).performClick()
-        compose.onNodeWithText(ARCHIVE_TITLE).assertIsDisplayed()
+        compose.onNodeWithText(ARCHIVE_ROW).performScrollTo().performClick()
+        compose.onNodeWithText(ARCHIVE_NOTICE).assertIsDisplayed()
 
         compose.activityRule.scenario.recreate()
 
-        compose.onNodeWithText(ARCHIVE_TITLE).assertIsDisplayed()
+        compose.onNodeWithText(ARCHIVE_NOTICE).assertIsDisplayed()
         compose.onNodeWithTag(BOTTOM_BAR_TAG).assertDoesNotExist()
 
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
 
-        compose.onNodeWithText(SettingsNavKey.toString()).assertIsDisplayed()
+        compose.onNodeWithText(LICENSES_ROW).performScrollTo().assertIsDisplayed()
         compose.onNode(settingsTab).assertIsSelected()
     }
 }

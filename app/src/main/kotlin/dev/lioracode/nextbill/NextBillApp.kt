@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
@@ -43,6 +42,7 @@ import dev.lioracode.nextbill.feature.home.api.HomeNavKey
 import dev.lioracode.nextbill.feature.home.impl.homeEntry
 import dev.lioracode.nextbill.feature.settings.api.LicensesNavKey
 import dev.lioracode.nextbill.feature.settings.api.SettingsNavKey
+import dev.lioracode.nextbill.feature.settings.impl.settingsEntry
 
 internal const val BOTTOM_BAR_TAG = "bottomBar"
 
@@ -100,14 +100,14 @@ internal fun NextBillApp(
     }
 }
 
-/** 홈·캘린더·편집·상세·해지 목록이 실제 화면입니다. Task 23에서 남은 자리표시자가 `xxxEntry(navigator)`로 바뀝니다. */
+/** 모든 화면의 실제 진입점. */
 internal fun appEntries(navigator: Navigator) = entryProvider<NavKey> {
     homeEntry(navigator)
     calendarEntry(navigator)
     editorEntry(navigator)
     detailEntry(navigator)
     archiveEntry(navigator)
-    placeholders(navigator)
+    settingsEntry(navigator)
 }
 
 /** Hilt 없이 앱 셸을 시험하기 위한 전부 자리표시자인 진입점(홈 포함). */
@@ -117,10 +117,6 @@ internal fun placeholderEntries(navigator: Navigator) = entryProvider<NavKey> {
     entry<EditorNavKey> { Placeholder(it, navigator) }
     entry<DetailNavKey> { Placeholder(it, navigator, EditorNavKey(it.subscriptionId)) }
     entry<ArchiveNavKey> { Placeholder(it, navigator, DetailNavKey(1)) }
-    placeholders(navigator)
-}
-
-private fun EntryProviderScope<NavKey>.placeholders(navigator: Navigator) {
     entry<SettingsNavKey> { Placeholder(it, navigator, ArchiveNavKey, LicensesNavKey) }
     entry<LicensesNavKey> { Placeholder(it, navigator) }
 }

@@ -38,6 +38,9 @@ class FakeSubscriptionRepository(initial: List<Subscription> = emptyList()) :
 
     @Volatile var failNextDelete: Throwable? = null
 
+    /** 설정하면 다음 [getAll] 한 번을 이 오류로 실패시킵니다. */
+    @Volatile var failNextGetAll: Throwable? = null
+
     private val replaceAllFailure = CountedFailure()
 
     /** 다음 [failNextReplaceAllTimes]번의 [replaceAll]을 이 오류로 실패시킵니다(데이터·세대는 그대로). */
@@ -106,6 +109,10 @@ class FakeSubscriptionRepository(initial: List<Subscription> = emptyList()) :
     override suspend fun getAll(): List<Subscription> {
         getAllCalls.incrementAndGet()
         pause()
+        failNextGetAll?.let {
+            failNextGetAll = null
+            throw it
+        }
         return state.value.values.sortedBy { it.id.value }
     }
 

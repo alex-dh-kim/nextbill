@@ -29,6 +29,9 @@ class FakeSettingsRepository(initial: UserSettings = UserSettings.DEFAULT) : Set
             replaceFailure.times = value
         }
 
+    /** 설정하면 다음 [update] 한 번을 이 오류로 실패시킵니다. */
+    @Volatile var failNextUpdate: Throwable? = null
+
     private val replaceCounter = AtomicInteger()
     val replaceCount: Int get() = replaceCounter.get()
 
@@ -36,6 +39,10 @@ class FakeSettingsRepository(initial: UserSettings = UserSettings.DEFAULT) : Set
     val current: UserSettings get() = state.value
 
     override suspend fun update(transform: (UserSettings) -> UserSettings) {
+        failNextUpdate?.let {
+            failNextUpdate = null
+            throw it
+        }
         state.update { transform(it) }
     }
 
