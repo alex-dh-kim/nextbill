@@ -22,6 +22,9 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureAndroidCommon(this)
                 defaultConfig.targetSdk = AndroidSdk.TARGET
                 testOptions.unitTests.isIncludeAndroidResources = true
+                // 의존 모듈의 lint 분석을 :app:lintDebug에 묶습니다. JVM 모듈(core:model·core:domain)의
+                // NewApi는 Lint가 검사하지 않고, 그 분석 앞에 붙은 checkAndroidApi가 검사합니다(AndroidApiCheck.kt).
+                lint.checkDependencies = true
             }
 
             dependencies {

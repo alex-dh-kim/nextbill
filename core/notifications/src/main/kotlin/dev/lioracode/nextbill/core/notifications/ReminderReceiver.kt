@@ -19,7 +19,7 @@ import kotlinx.coroutines.withTimeout
 
 internal const val DELIVERY_BUDGET_MS = 8_000L
 
-private const val TAG = "ReminderReceiver"
+private const val TAG = "NextBill"
 
 /**
  * 알람 수신. 처리는 모두 use case에 맡깁니다. 시간 제한을 넘기면 취소되고, 소비하지 않은 기록은 남으며

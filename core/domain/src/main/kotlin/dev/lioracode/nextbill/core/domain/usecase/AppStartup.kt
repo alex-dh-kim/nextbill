@@ -2,6 +2,7 @@ package dev.lioracode.nextbill.core.domain.usecase
 
 import dev.lioracode.nextbill.core.domain.backup.BackupCodec
 import dev.lioracode.nextbill.core.domain.backup.ImportStaging
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.repository.SettingsRepository
 import dev.lioracode.nextbill.core.domain.repository.SubscriptionRepository
 import dev.lioracode.nextbill.core.model.Outcome
@@ -24,7 +25,8 @@ class AppStartup @Inject constructor(
     private val codec: BackupCodec,
     private val staging: ImportStaging,
     private val sync: SyncRemindersUseCase,
-    private val refresher: DerivedStateRefresher
+    private val refresher: DerivedStateRefresher,
+    private val reporter: FailureReporter
 ) {
     val state: StateFlow<StartupState> = coordinator.state
 
@@ -36,10 +38,16 @@ class AppStartup @Inject constructor(
         coordinator.recovery {
             withContext(NonCancellable) {
                 runCatchingNonCancellation { recover() }
-                    .onFailure { setState(StartupState.RecoveryFailed) } // staging은 그대로
+                    .onFailure {
+                        reporter.report("startup recovery", it)
+                        setState(StartupState.RecoveryFailed) // staging은 그대로
+                    }
             }
             // 실패해도 Ready를 유지합니다. 알람은 다음 sync가 다시 시도합니다.
-            if (coordinator.state.value == StartupState.Ready) runCatchingNonCancellation { sync() }
+            if (coordinator.state.value == StartupState.Ready) {
+                runCatchingNonCancellation { sync() }
+                    .onFailure { reporter.report("startup sync", it) }
+            }
         }
         refresher.request()
     }
@@ -63,7 +71,8 @@ class AppStartup @Inject constructor(
                 setGeneration(revision)
                 setState(StartupState.Ready)
                 runCatchingNonCancellation { sync() }
-            }
+                    .onFailure { reporter.report("discard import sync", it) }
+            }.onFailure { reporter.report("discard import", it) }
         }
         refresher.request()
     }

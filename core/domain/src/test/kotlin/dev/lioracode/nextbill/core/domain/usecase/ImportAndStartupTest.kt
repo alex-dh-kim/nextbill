@@ -313,6 +313,19 @@ class AppStartupTest {
         env.startup.start()
 
         assertThat(env.startup.state.value).isEqualTo(StartupState.RecoveryFailed)
+        assertThat(env.failures.map { it.first }).containsExactly("startup recovery")
+    }
+
+    /** 첫 sync의 실패(예: 기기에 없는 API의 NoSuchMethodError)도 삼키되 알립니다. */
+    @Test fun startupSyncFailureIsReported() = runTest {
+        val env = TestEnv(appScope(), listOf(netflix))
+        env.scheduled.failNextPut = NoSuchMethodError("LocalDate.ofInstant")
+
+        env.startup.start()
+
+        assertThat(env.startup.state.value).isEqualTo(StartupState.Ready)
+        assertThat(env.failures.first().first).isEqualTo("startup sync")
+        assertThat(env.failures.first().second).isInstanceOf(NoSuchMethodError::class.java)
     }
 
     @Test fun startupRecoveringThenReady() = runTest {

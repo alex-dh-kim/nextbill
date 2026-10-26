@@ -6,7 +6,6 @@ package dev.lioracode.nextbill.core.domain.reminder
 import dev.lioracode.nextbill.core.model.Subscription
 import dev.lioracode.nextbill.core.model.SubscriptionId
 import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 
 /** 예약 기록(DB)에 적용할 변경. */
@@ -27,7 +26,7 @@ fun reconcile(
     now: Instant,
     zone: ZoneId
 ): List<ReminderRecordAction> {
-    val today = LocalDate.ofInstant(now, zone)
+    val today = now.atZone(zone).toLocalDate()
     val forSubscriptions = subscriptions.mapNotNull { sub ->
         val existing = scheduled[sub.id]
         val desired = sub.nextReminder(now, zone)

@@ -7,7 +7,6 @@ import dev.lioracode.nextbill.core.domain.reminder.planShown
 import dev.lioracode.nextbill.core.domain.repository.ScheduledReminderRepository
 import dev.lioracode.nextbill.core.domain.repository.SubscriptionRepository
 import java.time.Clock
-import java.time.LocalDate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -49,7 +48,7 @@ class DeliverDueRemindersUseCase @Inject constructor(
     private suspend fun deliverLocked(): Int {
         val now = clock.instant()
         val zone = clock.zone
-        val today = LocalDate.ofInstant(now, zone)
+        val today = now.atZone(zone).toLocalDate()
         val due = dueReminders(scheduledRepo.getAll().values, now)
         if (due.isEmpty()) return 0
         val subs = repo.getAll().associateBy { it.id }

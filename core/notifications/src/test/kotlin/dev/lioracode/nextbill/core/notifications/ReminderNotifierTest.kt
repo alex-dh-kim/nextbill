@@ -20,6 +20,9 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 
+/** 정리 테스트에서 모든 구독이 남아 있고 해지되지 않았다고 볼 때. */
+private val ALL_IDS = (1L..20L).mapTo(HashSet()) { SubscriptionId(it) }
+
 @RunWith(RobolectricTestRunner::class)
 @Config(qualifiers = "ko")
 class ReminderNotifierTest {
@@ -119,8 +122,26 @@ class ReminderNotifierTest {
             listOf(single(1, billing = "2026-11-15"), single(2, billing = "2026-11-16")),
             d("2026-11-15")
         )
-        notifier.pruneExpired(today)
+        notifier.pruneExpired(today, ALL_IDS)
         assertThat(active().map { it.tag }).containsExactly("subscription-2")
+    }
+
+    @Test
+    fun pruneRemovesItemsOfDeletedOrCancelledSubscriptions() {
+        notifier.show(listOf(single(1), single(2)), today)
+        notifier.pruneExpired(today, setOf(SubscriptionId(2)))
+        assertThat(active().map { it.tag }).containsExactly("subscription-2")
+
+        notifier.show(listOf(summary(5, 6, 7, 8)), today)
+        notifier.pruneExpired(today, setOf(SubscriptionId(5), SubscriptionId(6)))
+        val n = active().single()
+        assertThat(n.tag).isEqualTo("summary")
+        assertThat(notifier.shown().map { it.subscriptionId.value }).containsExactly(5L, 6L)
+        assertThat(n.notification.isSilent()).isTrue()
+        assertThat(n.notification.text()).isEqualTo("구독5, 구독6")
+
+        notifier.pruneExpired(today, emptySet())
+        assertThat(active()).isEmpty()
     }
 
     @Test
@@ -192,7 +213,7 @@ class ReminderNotifierTest {
             sub(4, "구독4") to d("2026-11-21")
         )
         notifier.show(listOf(ReminderPost.Summary(items)), d("2026-11-15"))
-        notifier.pruneExpired(today)
+        notifier.pruneExpired(today, ALL_IDS)
         val n = active().single()
         assertThat(n.tag).isEqualTo("summary")
         assertThat(notifier.shown().map { it.subscriptionId.value }).containsExactly(3L, 4L)
@@ -204,14 +225,14 @@ class ReminderNotifierTest {
     @Test
     fun pruneCancelsSummaryWhenAllPast() {
         notifier.show(listOf(summary(1, 2, 3, 4, billing = "2026-11-15")), d("2026-11-15"))
-        notifier.pruneExpired(today)
+        notifier.pruneExpired(today, ALL_IDS)
         assertThat(active()).isEmpty()
     }
 
     @Test
     fun pruneLeavesFutureNotificationsUntouched() {
         notifier.show(listOf(single(1), summary(5, 6, 7, 8)), today)
-        notifier.pruneExpired(today)
+        notifier.pruneExpired(today, ALL_IDS)
         assertThat(active()).hasSize(2)
     }
 
@@ -310,7 +331,7 @@ class ReminderNotifierTest {
         lagging.freeze() // 이후 OS 목록은 [A,B,C,D]에 머뭅니다.
         val withE = rest + entryAt(5, "2026-11-20")
         lagNotifier.show(listOf(ReminderPost.Summary(withE)), d("2026-11-15"))
-        lagNotifier.pruneExpired(today)
+        lagNotifier.pruneExpired(today, ALL_IDS)
 
         val real = notifier.shown().map { it.subscriptionId.value }
         assertThat(real).containsExactly(2L, 3L, 4L, 5L)
@@ -362,7 +383,7 @@ class ReminderNotifierTest {
         deliver.show(listOf(summary(1, 2, 3, 4)), today)
         lagging.freeze()
         deliver.show(listOf(summary(1, 2, 3, 4, 5)), today)
-        refresher.pruneExpired(today)
+        refresher.pruneExpired(today, ALL_IDS)
         assertThat(
             notifier.shown().map {
                 it.subscriptionId.value

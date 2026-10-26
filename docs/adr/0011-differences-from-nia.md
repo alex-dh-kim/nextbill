@@ -19,6 +19,7 @@ NextBill은 Now in Android(커밋 `2982e63`, 이하 NiA)의 모듈 구조를 기
 - 설정은 Preferences DataStore입니다. NiA는 proto DataStore + protobuf 플러그인입니다.
 - protobuf를 직접 쓰지 않습니다. `releaseRuntimeClasspath`에 보이는 protobuf는 `androidx.datastore:datastore-preferences-external-protobuf:1.3.0`과 `androidx.glance:glance-appwidget-external-protobuf:1.2.0`, 즉 DataStore·Glance가 내장한 사본입니다(Task 25 `dependencyInsight`로 확인). 라이선스는 `licenses.json`에 BSD-3-Clause 개별 항목으로 둡니다.
 - 의존 규칙은 `checkModuleRules` 태스크로 빌드가 강제합니다(Task 2).
+- JVM 모듈에도 NiA처럼 `com.android.lint`를 적용하고 app은 `lint { checkDependencies = true }`입니다. NiA와 달리 JVM 모듈의 NewApi는 `checkAndroidApi`가 SDK `api-versions.xml`로 검사합니다(ADR-0002).
 - Robolectric sandbox SDK를 34로 고정합니다(`nextbill.android.library`·`.application`이 단위 테스트 리소스에 `robolectric.properties`를 생성). Robolectric 4.17은 SDK 35+에 Java 21을 요구하고, 빌드 JDK는 17로 정했기 때문입니다(Global Constraints). API 35/36 동작은 에뮬레이터 직접 확인으로 다룹니다(설계 문서 §9.2). NiA는 CI를 Java 21로 돌립니다.
 - Spotless는 루트 `build.gradle.kts`에서 모든 프로젝트에 적용하고, 라이선스 헤더를 넣지 않습니다. NiA는 convention plugin마다 적용하고 Apache 헤더를 넣습니다.
 - NiA의 Firebase, flavor, Jacoco, baseline profile, dependency-guard, 관리형 기기 설정은 옮기지 않았습니다.

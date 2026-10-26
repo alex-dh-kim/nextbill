@@ -1,6 +1,7 @@
 package dev.lioracode.nextbill.core.domain.usecase
 
 import dev.lioracode.nextbill.core.domain.backup.BackupSnapshot
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.reminder.PlannedReminder
 import dev.lioracode.nextbill.core.domain.validation.SubscriptionDraft
 import dev.lioracode.nextbill.core.domain.validation.toDraft
@@ -47,7 +48,7 @@ class TestEnv(
     initialSettings: UserSettings = UserSettings.DEFAULT
 ) {
     val clock = MutableClock(now, SEOUL)
-    val dateSource = FakeCurrentDateSource(LocalDate.ofInstant(now, SEOUL))
+    val dateSource = FakeCurrentDateSource(now.atZone(SEOUL).toLocalDate())
     val repo = FakeSubscriptionRepository(subscriptions)
     val settings = FakeSettingsRepository(initialSettings)
     val scheduled = FakeScheduledReminderRepository(records)
@@ -57,6 +58,10 @@ class TestEnv(
     val dayChange = FakeDayChangeScheduler()
     val codec = FakeBackupCodec()
     val staging = FakeImportStaging()
+
+    /** 격리해 삼킨 실패(단계 이름 → 예외). */
+    val failures = java.util.Collections.synchronizedList(mutableListOf<Pair<String, Throwable>>())
+    private val reporter = FailureReporter { where, error -> failures += where to error }
 
     lateinit var coordinator: DataCoordinator
         private set
@@ -77,21 +82,24 @@ class TestEnv(
         sync = SyncRemindersUseCase(repo, scheduled, alarm, clock)
         refresher = DerivedStateRefresher(
             coordinator,
+            repo,
             sync,
             poster,
             widget,
             dayChange,
             dateSource,
+            reporter,
             scope
         )
-        startup = AppStartup(coordinator, repo, settings, codec, staging, sync, refresher)
+        startup =
+            AppStartup(coordinator, repo, settings, codec, staging, sync, refresher, reporter)
     }
 
-    val today: LocalDate get() = LocalDate.ofInstant(clock.instant(), SEOUL)
+    val today: LocalDate get() = clock.instant().atZone(SEOUL).toLocalDate()
 
     fun setNow(instant: Instant) {
         clock.instant = instant
-        dateSource.set(LocalDate.ofInstant(instant, SEOUL))
+        dateSource.set(instant.atZone(SEOUL).toLocalDate())
     }
 
     val deliver get() = DeliverDueRemindersUseCase(
@@ -107,7 +115,7 @@ class TestEnv(
     val cancel get() = CancelSubscriptionUseCase(repo, coordinator, refresher, dateSource)
     val restore get() = RestoreSubscriptionUseCase(repo, coordinator, refresher, dateSource)
     val delete get() = DeleteSubscriptionUseCase(repo, coordinator, refresher)
-    val updateSettings get() = UpdateSettingsUseCase(settings, coordinator)
+    val updateSettings get() = UpdateSettingsUseCase(settings, coordinator, refresher)
     val export get() = ExportBackupUseCase(repo, settings, codec, coordinator)
     val import
         get() = ImportBackupUseCase(repo, settings, codec, staging, coordinator, sync, refresher)

@@ -3,8 +3,11 @@
 package dev.lioracode.nextbill.core.domain.usecase
 
 import com.google.common.truth.Truth.assertThat
+import dev.lioracode.nextbill.core.domain.reminder.ReminderPost
+import dev.lioracode.nextbill.core.domain.reminder.tag
 import dev.lioracode.nextbill.core.model.Outcome
 import dev.lioracode.nextbill.core.model.SubscriptionId
+import dev.lioracode.nextbill.core.model.SubscriptionStatus
 import dev.lioracode.nextbill.core.testing.TestSubscriptions.netflix
 import dev.lioracode.nextbill.core.testing.TestSubscriptions.phoneBill
 import dev.lioracode.nextbill.core.testing.TestSubscriptions.youtube
@@ -128,5 +131,35 @@ class DerivedStateRefresherTest {
         assertThat(env.dayChange.count).isIn(1..2)
         assertThat(env.scheduled.snapshot.keys)
             .containsExactly(netflix.id, phoneBill.id, youtube.id)
+    }
+
+    /** 정리는 지난 결제일뿐 아니라 삭제·해지된 구독의 알림도 지웁니다(planShown과 같은 규칙). */
+    @Test fun pruneDropsNotificationsOfDeletedOrCancelledSubscriptions() = runTest {
+        val env = TestEnv(appScope(), listOf(netflix, phoneBill, youtube))
+        env.markReady()
+        val date = env.today.plusDays(3)
+        val posts = listOf(netflix, phoneBill, youtube).map { ReminderPost.Single(it, date) }
+        env.poster.show(posts, env.today)
+
+        env.repo.delete(netflix.id)
+        val ended = phoneBill.periods.map { it.copy(end = it.end ?: env.today) }
+        env.repo.upsert(phoneBill.copy(periods = ended))
+        check(env.repo.get(phoneBill.id)?.status == SubscriptionStatus.CANCELLED)
+        env.refresher.refreshNow()
+
+        assertThat(env.poster.active.keys).containsExactly(posts[2].tag)
+    }
+
+    /** 격리한 단계 실패는 Error까지 reporter에 알리고, 다음 단계는 그대로 실행합니다. */
+    @Test fun stepFailuresAreReported() = runTest {
+        val env = TestEnv(appScope())
+        env.markReady()
+        env.widget.failWith = NoSuchMethodError("LocalDate.ofInstant")
+
+        env.refresher.refreshNow()
+
+        assertThat(env.failures.map { it.first }).containsExactly("refresh widget")
+        assertThat(env.failures.single().second).isInstanceOf(NoSuchMethodError::class.java)
+        assertThat(env.dayChange.count).isEqualTo(1)
     }
 }

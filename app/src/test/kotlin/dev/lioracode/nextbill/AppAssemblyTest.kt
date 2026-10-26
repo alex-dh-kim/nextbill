@@ -52,7 +52,9 @@ class AppAssemblyTest {
         assertThat(listOf(reschedule.refresher, reschedule.scope)).doesNotContain(null)
 
         val midnight = MidnightRefreshReceiver().apply { onReceive(app, ignored) }
-        assertThat(listOf(midnight.widget, midnight.dayChange, midnight.scope)).doesNotContain(null)
+        assertThat(
+            listOf(midnight.refresher, midnight.dayChange, midnight.dateSource, midnight.scope)
+        ).doesNotContain(null)
     }
 
     @Test

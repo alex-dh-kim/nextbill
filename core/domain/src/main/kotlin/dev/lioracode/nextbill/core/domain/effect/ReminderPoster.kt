@@ -2,6 +2,7 @@ package dev.lioracode.nextbill.core.domain.effect
 
 import dev.lioracode.nextbill.core.domain.reminder.ReminderPost
 import dev.lioracode.nextbill.core.domain.reminder.ShownReminder
+import dev.lioracode.nextbill.core.model.SubscriptionId
 import java.time.LocalDate
 
 /**
@@ -22,8 +23,9 @@ interface ReminderPoster {
     fun show(posts: List<ReminderPost>, today: LocalDate)
 
     /**
-     * 결제일이 [today]보다 이른 Single은 취소하고, Summary는 지난 항목을 빼고 조용히 다시 게시합니다
-     * (0건이면 취소).
+     * 결제일이 [today]보다 이르거나 구독이 [showable]에 없는(삭제·해지된) 항목을 지웁니다. 그런 Single은
+     * 취소하고, Summary는 그 항목을 빼고 조용히 다시 게시합니다(0건이면 취소). [showable]은
+     * [dev.lioracode.nextbill.core.domain.reminder.showableIds]로 만듭니다.
      */
-    fun pruneExpired(today: LocalDate)
+    fun pruneExpired(today: LocalDate, showable: Set<SubscriptionId>)
 }

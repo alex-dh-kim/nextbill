@@ -12,7 +12,7 @@ import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
 
-private const val TAG = "NextBillWidgetReceiver"
+private const val TAG = "NextBill"
 internal const val WIDGET_SCHEDULE_BUDGET_MS = 8_000L
 
 /** 첫 위젯이 놓이면 자정 알람을 걸고, 마지막 위젯이 지워지면 취소합니다(위젯 유무는 스케줄러가 판단). */

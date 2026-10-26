@@ -23,6 +23,7 @@ import dev.lioracode.nextbill.feature.settings.impl.backup.BackupTooLargeExcepti
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Named
+import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -95,9 +96,10 @@ class SettingsViewModel @Inject constructor(
             is Outcome.Ok -> try {
                 withContext(io) { write(result.value) }
                 SettingsMessage.Exported
-            } catch (e: IOException) {
-                SettingsMessage.IoFailed
-            } catch (e: SecurityException) {
+            } catch (e: CancellationException) {
+                throw e // IllegalStateException의 하위 타입이라 먼저 다시 던집니다.
+            } catch (e: Exception) {
+                if (!e.isProviderFailure()) throw e
                 SettingsMessage.IoFailed
             }
         }
@@ -112,9 +114,10 @@ class SettingsViewModel @Inject constructor(
             withContext(io) { read() }
         } catch (e: BackupTooLargeException) {
             return@runBackup SettingsMessage.ImportTooLarge
-        } catch (e: IOException) {
-            return@runBackup SettingsMessage.IoFailed
-        } catch (e: SecurityException) {
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            if (!e.isProviderFailure()) throw e
             return@runBackup SettingsMessage.IoFailed
         }
         when (val result = importBackup(json)) {
@@ -175,5 +178,14 @@ class SettingsViewModel @Inject constructor(
         }
     }
 }
+
+/**
+ * 문서 제공자(SAF)가 읽기·쓰기에서 던질 수 있는 실패. IOException·SecurityException 말고도 잘못된 URI나
+ * 사라진 제공자에서 IllegalArgumentException·IllegalStateException이 납니다. 취소는 호출자가 먼저 거릅니다.
+ */
+private fun Exception.isProviderFailure(): Boolean = this is IOException ||
+    this is SecurityException ||
+    this is IllegalArgumentException ||
+    this is IllegalStateException
 
 private const val STOP_TIMEOUT_MS = 5_000L

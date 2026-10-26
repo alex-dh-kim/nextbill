@@ -57,6 +57,11 @@ fun planShown(
     return groupForPosting(merged.values.toList())
 }
 
+/** 화면에 알림을 남길 수 있는 구독(남아 있고 해지되지 않음). [planShown]·정리가 같은 규칙을 씁니다. */
+fun showableIds(subscriptions: Collection<Subscription>): Set<SubscriptionId> = subscriptions
+    .filter { it.status != SubscriptionStatus.CANCELLED }
+    .mapTo(HashSet()) { it.id }
+
 /**
  * 화면의 앱 알림을 구분하는 tag. Single은 구독마다, Summary는 하나입니다.
  * Stable contract: matches the tag of the posted Android notification; changing it orphans live notifications.

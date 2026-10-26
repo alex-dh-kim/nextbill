@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
 import dev.lioracode.nextbill.core.domain.backup.BackupError
 import dev.lioracode.nextbill.core.domain.backup.BackupSnapshot
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.usecase.AppStartup
 import dev.lioracode.nextbill.core.domain.usecase.DataCoordinator
 import dev.lioracode.nextbill.core.domain.usecase.DerivedStateRefresher
@@ -34,6 +35,7 @@ import dev.lioracode.nextbill.core.testing.sub
 import dev.lioracode.nextbill.feature.settings.impl.backup.BackupTooLargeException
 import java.io.IOException
 import java.time.LocalTime
+import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -66,24 +68,35 @@ class SettingsViewModelTest {
     )
     private val refresher = DerivedStateRefresher(
         coordinator,
+        repo,
         sync,
         FakeReminderPoster(),
         FakeWidgetUpdater(),
         FakeDayChangeScheduler(),
         FakeCurrentDateSource(d("2026-11-15")),
+        FailureReporter.None,
         appScope
     )
 
     @After fun tearDown() = appScope.cancel()
 
     private suspend fun TestScope.start() {
-        AppStartup(coordinator, repo, settings, codec, staging, sync, refresher).start()
+        AppStartup(
+            coordinator,
+            repo,
+            settings,
+            codec,
+            staging,
+            sync,
+            refresher,
+            FailureReporter.None
+        ).start()
         advanceUntilIdle()
     }
 
     private fun vm() = SettingsViewModel(
         settingsRepository = settings,
-        updateSettings = UpdateSettingsUseCase(settings, coordinator),
+        updateSettings = UpdateSettingsUseCase(settings, coordinator, refresher),
         exportBackup = ExportBackupUseCase(repo, settings, codec, coordinator),
         importBackup = ImportBackupUseCase(
             repo,
@@ -292,6 +305,35 @@ class SettingsViewModelTest {
         vm.observing {
             export { throw IOException("provider died") }
             assertThat(state.message).isEqualTo(SettingsMessage.IoFailed)
+            assertThat(state.backup).isEqualTo(BackupStatus.IDLE)
+        }
+    }
+
+    /** 제공자의 IllegalArgumentException·IllegalStateException도 IoFailed입니다. 취소는 메시지가 아닙니다. */
+    @Test
+    fun providerRuntimeFailuresMapToIoFailedButCancellationDoesNot() = runTest(main.dispatcher) {
+        start()
+        val vm = vm()
+        vm.observing {
+            val failures = listOf(
+                IllegalArgumentException("unknown uri"),
+                IllegalStateException("provider gone"),
+                SecurityException("revoked")
+            )
+            failures.forEach { failure ->
+                export { throw failure }
+                assertThat(state.message).isEqualTo(SettingsMessage.IoFailed)
+                messageShown()
+                import { throw failure }
+                assertThat(state.message).isEqualTo(SettingsMessage.IoFailed)
+                messageShown()
+            }
+
+            export { throw CancellationException("closed") }
+            assertThat(state.message).isNull()
+            assertThat(state.backup).isEqualTo(BackupStatus.IDLE)
+            import { throw CancellationException("closed") }
+            assertThat(state.message).isNull()
             assertThat(state.backup).isEqualTo(BackupStatus.IDLE)
         }
     }

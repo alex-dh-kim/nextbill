@@ -193,7 +193,7 @@ JDK 17, Android SDK(compileSdk 37)가 필요합니다.
 ./gradlew verifyRoborazziDebug                # 스크린샷 비교 (기준 이미지는 recordRoborazziDebug)
 ```
 
-**QA 결과:** 단위 테스트 602개(Robolectric 포함) + build-logic 테스트 8개, 실패 0. 위 전체 명령을 `clean`부터 로컬에서 실행해 `BUILD SUCCESSFUL`을 확인했습니다(2026-10-26). 에뮬레이터 직접 확인과 확인하지 못한 항목은 [`docs/qa/v1-checklist.md`](docs/qa/v1-checklist.md)에 있습니다.
+**QA 결과:** 단위 테스트 612개(Robolectric 포함) + build-logic 테스트 16개, 실패 0. 위 전체 명령을 `clean`부터 로컬에서 실행해 `BUILD SUCCESSFUL`을 확인했습니다(2026-10-26). 에뮬레이터 직접 확인과 확인하지 못한 항목은 [`docs/qa/v1-checklist.md`](docs/qa/v1-checklist.md)에 있습니다.
 
 ## 라이선스
 

@@ -1,6 +1,7 @@
 package dev.lioracode.nextbill
 
 import com.google.common.truth.Truth.assertThat
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.usecase.AppStartup
 import dev.lioracode.nextbill.core.domain.usecase.DataCoordinator
 import dev.lioracode.nextbill.core.domain.usecase.DerivedStateRefresher
@@ -51,11 +52,13 @@ class MainActivityViewModelTest {
             )
         val refresher = DerivedStateRefresher(
             coordinator,
+            repo,
             sync,
             FakeReminderPoster(),
             FakeWidgetUpdater(),
             FakeDayChangeScheduler(),
             FakeCurrentDateSource(LocalDate.parse("2026-11-10")),
+            FailureReporter.None,
             appScope
         )
         return AppStartup(
@@ -65,7 +68,8 @@ class MainActivityViewModelTest {
             FakeBackupCodec(),
             FakeImportStaging(),
             sync,
-            refresher
+            refresher,
+            FailureReporter.None
         )
     }
 

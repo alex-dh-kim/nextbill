@@ -10,6 +10,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import dev.lioracode.nextbill.core.domain.backup.MAX_BACKUP_CHARS
 import java.io.FileNotFoundException
 import java.io.IOException
+import kotlin.coroutines.cancellation.CancellationException
 
 /** SAF 파일 선택기(F9). 저장소 권한이 필요 없습니다. 사용자가 취소하면 아무 일도 하지 않습니다. */
 internal class BackupLaunchers(
@@ -45,7 +46,7 @@ internal fun rememberBackupLaunchers(
  * "wt"(잘라 내고 쓰기)로 엽니다. Android 10+에서 "w"는 기존 내용을 자르지 않을 수 있어, 더 긴 파일 위에 쓰면
  * 뒤에 옛 내용이 남습니다. 제공자가 "wt"를 거부할 때만 "w"로 다시 엽니다.
  */
-internal fun ContentResolver.writeBackup(uri: Uri, text: String) {
+internal fun ContentResolver.writeBackup(uri: Uri, text: String) = asIoFailure {
     val stream = try {
         openOutputStream(uri, "wt")
     } catch (e: IllegalArgumentException) {
@@ -60,9 +61,23 @@ internal fun ContentResolver.writeBackup(uri: Uri, text: String) {
  * 고른 문서를 UTF-8로 읽습니다. `MAX_BACKUP_CHARS`를 넘으면 읽기를 멈추고 [BackupTooLargeException]을
  * 던집니다. 호출자가 IO 디스패처에서 부릅니다.
  */
-internal fun ContentResolver.readBackup(uri: Uri): String {
+internal fun ContentResolver.readBackup(uri: Uri): String = asIoFailure {
     val stream = openInputStream(uri) ?: throw IOException("Cannot open $uri for reading")
-    return stream.reader(Charsets.UTF_8).use { it.readAtMost(MAX_BACKUP_CHARS) }
+    stream.reader(Charsets.UTF_8).use { it.readAtMost(MAX_BACKUP_CHARS) }
+}
+
+/**
+ * 제공자가 던지는 IllegalArgumentException(잘못된 URI)·IllegalStateException(사라진 제공자)을
+ * IOException으로 바꿉니다. 취소는 IllegalStateException의 하위 타입이라 그대로 던집니다.
+ */
+internal inline fun <T> asIoFailure(block: () -> T): T = try {
+    block()
+} catch (e: CancellationException) {
+    throw e
+} catch (e: IllegalArgumentException) {
+    throw IOException(e)
+} catch (e: IllegalStateException) {
+    throw IOException(e)
 }
 
 private const val BACKUP_MIME = "application/json"

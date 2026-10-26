@@ -146,14 +146,17 @@ class ReminderNotifier internal constructor(
     }
 
     @Synchronized
-    override fun pruneExpired(today: LocalDate) {
+    override fun pruneExpired(today: LocalDate, showable: Set<SubscriptionId>) {
         val todayDay = today.toEpochDay()
+
+        // 결제일이 지났거나 구독이 삭제·해지된 항목은 남기지 않습니다(planShown과 같은 규칙).
+        fun Entry.keep() = epochDay >= todayDay && SubscriptionId(id) in showable
         readExisting().forEach { existing ->
             if (existing.single) {
-                if (existing.entries.all { it.epochDay < todayDay }) cancel(existing.tag)
+                if (existing.entries.none { it.keep() }) cancel(existing.tag)
                 return@forEach
             }
-            val kept = existing.entries.filter { it.epochDay >= todayDay }
+            val kept = existing.entries.filter { it.keep() }
             when {
                 kept.isEmpty() -> cancel(existing.tag)
 

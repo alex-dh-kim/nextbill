@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
 import dev.lioracode.nextbill.core.domain.billing.cancelledOn
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.reminder.DueLabel
 import dev.lioracode.nextbill.core.domain.usecase.AppStartup
 import dev.lioracode.nextbill.core.domain.usecase.CancelSubscriptionUseCase
@@ -71,11 +72,13 @@ class DetailViewModelTest {
         )
         val refresher = DerivedStateRefresher(
             coordinator,
+            repo,
             sync,
             FakeReminderPoster(),
             FakeWidgetUpdater(),
             FakeDayChangeScheduler(),
             dates,
+            FailureReporter.None,
             appScope
         )
         AppStartup(
@@ -85,7 +88,8 @@ class DetailViewModelTest {
             FakeBackupCodec(),
             FakeImportStaging(),
             sync,
-            refresher
+            refresher,
+            FailureReporter.None
         ).start()
         advanceUntilIdle()
         cancelUseCase = CancelSubscriptionUseCase(repo, coordinator, refresher, dates)

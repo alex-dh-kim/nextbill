@@ -2,6 +2,7 @@ package dev.lioracode.nextbill.feature.editor.impl
 
 import androidx.lifecycle.SavedStateHandle
 import com.google.common.truth.Truth.assertThat
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.usecase.AppStartup
 import dev.lioracode.nextbill.core.domain.usecase.DataCoordinator
 import dev.lioracode.nextbill.core.domain.usecase.DerivedStateRefresher
@@ -83,11 +84,13 @@ class EditorViewModelTest {
         )
         val refresher = DerivedStateRefresher(
             coordinator,
+            repo,
             sync,
             FakeReminderPoster(),
             FakeWidgetUpdater(),
             FakeDayChangeScheduler(),
             dates,
+            FailureReporter.None,
             appScope
         )
         startup = AppStartup(
@@ -97,7 +100,8 @@ class EditorViewModelTest {
             FakeBackupCodec(),
             FakeImportStaging(),
             sync,
-            refresher
+            refresher,
+            FailureReporter.None
         )
         save = SaveSubscriptionUseCase(repo, coordinator, refresher)
         startup.start()
@@ -342,6 +346,7 @@ class EditorViewModelTest {
             coordinator,
             DerivedStateRefresher(
                 coordinator,
+                repo,
                 SyncRemindersUseCase(
                     repo,
                     FakeScheduledReminderRepository(),
@@ -352,6 +357,7 @@ class EditorViewModelTest {
                 FakeWidgetUpdater(),
                 FakeDayChangeScheduler(),
                 dates,
+                FailureReporter.None,
                 appScope
             )
         )

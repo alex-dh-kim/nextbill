@@ -17,6 +17,53 @@ class FakeReminderPosterTest {
     private val today = d("2026-11-14")
     private val a = ReminderPost.Single(TestSubscriptions.netflix, d("2026-11-15"))
     private val b = ReminderPost.Single(TestSubscriptions.phoneBill, d("2026-11-16"))
+    private val all = setOf(
+        TestSubscriptions.netflix.id,
+        TestSubscriptions.phoneBill.id,
+        TestSubscriptions.youtube.id
+    )
+
+    @Test
+    fun dayChangeRepostsSingleSilentlyButSummaryIsUnchanged() {
+        val summary = ReminderPost.Summary(
+            listOf(
+                TestSubscriptions.youtube to d("2026-11-20"),
+                TestSubscriptions.gym to d("2026-11-27")
+            )
+        )
+        poster.show(listOf(a, summary), today)
+        poster.show(listOf(a, summary), today)
+        assertThat(poster.posted).hasSize(2)
+
+        // 내일 → 오늘: 같은 post라도 남은 날 문구가 바뀌어 조용히 다시 게시합니다(진짜와 같은 규칙).
+        poster.show(listOf(a, summary), d("2026-11-15"))
+        assertThat(poster.posted).containsExactly(a, summary, a).inOrder()
+        assertThat(poster.silentPosts).containsExactly(a)
+
+        // D-3 → D-2처럼 같은 문구 종류 안에서도 숫자가 바뀌면 다시 게시합니다.
+        val later = ReminderPost.Single(TestSubscriptions.phoneBill, d("2026-11-20"))
+        poster.show(listOf(later), d("2026-11-17"))
+        poster.show(listOf(later), d("2026-11-17"))
+        poster.show(listOf(later), d("2026-11-18"))
+        assertThat(poster.posted.filter { it == later }).hasSize(2)
+    }
+
+    @Test
+    fun pruneDropsItemsOfDeletedOrCancelledSubscriptions() {
+        val summary = ReminderPost.Summary(
+            listOf(
+                TestSubscriptions.netflix to d("2026-11-20"),
+                TestSubscriptions.youtube to d("2026-11-20")
+            )
+        )
+        poster.show(listOf(b, summary), today)
+        poster.pruneExpired(today, setOf(TestSubscriptions.youtube.id))
+        assertThat(poster.active.keys).containsExactly("summary")
+        assertThat((poster.active["summary"] as ReminderPost.Summary).items.map { it.first.id })
+            .containsExactly(TestSubscriptions.youtube.id)
+        poster.pruneExpired(today, emptySet())
+        assertThat(poster.active).isEmpty()
+    }
 
     @Test
     fun newItemsPostWithSoundUnchangedAreNotRepostedAndMissingAreCancelled() {
@@ -55,11 +102,11 @@ class FakeReminderPosterTest {
             )
         )
         poster.show(listOf(a, summary), today)
-        poster.pruneExpired(d("2026-11-16"))
+        poster.pruneExpired(d("2026-11-16"), all)
         assertThat(poster.active.keys).containsExactly("summary")
         assertThat((poster.active["summary"] as ReminderPost.Summary).items).hasSize(1)
         assertThat(poster.silentPosts).hasSize(1)
-        poster.pruneExpired(d("2026-12-01"))
+        poster.pruneExpired(d("2026-12-01"), all)
         assertThat(poster.active).isEmpty()
     }
 
@@ -77,7 +124,7 @@ class FakeReminderPosterTest {
             poster.show(listOf(a), today)
             val gate = CompletableDeferred<Unit>()
             poster.pruneGate = gate
-            val job = launch(pool) { poster.pruneExpired(d("2026-12-01")) }
+            val job = launch(pool) { poster.pruneExpired(d("2026-12-01"), all) }
             poster.pruneEntered.await()
             assertThat(poster.active).isNotEmpty()
             gate.complete(Unit)
@@ -105,7 +152,7 @@ class FakeReminderPosterTest {
             repeat(2) {
                 val gate = CompletableDeferred<Unit>()
                 poster.pruneGate = gate
-                val job = launch(pool) { poster.pruneExpired(today) }
+                val job = launch(pool) { poster.pruneExpired(today, all) }
                 poster.pruneEntered.await()
                 gate.complete(Unit)
                 job.join()

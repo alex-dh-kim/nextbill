@@ -207,4 +207,25 @@ class SubscriptionWriteUseCasesTest {
         ).isEqualTo(Outcome.Ok(Unit))
         assertThat(env.settings.current.themeMode).isEqualTo(ThemeMode.DARK)
     }
+
+    /** 설정(예: 기본 통화) 저장도 위젯 합계가 바뀌므로 갱신을 요청합니다. 실패·NotReady는 요청하지 않습니다. */
+    @Test fun updateSettingsRequestsRefreshOnlyOnSuccess() = runTest {
+        val env = TestEnv(appScope())
+        assertThat(env.updateSettings { it.copy(themeMode = ThemeMode.DARK) })
+            .isEqualTo(Outcome.Err(ActionError.NOT_READY))
+        advanceUntilIdle()
+        assertThat(env.widget.updateCount).isEqualTo(0)
+
+        env.markReady()
+        env.settings.failNextUpdate = IOException("disk")
+        assertThat(env.updateSettings { it.copy(themeMode = ThemeMode.DARK) })
+            .isEqualTo(Outcome.Err(ActionError.STORAGE_FAILED))
+        advanceUntilIdle()
+        assertThat(env.widget.updateCount).isEqualTo(0)
+
+        assertThat(env.updateSettings { it.copy(themeMode = ThemeMode.DARK) })
+            .isEqualTo(Outcome.Ok(Unit))
+        advanceUntilIdle()
+        assertThat(env.widget.updateCount).isEqualTo(1)
+    }
 }

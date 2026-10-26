@@ -75,7 +75,7 @@ class AndroidCurrentDateSource @Inject constructor(
         }
     }
 
-    private fun refresh() {
+    override fun refresh() {
         state.value = LocalDate.now(clock)
         wake.trySend(Unit)
     }

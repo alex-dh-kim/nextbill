@@ -23,7 +23,7 @@ internal val RESCHEDULE_ACTIONS = setOf(
     Intent.ACTION_MY_PACKAGE_REPLACED
 )
 
-private const val TAG = "RescheduleReceiver"
+private const val TAG = "NextBill"
 
 /**
  * 부팅·시간·시간대 변경·앱 업데이트 뒤 알림 알람을 다시 맞춥니다. 부팅·업데이트는 새 프로세스라 첫 sync가

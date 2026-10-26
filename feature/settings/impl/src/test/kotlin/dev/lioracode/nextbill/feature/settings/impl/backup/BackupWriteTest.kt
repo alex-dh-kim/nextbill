@@ -11,6 +11,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth.assertThat
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.IOException
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -60,6 +61,20 @@ class BackupWriteTest {
         assertThat(file.readText()).isEqualTo(newShorter)
     }
 
+    /** 제공자의 IllegalArgumentException·IllegalStateException은 IOException으로 바뀝니다(화면은 IoFailed). */
+    @Test
+    fun providerRuntimeFailuresBecomeIoExceptions() {
+        val provider = provider(folder.newFile("backup.json"))
+        listOf(IllegalArgumentException("bad uri"), IllegalStateException("gone")).forEach { e ->
+            provider.failWith = e
+            val write = runCatching { resolver.writeBackup(uri, newShorter) }.exceptionOrNull()
+            assertThat(write).isInstanceOf(IOException::class.java)
+            assertThat(write?.cause).isSameInstanceAs(e)
+            val read = runCatching { resolver.readBackup(uri) }.exceptionOrNull()
+            assertThat(read).isInstanceOf(IOException::class.java)
+        }
+    }
+
     /**
      * 모드를 글자 그대로 따르는 문서 제공자: "w"는 자르지 않고(Android 10+ 일부 제공자처럼), "wt"만 자릅니다.
      * [rejectTruncate]면 "wt"를 거부합니다.
@@ -67,10 +82,12 @@ class BackupWriteTest {
     class LiteralModeProvider : ContentProvider() {
         lateinit var file: File
         var rejectTruncate = false
+        var failWith: RuntimeException? = null
         val modes = mutableListOf<String>()
 
         override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor {
             modes += mode
+            failWith?.let { throw it }
             val base = ParcelFileDescriptor.MODE_WRITE_ONLY or ParcelFileDescriptor.MODE_CREATE
             val flags = when (mode) {
                 "w" -> base

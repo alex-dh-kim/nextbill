@@ -31,6 +31,7 @@
 - 성능 개선은 release 빌드 측정 근거(trace, benchmark)와 함께만 주장합니다. `@Immutable`/`@Stable`을 리포트 통과용으로 붙이지 않습니다.
 - Room 버전을 올리는 변경은 `MigrationTestHelper` 테스트와 함께 합니다.
 - `runCatching` 대신 `CancellationException`을 다시 던지는 `runCatchingNonCancellation`을 씁니다.
+- JVM 모듈(`core:model`·`core:domain`)의 NewApi는 Lint가 아니라 `checkAndroidApi`(`lintDebug`에서 실행)가 막습니다. 지우지 않습니다(ADR-0002).
 - 알림 전달에 "최소 1회"·"정확히 1회" 같은 보장 표현을 쓰지 않습니다(ADR-0014).
 - 문자열 키는 `values/`(영어)와 `values-ko/`(한국어)에 모두 둡니다.
 

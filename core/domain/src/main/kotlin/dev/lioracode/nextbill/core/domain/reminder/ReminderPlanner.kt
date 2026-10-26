@@ -21,7 +21,7 @@ fun Subscription.reminderTrigger(billingDate: LocalDate, zone: ZoneId): Instant 
 fun Subscription.nextReminder(now: Instant, zone: ZoneId): PlannedReminder? {
     if (!reminder.enabled || status != SubscriptionStatus.ACTIVE) return null
     // 오늘보다 이른 결제일의 알림 시각은 항상 now 이전이므로 오늘부터 찾습니다.
-    val today = LocalDate.ofInstant(now, zone)
+    val today = now.atZone(zone).toLocalDate()
     return billingDatesFrom(today)
         .map { PlannedReminder(id, it, reminderTrigger(it, zone)) }
         .firstOrNull { it.triggerAt > now }

@@ -2,8 +2,11 @@ package dev.lioracode.nextbill.core.domain.usecase
 
 import dev.lioracode.nextbill.core.domain.ApplicationScope
 import dev.lioracode.nextbill.core.domain.effect.DayChangeScheduler
+import dev.lioracode.nextbill.core.domain.effect.FailureReporter
 import dev.lioracode.nextbill.core.domain.effect.ReminderPoster
 import dev.lioracode.nextbill.core.domain.effect.WidgetUpdater
+import dev.lioracode.nextbill.core.domain.reminder.showableIds
+import dev.lioracode.nextbill.core.domain.repository.SubscriptionRepository
 import dev.lioracode.nextbill.core.domain.time.CurrentDateSource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,16 +21,18 @@ import kotlinx.coroutines.sync.withLock
 
 /**
  * 저장과 분리된 파생 상태 갱신(설계 문서 ADR-13): 알림 sync·지난 알림 정리 → 자정 예약 → 위젯.
- * 각 단계의 실패는 따로 격리하고, 코루틴 취소는 삼키지 않습니다.
+ * 각 단계의 실패는 따로 격리해 [reporter]에 알리고, 코루틴 취소는 삼키지 않습니다.
  */
 @Singleton
 class DerivedStateRefresher @Inject constructor(
     private val coordinator: DataCoordinator,
+    private val repo: SubscriptionRepository,
     private val sync: SyncRemindersUseCase,
     private val poster: ReminderPoster,
     private val widget: WidgetUpdater,
     private val dayChange: DayChangeScheduler,
     private val dateSource: CurrentDateSource,
+    private val reporter: FailureReporter,
     @ApplicationScope scope: CoroutineScope
 ) {
     private val requests = Channel<Unit>(Channel.CONFLATED)
@@ -53,13 +58,14 @@ class DerivedStateRefresher @Inject constructor(
         runLock.withLock {
             // NotReady면 건너뜁니다. 정리도 잠금 안이라 알림 처리의 읽기·합치기·게시와 겹치지 않습니다.
             coordinator.write {
-                step { sync() }
+                step("sync") { sync() }
                 // 잠금을 기다리는 사이 날짜가 바뀔 수 있으므로 잠금 안에서 읽습니다.
                 val today = dateSource.today.value
-                step { poster.pruneExpired(today) }
+                // 지난 결제일과 함께, 삭제·해지된 구독의 알림도 지웁니다(planShown과 같은 규칙).
+                step("prune") { poster.pruneExpired(today, showableIds(repo.getAll())) }
             }
-            step { dayChange.scheduleNext() }
-            step { widget.updateAll() }
+            step("day change") { dayChange.scheduleNext() }
+            step("widget") { widget.updateAll() }
         }
     }
 
@@ -67,11 +73,12 @@ class DerivedStateRefresher @Inject constructor(
      * 한 단계의 실패를 격리합니다. 이 코루틴 자체가 취소됐으면 취소를 그대로 전파하고, 단계 안에서 생긴
      * 취소 예외(예: TimeoutCancellationException)는 그 단계의 실패로 보고 다음 단계로 넘어갑니다.
      */
-    private suspend inline fun step(block: () -> Unit) {
+    private suspend inline fun step(name: String, block: () -> Unit) {
         try {
-            runCatchingNonCancellation(block)
+            runCatchingNonCancellation(block).onFailure { reporter.report("refresh $name", it) }
         } catch (e: CancellationException) {
             currentCoroutineContext().ensureActive()
+            reporter.report("refresh $name", e)
         }
     }
 }
