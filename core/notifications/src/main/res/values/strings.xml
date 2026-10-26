@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
   <string name="notification_channel_reminders">Payment reminders</string>
   <string name="reminder_due_today">today</string>
   <string name="reminder_due_tomorrow">tomorrow</string>
-  <string name="reminder_due_in_days">in %1$d days</string>
+  <!-- DueLabel.InDays는 2일 이상입니다(0일·1일은 today·tomorrow). -->
+  <string name="reminder_due_in_days" tools:ignore="PluralsCandidate">in %1$d days</string>
   <string name="reminder_single_title">%1$s payment %2$s</string>
   <string name="reminder_single_text">%1$s · %2$s</string>
   <string name="reminder_date_pattern">MMM d</string>
@@ -11,5 +12,6 @@
     <item quantity="one">%1$d upcoming payment</item>
     <item quantity="other">%1$d upcoming payments</item>
   </plurals>
-  <string name="reminder_summary_text_many">%1$s, %2$s and %3$d more</string>
+  <!-- "and N more"는 N에 따라 형태가 바뀌지 않습니다. -->
+  <string name="reminder_summary_text_many" tools:ignore="PluralsCandidate">%1$s, %2$s and %3$d more</string>
 </resources>

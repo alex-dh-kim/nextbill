@@ -33,7 +33,7 @@ class ReminderReceiver : HiltBroadcastReceiver() {
 
     @Inject lateinit var refresher: DerivedStateRefresher
 
-    @Inject @field:ApplicationScope
+    @Inject @ApplicationScope
     lateinit var scope: CoroutineScope
 
     override fun onReceive(context: Context, intent: Intent) {

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="cycle_months_1_day">Every month on day %1$d</string>
-    <string name="cycle_months_n_day">Every %1$d months on day %2$d</string>
+    <!-- _n 문자열은 간격이 2 이상일 때만 씁니다(1은 _1 문자열). plurals로 합치면 한국어는 other만 써서 "매주 월요일" 같은 _1 문구를 잃습니다. -->
+    <string name="cycle_months_n_day" tools:ignore="PluralsCandidate">Every %1$d months on day %2$d</string>
     <string name="cycle_years_1">Every year on %1$s</string>
-    <string name="cycle_years_n">Every %1$d years on %2$s</string>
+    <string name="cycle_years_n" tools:ignore="PluralsCandidate">Every %1$d years on %2$s</string>
     <string name="cycle_weeks_1">Every %1$s</string>
-    <string name="cycle_weeks_n">Every %1$d weeks</string>
+    <string name="cycle_weeks_n" tools:ignore="PluralsCandidate">Every %1$d weeks</string>
     <string name="cycle_days_1">Every day</string>
-    <string name="cycle_days_n">Every %1$d days</string>
+    <string name="cycle_days_n" tools:ignore="PluralsCandidate">Every %1$d days</string>
     <string name="cycle_hint_months_1_day">Charged every month on day %1$d</string>
-    <string name="cycle_hint_months_n_day">Charged every %1$d months on day %2$d</string>
+    <string name="cycle_hint_months_n_day" tools:ignore="PluralsCandidate">Charged every %1$d months on day %2$d</string>
     <string name="cycle_hint_years_1">Charged every year on %1$s</string>
-    <string name="cycle_hint_years_n">Charged every %1$d years on %2$s</string>
+    <string name="cycle_hint_years_n" tools:ignore="PluralsCandidate">Charged every %1$d years on %2$s</string>
     <string name="cycle_hint_weeks_1">Charged every %1$s</string>
-    <string name="cycle_hint_weeks_n">Charged every %1$d weeks</string>
+    <string name="cycle_hint_weeks_n" tools:ignore="PluralsCandidate">Charged every %1$d weeks</string>
     <string name="cycle_hint_days_1">Charged every day</string>
-    <string name="cycle_hint_days_n">Charged every %1$d days</string>
+    <string name="cycle_hint_days_n" tools:ignore="PluralsCandidate">Charged every %1$d days</string>
     <string name="date_month_day">%1$s %2$d</string>
     <string name="date_short">%3$s, %1$s %2$d</string>
     <string name="due_today">Today</string>

@@ -70,15 +70,16 @@ fun rememberNotificationDelivery(requestedBefore: Boolean): State<NotificationDe
 
 private fun computeDelivery(context: Context, requestedBefore: Boolean): NotificationDelivery {
     val sdk = Build.VERSION.SDK_INT
-    val granted = sdk < 33 ||
+    val granted = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
         ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
         PackageManager.PERMISSION_GRANTED
-    val rationale = sdk >= 33 && context.findActivity()?.let {
-        ActivityCompat.shouldShowRequestPermissionRationale(
-            it,
-            Manifest.permission.POST_NOTIFICATIONS
-        )
-    } == true
+    val rationale =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && context.findActivity()?.let {
+            ActivityCompat.shouldShowRequestPermissionRationale(
+                it,
+                Manifest.permission.POST_NOTIFICATIONS
+            )
+        } == true
     val manager = NotificationManagerCompat.from(context)
     val channel = manager.getNotificationChannel(REMINDER_CHANNEL_ID)
     val channelBlocked =

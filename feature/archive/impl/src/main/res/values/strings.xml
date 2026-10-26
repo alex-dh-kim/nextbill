@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="archive_title">Cancelled subscriptions</string>
     <string name="archive_back">Back</string>
     <string name="archive_notice">Cancelled subscriptions are left out of upcoming payments and reminders</string>
@@ -8,7 +8,8 @@
     <string name="archive_menu_restore">Use again</string>
     <string name="archive_menu_delete">Delete</string>
     <string name="archive_list_title">Cancelled</string>
-    <string name="archive_count">%1$d total</string>
+    <!-- "N total"은 N에 따라 형태가 바뀌지 않습니다. -->
+    <string name="archive_count" tools:ignore="PluralsCandidate">%1$d total</string>
     <string name="archive_row_open">View details</string>
     <string name="archive_empty">No cancelled subscriptions</string>
 

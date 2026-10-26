@@ -3,7 +3,10 @@
   <string name="widget_name">NextBill</string>
   <string name="widget_description">Upcoming subscription payments at a glance</string>
   <string name="widget_this_month">Due this month</string>
-  <string name="widget_other_currencies">+%1$d more currencies</string>
+  <plurals name="widget_other_currencies">
+    <item quantity="one">+%1$d more currency</item>
+    <item quantity="other">+%1$d more currencies</item>
+  </plurals>
   <string name="widget_next">Next payment</string>
   <string name="widget_empty">No subscriptions yet</string>
   <plurals name="widget_upcoming_count">

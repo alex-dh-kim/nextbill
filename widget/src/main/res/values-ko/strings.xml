@@ -3,7 +3,9 @@
   <string name="widget_name">NextBill</string>
   <string name="widget_description">다가오는 구독 결제를 한눈에 보여줘요</string>
   <string name="widget_this_month">이번 달 예정</string>
-  <string name="widget_other_currencies">외 %1$d개 통화</string>
+  <plurals name="widget_other_currencies">
+    <item quantity="other">외 %1$d개 통화</item>
+  </plurals>
   <string name="widget_next">다음 결제</string>
   <string name="widget_empty">등록된 구독이 없어요</string>
   <plurals name="widget_upcoming_count">

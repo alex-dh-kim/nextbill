@@ -46,8 +46,8 @@ import kotlinx.coroutines.launch
 class DetailViewModel @AssistedInject constructor(
     @Assisted key: DetailNavKey,
     private val handle: SavedStateHandle,
-    private val repo: SubscriptionRepository,
-    private val dateSource: CurrentDateSource,
+    repo: SubscriptionRepository,
+    dateSource: CurrentDateSource,
     settings: SettingsRepository,
     private val cancelSubscription: CancelSubscriptionUseCase,
     private val restoreSubscription: RestoreSubscriptionUseCase,

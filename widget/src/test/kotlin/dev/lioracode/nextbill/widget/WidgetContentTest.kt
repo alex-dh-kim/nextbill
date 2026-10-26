@@ -49,6 +49,12 @@ class WidgetContentTest {
     }
 
     @Test
+    @Config(qualifiers = "en")
+    fun englishOtherCurrencyIsSingularForOne() = render(state, DpSize(250.dp, 110.dp)) {
+        onNode(hasText("+1 more currency")).assertExists()
+    }
+
+    @Test
     fun tallShowsThreeRowsAndFooter() = render(state, DpSize(250.dp, 180.dp)) {
         onNode(hasText("넷플릭스")).assertExists()
         onNode(hasText("통신비")).assertExists()

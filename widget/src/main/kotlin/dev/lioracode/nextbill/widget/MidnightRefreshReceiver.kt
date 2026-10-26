@@ -35,7 +35,7 @@ class MidnightRefreshReceiver : HiltBroadcastReceiver() {
 
     @Inject lateinit var dateSource: CurrentDateSource
 
-    @Inject @field:ApplicationScope
+    @Inject @ApplicationScope
     lateinit var scope: CoroutineScope
 
     override fun onReceive(context: Context, intent: Intent) {

@@ -175,7 +175,11 @@ private fun Header(context: Context, state: WidgetState) {
                 val others = state.monthTotal.others.size
                 if (others > 0) {
                     Text(
-                        text = context.getString(R.string.widget_other_currencies, others),
+                        text = context.resources.getQuantityString(
+                            R.plurals.widget_other_currencies,
+                            others,
+                            others
+                        ),
                         maxLines = 1,
                         style = TextStyle(fontSize = 10.sp, color = WidgetColors.textSecondary)
                     )
